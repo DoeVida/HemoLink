@@ -3,6 +3,7 @@ package br.senac.hemolink.modelo.entidade.doador;
 import br.senac.hemolink.modelo.entidade.TipoSanguineo;
 import br.senac.hemolink.modelo.entidade.Usuario;
 import br.senac.hemolink.modelo.entidade.Doacao;
+
 import java.time.LocalDate;
 import java.util.List;
 
