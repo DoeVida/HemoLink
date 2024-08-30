@@ -7,6 +7,17 @@ public class Usuario {
 	private Papel papel;
 	private Contato contato;
 	
+	public Usuario () {
+		
+	}
+	
+	public Usuario (String nome, String senha, Papel papel, Contato contato) {
+		this.nome = nome;
+		this.senha = senha;
+		this.papel = papel;
+		this.contato = contato;
+	}
+	
 	public void setNome (String nome) {
 		this.nome = nome;
 	}
