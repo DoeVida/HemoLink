@@ -6,6 +6,16 @@ public class Contato {
 	private String email;
 	private String telefone;
 	
+	public Contato () {
+		
+	}
+	
+	public Contato (int idContato, String email, String telefone) {
+		this.idContato = idContato;
+		this.email = email;
+		this.telefone = telefone;
+	}
+	
 	public void setIdContato (int idContato) {
 		this.idContato = idContato;
 	}
