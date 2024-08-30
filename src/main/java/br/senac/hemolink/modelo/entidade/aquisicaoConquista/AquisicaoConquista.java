@@ -1,5 +1,8 @@
 package br.senac.hemolink.modelo.entidade;
 
+import br.senac.hemolink.modelo.doador;
+import br.senac.hemolink.modelo.conquista;
+
 import java.time.LocalDate;
 
 public class AquisicaoConquista {
