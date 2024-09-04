@@ -1,4 +1,4 @@
-package br.senac.hemolink.modelo.entidade;
+package br.senac.hemolink.modelo.entidade.hemocentro;
 
 import java.time.Duration;
 import java.time.LocalTime;
