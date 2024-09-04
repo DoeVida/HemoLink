@@ -1,12 +1,13 @@
 package br.senac.hemolink.modelo.entidade.doador;
 
-import br.senac.hemolink.modelo.entidade.tipoSanguineo;
-import br.senac.hemolink.modelo.entidade.doacao;
+import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
+import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class Doador {
+public class Doador extends Usuario{
 	private String cpf;
 	private char genero;
 	private TipoSanguineo tipoSanguineo;
@@ -15,7 +16,7 @@ public class Doador {
 
 	public Doador(){}
 
-	public Doador(String cpf, char genero, Tiposanguineo tipoSanguineo, 
+	public Doador(String cpf, char genero, TipoSanguineo tipoSanguineo, 
 			LocalDate dataDeNascimento, List<Doacao>historicoDeDoacao ){
 		this.cpf = cpf;
         this.genero = genero;
