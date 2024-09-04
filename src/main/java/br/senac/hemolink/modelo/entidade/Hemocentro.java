@@ -1,5 +1,7 @@
 package br.senac.hemolink.modelo.entidade;
 
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro;
+
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
