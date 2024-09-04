@@ -1,5 +1,7 @@
 package br.senac.hemolink.modelo.entidade;
 
+import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
+
 public class EstoqueSangue {
 	private TipoSanguineo tipoSanguineo;
     private float quantidadeDisponivel;
