@@ -1,9 +1,7 @@
-package br.senac.hemolink.modelo.entidade.doacao;
+package br.senac.hemolink.modelo.emtidade.doacao;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import br.senac.hemolink.modelo.entidade.Doador;
 
 public class Doacao {
 
