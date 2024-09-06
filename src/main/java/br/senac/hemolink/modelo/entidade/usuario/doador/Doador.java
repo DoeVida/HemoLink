@@ -1,4 +1,4 @@
-package br.senac.hemolink.modelo.entidade.doador;
+package br.senac.hemolink.modelo.entidade.usuario.doador;
 
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
