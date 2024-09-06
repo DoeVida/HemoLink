@@ -6,6 +6,9 @@ public class EstoqueSangue {
     private TipoSanguineo tipoSanguineo;
     private float quantidadeDisponivel;
 
+    public EstoqueSangue() {
+	}
+
     public EstoqueSangue(TipoSanguineo tipoSanguineo, float quantidadeDisponivel) {
         this.tipoSanguineo = tipoSanguineo;
         this.quantidadeDisponivel = quantidadeDisponivel;
