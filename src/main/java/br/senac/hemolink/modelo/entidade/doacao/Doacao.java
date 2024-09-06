@@ -2,14 +2,24 @@ package br.senac.hemolink.modelo.entidade.doacao;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import br.senac.hemolink.modelo.entidade.Doador;
+import br.senac.hemolink.modelo.entidade.hemocentro.Hemocentro;
+import br.senac.hemolink.modelo.entidade.doador.Doador;
 
 public class Doacao {
 
 	private Doador doador;
 	private Hemocentro hemocentro;
 	private LocalDate dataDoacao;
-	private LocalTime hora;
+	private LocalTime horaDoacao;
+	
+	public Doacao() {}
+	
+	public Doacao (Doador doador, Hemocentro hemocentro,LocalDate dataDoacao, LocalTime horaDoacao) {
+		this.doador = doador;
+		this.hemocentro = hemocentro;
+		this.dataDoacao = dataDoacao;
+		this.horaDoacao = horaDoacao;
+	}
 	
 	public void setDoador (Doador doador) {
 		this.doador = doador;
@@ -35,11 +45,11 @@ public class Doacao {
 		return dataDoacao;
 	}
 	
-	public void setHora (LocalTime hora) {
-		this.hora = hora;
+	public void sethoraDoacao (LocalTime horaDoacao) {
+		this.horaDoacao = horaDoacao;
 	}
 	
-	public LocalTime getHora() {
-		return hora;
+	public LocalTime gethoraDoacao() {
+		return horaDoacao;
 	}
 }
