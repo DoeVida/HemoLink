@@ -1,20 +1,22 @@
-package br.senac.hemolink.modelo.entidade;
+package br.senac.hemolink.modelo.entidade.armazenamento;
 
 import java.time.LocalDate;
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
+import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
 
 public class Armazenamento {
 
 	private int idArmazenamento;
-	private EstoqueDeSangue[] estoqueDeSangue = new EstoqueDeSangue[8];
+	private EstoqueSangue[] estoqueSangue = new EstoqueSangue[8];
 	private LocalDate dataUltimaAtualizacao;
 	private Hemocentro hemocentro;
 	
 	
 	public Armazenamento(){}
 
-	public Armazenamento(int idArmazenamento, EstoqueDeSangue[] estoqueDeSangue, LocalDate dataUltimaAtualizacao, Hemocentro hemocentro) {
+	public Armazenamento(int idArmazenamento, EstoqueSangue[] estoqueSangue, LocalDate dataUltimaAtualizacao, Hemocentro hemocentro) {
         this.idArmazenamento = idArmazenamento;
-        this.estoqueDeSangue = estoqueDeSangue;
+        this.estoqueSangue = estoqueSangue;
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
         this.hemocentro = hemocentro;
     }
@@ -28,11 +30,11 @@ public class Armazenamento {
 	public void setIdArmazenamento(int idArmazenamento) {
 		this.idArmazenamento = idArmazenamento;
 	}
-	public EstoqueDeSangue[] getEstoqueDeSangue() {
-		return estoqueDeSangue;
+	public EstoqueSangue[] getEstoqueSangue() {
+		return estoqueSangue;
 	}
-	public void setEstoqueDeSangue(EstoqueDeSangue[] estoqueDeSangue) {
-		this.estoqueDeSangue = estoqueDeSangue;
+	public void setEstoqueSangue(EstoqueSangue[] estoqueSangue) {
+		this.estoqueSangue = estoqueSangue;
 	}
 	public LocalDate getDataUltimaAtualizacao() {
 		return dataUltimaAtualizacao;
