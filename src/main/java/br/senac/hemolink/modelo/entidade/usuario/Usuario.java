@@ -3,7 +3,7 @@ package br.senac.hemolink.modelo.entidade.usuario;
 import br.senac.hemolink.modelo.entidade.papel.Papel;
 import br.senac.hemolink.modelo.entidade.contato.Contato;
 
-public class Usuario {
+abstract public class Usuario {
 	
 	private String nome;
 	private String senha;
