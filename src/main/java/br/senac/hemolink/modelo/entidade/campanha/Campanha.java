@@ -8,6 +8,14 @@ class Campanha {
     private String titulo;
     private String descricao;
     private List<Demanda> demanda;
+    
+public void Campanha () {}
+	
+	public void Campanha (String titulo, String descricao,List<Demanda> demanda) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.demanda = demanda;
+	} 
 
     // Get Set
     public String getTitulo() {
