@@ -5,40 +5,64 @@ import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import java.util.List;
 
 class Campanha {
-    private String titulo;
-    private String descricao;
-    private List<Demanda> demanda;
-    
-public void Campanha () {}
-	
-	public void Campanha (String titulo, String descricao,List<Demanda> demanda) {
+	private int idCampanha;
+	private String titulo;
+	private String descricaoCampanha;
+	private List<Doacao> doacoes;
+	private Demanda demanda;
+
+	public Campanha() {
+
+	}
+
+	public Campanha(int idCampanha, String titulo, String descricaoCampanha, List<Doacao> doacoes,
+			br.senac.hemolink.modelo.entidade.campanha.Demanda demanda) {
+		super();
+		this.idCampanha = idCampanha;
 		this.titulo = titulo;
-		this.descricao = descricao;
+		this.descricaoCampanha = descricaoCampanha;
+		this.doacoes = doacoes;
 		this.demanda = demanda;
-	} 
+	}
 
-    // Get Set
-    public String getTitulo() {
-        return titulo;
-    }
+	public int getIdCampanha() {
+		return idCampanha;
+	}
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+	public void setIdCampanha(int idCampanha) {
+		this.idCampanha = idCampanha;
+	}
 
-    public String getDescricao() {
-        return descricao;
-    }
+	public String getTitulo() {
+		return titulo;
+	}
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 
-    public List<Demanda> getDemanda() {
-        return demanda;
-    }
+	public String getDescricaoCampanha() {
+		return descricaoCampanha;
+	}
 
-    public void setDemanda(List<Demanda> demanda) {
-        this.demanda = demanda;
-    }
+	public void setDescricaoCampanha(String descricaoCampanha) {
+		this.descricaoCampanha = descricaoCampanha;
+	}
+
+	public List<Doacao> getDoacoes() {
+		return doacoes;
+	}
+
+	public void setDoacoes(List<Doacao> doacoes) {
+		this.doacoes = doacoes;
+	}
+
+	public Demanda getDemanda() {
+		return demanda;
+	}
+
+	public void setDemanda(Demanda demanda) {
+		this.demanda = demanda;
+	}
+
 }
