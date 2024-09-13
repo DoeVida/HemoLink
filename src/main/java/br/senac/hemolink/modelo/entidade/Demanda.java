@@ -1,43 +1,55 @@
 package br.senac.hemolink.modelo.entidade;
 
-import java.util.List;
+import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 public class Demanda {
-    private TipoSanguineo tipoSanguineo;
-    private char rh;
-    private String status;
-    private List<Campanha> campanhas;
+	
+	private int id;
+	private TipoSanguineo tipoSanguineo;
+	private Capacidade capacidade;
+	private double quantidadeLitros;
 
-    // Getters e Setters
-    public TipoSanguineo getTipoSanguineo() {
-        return tipoSanguineo;
-    }
+	public Demanda() {
 
-    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
-        this.tipoSanguineo = tipoSanguineo;
-    }
+	}
 
-    public char getRh() {
-        return rh;
-    }
+	public Demanda(int id, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros) {
+		super();
+		this.id = id;
+		this.tipoSanguineo = tipoSanguineo;
+		this.capacidade = capacidade;
+		this.quantidadeLitros = quantidadeLitros;
+	}
 
-    public void setRh(char rh) {
-        this.rh = rh;
-    }
+	public int getIdDemanda() {
+		return id;
+	}
 
-    public String getStatus() {
-        return status;
-    }
+	public void setIdDemanda(int idDemanda) {
+		this.id = idDemanda;
+	}
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+	public TipoSanguineo getTipoSanguineo() {
+		return tipoSanguineo;
+	}
 
-    public List<Campanha> getCampanhas() {
-        return campanhas;
-    }
+	public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
+		this.tipoSanguineo = tipoSanguineo;
+	}
 
-    public void setCampanhas(List<Campanha> campanhas) {
-        this.campanhas = campanhas;
-    }
+	public Capacidade getCapacidade() {
+		return capacidade;
+	}
+
+	public void setCapacidade(Capacidade capacidade) {
+		this.capacidade = capacidade;
+	}
+
+	public double getQuantidadeLitros() {
+		return quantidadeLitros;
+	}
+
+	public void setQuantidadeLitros(double quantidadeLitros) {
+		this.quantidadeLitros = quantidadeLitros;
+	}
 }
