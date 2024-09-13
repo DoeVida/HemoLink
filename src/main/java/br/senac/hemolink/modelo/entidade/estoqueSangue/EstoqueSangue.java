@@ -3,30 +3,32 @@ package br.senac.hemolink.modelo.entidade.estoqueSangue;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 public class EstoqueSangue {
-    private TipoSanguineo tipoSanguineo;
-    private float quantidadeDisponivel;
+	private TipoSanguineo tipoSanguineo;
+	private float quantidadeDisponivel;
 
-    public EstoqueSangue() {
+	public EstoqueSangue() {
+
 	}
 
-    public EstoqueSangue(TipoSanguineo tipoSanguineo, float quantidadeDisponivel) {
-        this.tipoSanguineo = tipoSanguineo;
-        this.quantidadeDisponivel = quantidadeDisponivel;
-    }
+	public EstoqueSangue(TipoSanguineo tipoSanguineo, float quantidadeDisponivel) {
+		super();
+		this.tipoSanguineo = tipoSanguineo;
+		this.quantidadeDisponivel = quantidadeDisponivel;
+	}
 
-    public TipoSanguineo getTipoSanguineo() {
-        return tipoSanguineo;
-    }
+	public TipoSanguineo getTipoSanguineo() {
+		return tipoSanguineo;
+	}
 
-    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
-        this.tipoSanguineo = tipoSanguineo;
-    }
+	public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
+		this.tipoSanguineo = tipoSanguineo;
+	}
 
-    public float getQuantidadeDisponivel() {
-        return quantidadeDisponivel;
-    }
+	public float getQuantidadeDisponivel() {
+		return quantidadeDisponivel;
+	}
 
-    public void setQuantidadeDisponivel(float quantidadeDisponivel) {
-        this.quantidadeDisponivel = quantidadeDisponivel;
-    }
+	public void setQuantidadeDisponivel(float quantidadeDisponivel) {
+		this.quantidadeDisponivel = quantidadeDisponivel;
+	}
 }
