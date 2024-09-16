@@ -25,7 +25,7 @@ class Hemocentro extends Usuario {
 	public Hemocentro(String cnpj, List<Demanda> demanda, List<Estoque> estoque, List<Campanha> campanha,
 			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
 		super();
-		cnpj = cnpj;
+		this.cnpj = cnpj;
 		this.demanda = demanda;
 		this.estoque = estoque;
 		this.campanha = campanha;
