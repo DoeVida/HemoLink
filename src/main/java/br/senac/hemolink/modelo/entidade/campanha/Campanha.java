@@ -1,6 +1,7 @@
 package br.senac.hemolink.modelo.entidade.campanha;
 
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
+import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
 import java.util.List;
 
