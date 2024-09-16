@@ -3,7 +3,7 @@ package br.senac.hemolink.modelo.entidade.doacao;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import br.senac.hemolink.modelo.entidade.hemocentro.Hemocentro;
-import br.senac.hemolink.modelo.entidade.doador.Doador;
+import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 
 public class Doacao {
 
