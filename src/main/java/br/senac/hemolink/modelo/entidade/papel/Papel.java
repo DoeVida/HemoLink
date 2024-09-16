@@ -1,7 +1,13 @@
 package br.senac.hemolink.modelo.entidade.papel;
 
-public class Papel {
-	
+import java.io.Serializable;
+
+@Entity
+@Table(name= "papel")
+public class Papel implements Serializable{
+
+	@Id
+	@Column(name="idPapel") private Long id;
 	private int idPapel;
 	private String nomePapel;
 	
