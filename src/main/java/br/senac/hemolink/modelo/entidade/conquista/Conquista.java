@@ -12,8 +12,10 @@ import br.senac.hemolink.modelo.entidade.estoqueSangue.Table;
 
 package br.senac.hemolink.modelo.entidade.conquista;
 
-public class Conquista {
+public class implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_conquista", nullable = false, unique = true)
