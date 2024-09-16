@@ -10,38 +10,38 @@ import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
 class Hemocentro extends Usuario {
-	private String CNPJ;
+	private String cnpj;
 	private List<Demanda> demanda;
 	private List<Estoque> estoque;
 	private List<Campanha> campanha;
-	private LocalTime horarioAInicio;
-	private Duration horarioADuracao;
+	private LocalTime horarioInicio;
+	private Duration horarioDuracao;
 	private List<Doacao> doacoes;
 
 	public Hemocentro() {
 
 	}
 
-	public Hemocentro(String cNPJ, List<Demanda> demanda, List<Estoque> estoque, List<Campanha> campanha,
-			LocalTime horarioAInicio, Duration horarioADuracao, List<Doacao> doacoes) {
+	public Hemocentro(String cnpj, List<Demanda> demanda, List<Estoque> estoque, List<Campanha> campanha,
+			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
 		super();
-		CNPJ = cNPJ;
+		cnpj = cnpj;
 		this.demanda = demanda;
 		this.estoque = estoque;
 		this.campanha = campanha;
-		this.horarioAInicio = horarioAInicio;
-		this.horarioADuracao = horarioADuracao;
+		this.horarioInicio = horarioInicio;
+		this.horarioDuracao = horarioDuracao;
 		this.doacoes = doacoes;
 	}
 	//
 
 	// Get Set
-	public String getCNPJ() {
-		return CNPJ;
+	public String getcnpj() {
+		return cnpj;
 	}
 
-	public void setCNPJ(String CNPJ) {
-		this.CNPJ = CNPJ;
+	public void setcnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 
 	public List<Demanda> getDemanda() {
@@ -68,20 +68,20 @@ class Hemocentro extends Usuario {
 		this.campanha = campanha;
 	}
 
-	public LocalTime getHorarioAInicio() {
-		return horarioAInicio;
+	public LocalTime getHorarioInicio() {
+		return horarioInicio;
 	}
 
-	public void setHorarioAInicio(LocalTime horarioAInicio) {
-		this.horarioAInicio = horarioAInicio;
+	public void setHorarioInicio(LocalTime horarioInicio) {
+		this.horarioInicio = horarioInicio;
 	}
 
-	public Duration getHorarioADuracao() {
-		return horarioADuracao;
+	public Duration getHorarioDuracao() {
+		return horarioDuracao;
 	}
 
-	public void setHorarioADuracao(Duration horarioADuracao) {
-		this.horarioADuracao = horarioADuracao;
+	public void setHorarioDuracao(Duration horarioDuracao) {
+		this.horarioDuracao = horarioDuracao;
 	}
 
 	public List<Doacao> getDoacoes() {
