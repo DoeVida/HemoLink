@@ -2,15 +2,17 @@ package br.senac.hemolink.modelo.entidade.aquisicaoConquista;
 
 import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 import br.senac.hemolink.modelo.entidade.conquista.Conquista;
-
 import java.time.LocalDate;
 
 public class AquisicaoConquista {
+	
 	private LocalDate dataAquisicao;
 	private Conquista conquista;
 	private Doador doador;
 	
-	public AquisicaoConquista(){}
+	public AquisicaoConquista(){
+		
+	}
 
 	public AquisicaoConquista(LocalDate dataAquisicao, Conquista conquista, Doador doador){
 		this.dataAquisicao = dataAquisicao;
@@ -41,8 +43,4 @@ public class AquisicaoConquista {
 	public void setDoador(Doador doador) {
 		this.doador = doador;
 	}
-
-	
-	
-
 }
