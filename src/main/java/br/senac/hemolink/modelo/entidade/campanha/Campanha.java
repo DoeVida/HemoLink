@@ -15,14 +15,13 @@ class Campanha {
 
 	}
 
-	public Campanha(int idCampanha, String titulo, String descricaoCampanha, List<Doacao> doacoes,
-			br.senac.hemolink.modelo.entidade.campanha.Demanda demanda) {
-		super();
-		this.idCampanha = idCampanha;
-		this.titulo = titulo;
-		this.descricaoCampanha = descricaoCampanha;
-		this.doacoes = doacoes;
-		this.demanda = demanda;
+	public Campanha(int idCampanha, String titulo, String descricaoCampanha, List<Doacao> doacoes, Demanda demanda) {
+	    super();
+	    this.idCampanha = idCampanha;
+	    this.titulo = titulo;
+	    this.descricaoCampanha = descricaoCampanha;
+	    this.doacoes = doacoes;
+	    this.demanda = demanda;
 	}
 
 	public int getIdCampanha() {
