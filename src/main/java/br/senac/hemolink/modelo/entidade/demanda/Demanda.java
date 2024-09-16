@@ -1,6 +1,7 @@
-package br.senac.hemolink.modelo.entidade.demanda.Demanda;
+package br.senac.hemolink.modelo.entidade.demanda;
 
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
+import br.senac.hemolink.modelo.enumeracao.Capacidade;
 
 public class Demanda {
 	
