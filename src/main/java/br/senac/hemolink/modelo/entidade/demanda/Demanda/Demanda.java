@@ -1,4 +1,4 @@
-package br.senac.hemolink.modelo.entidade;
+package br.senac.hemolink.modelo.entidade.demanda.Demanda;
 
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
