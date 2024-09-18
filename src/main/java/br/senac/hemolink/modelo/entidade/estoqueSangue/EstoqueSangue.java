@@ -3,14 +3,12 @@ package br.senac.hemolink.modelo.entidade.estoqueSangue;
 import java.io.Serializable;
 import java.util.Objects;
 import java.time.LocalDate;
-import javax.persistence.*;
+
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 @Entity
 @Table (name = "estoque")
-
 public class EstoqueSangue implements Serializable {
-    
     private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -24,7 +22,7 @@ public class EstoqueSangue implements Serializable {
 	@Column(name = "quantidade_disponivel", nullable = false, unique = false)
 	private float quantidadeDisponivel;
 
-	public EstoqueSangue() {}
+	public EstoqueSangue() { }
 
 
 
@@ -58,8 +56,4 @@ public class EstoqueSangue implements Serializable {
 	public void setQuantidadeDisponivel(float quantidadeDisponivel) {
 		this.quantidadeDisponivel = quantidadeDisponivel;
 	}
-	
-	
-
-	
 }
