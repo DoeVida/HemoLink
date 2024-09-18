@@ -11,7 +11,7 @@ import br.senac.hemolink.modelo.entidade.estoqueSangue.Table;
 @Table (name = "contato")
 public class Contato implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_contato", nullable = false, unique = true)
@@ -23,9 +23,7 @@ public class Contato implements Serializable {
 	@Column(name = "telefone", length = 12, nullable = false, unique = false)
 	private String telefone;
 	
-	public void Contato () {
-	
-	}
+	public void Contato () { }
 	
 	public void Contato (int idContato, String email, String telefone) {
 		this.idContato = idContato;
