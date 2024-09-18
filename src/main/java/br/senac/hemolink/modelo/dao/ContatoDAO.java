@@ -2,14 +2,15 @@ package br.senac.hemolink.modelo.dao;
 
 import java.util.List;
 
+import br.senac.hemolink.modelo.entidade.contato.Contato;
+
 public interface ContatoDAO {
-	
-	void inserirUsuario(Usuario usuario); 
+    
+    void inserirContato(Contato contato);
 
-	void deletarUsuario(Usuario usuario); 
+    void deletarContato(Contato contato);
 
-	void atualizarUsuario(Usuario usuario); 
+    void atualizarContato(Contato contato);
 
-	List<Usuario> recuperarUsuarios(); 
-
+    List<Contato> recuperarContatos();
 }

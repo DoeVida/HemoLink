@@ -1,4 +1,4 @@
-package br.senac.hemolink.modelo.dao;
+package br.senac.hemolink.modelo.dao.impl;
 
 import java.util.List;
 
@@ -12,150 +12,124 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import br.senac.hemolink.modelo.dao.ContatoDAO;
+import br.senac.hemolink.modelo.entidade.contato.Contato;
+
 public class ContatoDAOImpl implements ContatoDAO {
-	
 
-	@Override
-	public void inserirContato(Contato contato) {
-		Session sessao = null;
+    @Override
+    public void inserirContato(Contato contato) {
+        Session sessao = null;
 
-		try {
+        try {
+            sessao = conectarBanco().openSession();
+            sessao.beginTransaction();
 
-			sessao = conectarBanco().openSession();
-			sessao.beginTransaction();
+            sessao.save(contato);
 
-			sessao.save(contato);
+            sessao.getTransaction().commit();
 
-			sessao.getTransaction().commit();
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+            if (sessao.getTransaction() != null) {
+                sessao.getTransaction().rollback();
+            }
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+        }
+    }
 
-		} catch (Exception sqlException) {
+    @Override
+    public void deletarContato(Contato contato) {
+        Session sessao = null;
 
-			sqlException.printStackTrace();
+        try {
+            sessao = conectarBanco().openSession();
+            sessao.beginTransaction();
 
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
+            sessao.remove(contato);
 
-		} finally {
+            sessao.getTransaction().commit();
 
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-		
-	}
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+            if (sessao.getTransaction() != null) {
+                sessao.getTransaction().rollback();
+            }
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+        }
+    }
 
-	@Override
-	public void deletarContato(Contato contato) {
-		Session sessao = null;
+    @Override
+    public void atualizarContato(Contato contato) {
+        Session sessao = null;
 
-		try {
+        try {
+            sessao = conectarBanco().openSession();
+            sessao.beginTransaction();
 
-			sessao = conectarBanco().openSession();
-			sessao.beginTransaction();
+            sessao.update(contato);
 
-			sessao.remove(contato);
+            sessao.getTransaction().commit();
 
-			sessao.getTransaction().commit();
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+            if (sessao.getTransaction() != null) {
+                sessao.getTransaction().rollback();
+            }
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+        }
+    }
 
-		} catch (Exception sqlException) {
+    @Override
+    public List<Contato> recuperarContatos() {
+        Session sessao = null;
+        List<Contato> contatos = null;
 
-			sqlException.printStackTrace();
+        try {
+            sessao = conectarBanco().openSession();
+            sessao.beginTransaction();
 
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
+            CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+            CriteriaQuery<Contato> criteria = construtor.createQuery(Contato.class);
+            Root<Contato> raizContato = criteria.from(Contato.class);
 
-		} finally {
+            criteria.select(raizContato);
 
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-		
-	}
+            contatos = sessao.createQuery(criteria).getResultList();
 
-	@Override
-	public void atualizarContato(Contato contato) {
-		Session sessao = null;
+            sessao.getTransaction().commit();
 
-		try {
+        } catch (Exception sqlException) {
+            sqlException.printStackTrace();
+            if (sessao.getTransaction() != null) {
+                sessao.getTransaction().rollback();
+            }
+        } finally {
+            if (sessao != null) {
+                sessao.close();
+            }
+        }
 
-			sessao = conectarBanco().openSession();
-			sessao.beginTransaction();
+        return contatos;
+    }
 
-			sessao.update(contato);
+    private SessionFactory conectarBanco() {
+        Configuration configuracao = new Configuration();
+        configuracao.addAnnotatedClass(Contato.class);
+        configuracao.configure("hibernate.cfg.xml");
 
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-		
-	}
-
-	@Override
-	public List<Contato> recuperarContatos() {
-		Session sessao = null;
-		List<Contato> contatos = null;
-
-		try {
-
-			sessao = conectarBanco().openSession();
-			sessao.beginTransaction();
-
-			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-
-			CriteriaQuery<Contato> criteria = construtor.createQuery(Contato.class);
-			Root<Contato> raizUsuario = criteria.from(Contato.class);
-
-			criteria.select(raizUsuario);
-
-			usuarios = sessao.createQuery(criteria).getResultList();
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-		
-		return contatos;
-	}
-	
-	private SessionFactory conectarBanco() {
-
-		Configuration configuracao = new Configuration();
-
-		configuracao.addAnnotatedClass(Contato.class);
-		configuracao.configure("hibernate.cfg.xml");
-
-		ServiceRegistry servico = new StandardServiceRegistryBuilder().applySettings(configuracao.getProperties()).build();
-		SessionFactory fabricaSessao = configuracao.buildSessionFactory(servico);
-
-		return fabricaSessao;
-	}
-
+        ServiceRegistry servico = new StandardServiceRegistryBuilder()
+            .applySettings(configuracao.getProperties()).build();
+        
+        return configuracao.buildSessionFactory(servico);
+    }
 }
-
