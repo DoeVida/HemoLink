@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,22 +24,26 @@ public abstract class Usuario implements Serializable  {
 	@Id
 	@Column(name = "nickname", length = 30, nullable = false)
 	private String nickname;
+	
 	@Column(name = "nome", length = 45, nullable = false)
 	private String nome;
+	
 	@Column(name = "senha", length = 45, nullable = false)
 	private String senha;
-	@OneToOne(fetch = FetchType.LAZY)
+	// 
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_papel")
 	private Papel papel;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_contato")
 	private Contato contato;
 	
-	public void Usuario () {
+	public Usuario () {
 		
 	}
 	
-	public void Usuario (String nome, String senha, Papel papel, Contato contato) {
+	public Usuario (String nome, String senha, Papel papel, Contato contato) {
 		this.nome = nome;
 		this.senha = senha;
 		this.papel = papel;
