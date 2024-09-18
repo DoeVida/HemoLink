@@ -23,11 +23,11 @@ public class Papel implements Serializable{
 	private int idPapel;
 	private String nomePapel;
 	
-	public void Papel () {
+	public Papel () {
 		
 	}
 	
-	public void Papel (int idPapel, String nomePapel) {
+	public Papel (int idPapel, String nomePapel) {
 		this.idPapel = idPapel;
 		this.nomePapel = nomePapel;
 	}
