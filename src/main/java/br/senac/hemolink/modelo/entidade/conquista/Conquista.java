@@ -1,6 +1,7 @@
 package br.senac.hemolink.modelo.entidade.conquista;
 
 import java.io.Serializable;
+
 import br.senac.hemolink.modelo.entidade.estoqueSangue.Entity;
 import br.senac.hemolink.modelo.entidade.estoqueSangue.GeneratedValue;
 import br.senac.hemolink.modelo.entidade.estoqueSangue.Id;
@@ -8,8 +9,7 @@ import br.senac.hemolink.modelo.entidade.estoqueSangue.Table;
 
 @Entity
 @Table (name = "conquista")
-public class Contato implements Serializable {
-
+public class Conquista implements Serializable {
     private static final long serialVersionUID = 1L;
     
 	@Id
