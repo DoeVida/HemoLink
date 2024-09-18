@@ -1,14 +1,42 @@
-package br.senac.hemolink.modelo.entidade;
+package br.senac.hemolink.modelo.entidade.aquisicaoConquista;
 
-import br.senac.hemolink.modelo.doador;
-import br.senac.hemolink.modelo.conquista;
-
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class AquisicaoConquista {
-	private LocalDate dataAquisicao;
-	private Conquista conquista;
-	private Doador doador;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import br.senac.hemolink.modelo.entidade.conquista.Conquista;
+import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
+
+@Entity
+@Table(name= "AquisicaoConquista")
+public class AquisicaoConquista implements Serializable{
+	
+	 private static final long serialVersionUID = 1L;
+	 
+	 @Id
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+		private Long id;
+	 
+	 @Column(name = "data_aquisicaoconquista", nullable = false)
+		private LocalDate dataAquisicao;
+	 
+	 @OneToMany
+	 @JoinColumn(name = "doador_id", nullable = false)
+		private Doador doador;
+	 
+	 @OneToOne
+	 @JoinColumn(name = "id_conquista", nullable = false)
+	    private Conquista conquista;
+
 	
 	public AquisicaoConquista(){}
 
