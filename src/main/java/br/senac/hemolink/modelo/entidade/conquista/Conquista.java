@@ -1,4 +1,4 @@
-package br.senac.hemolink.dao;
+package br.senac.hemolink.modelo.entidade.conquista;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.util.List;
 import br.senac.hemolink.modelo.entidade.conquista.Conquista;
 import br.senac.hemolink.util.ConnectionFactory;
 
-public class ConquistaDAO {
+public class Conquista {
 
     public void inserir(Conquista conquista) throws SQLException {
         String sql = "INSERT INTO conquista (nomeConquista, descricaoConquista) VALUES (?, ?)";
