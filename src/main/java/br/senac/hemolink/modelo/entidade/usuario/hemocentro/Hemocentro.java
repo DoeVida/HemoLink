@@ -1,21 +1,56 @@
 package br.senac.hemolink.modelo.entidade.usuario.hemocentro;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.estoque.Estoque;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
-class Hemocentro extends Usuario {
+
+@Entity 
+@Table(name = "Hemocentro")
+class Hemocentro extends Usuario implements Serializable {
+	
+	@Id
+	@Column(name = "id_cnpj", length = 14, nullable = false, unique = true) 
 	private String cnpj;
+	
+	@OneToOne(fetch = FetchType.LAZY) 
+	@MapsId
+	@Column(name = "id_demanda") 
 	private List<Demanda> demanda;
+	
+	@OneToOne(fetch = FetchType.LAZY) 
+	@MapsId
+	@Column(name = "id_estoque")
 	private List<Estoque> estoque;
+	
+	@OneToOne(fetch = FetchType.LAZY) 
+	@MapsId
+	@Column(name = "id_campanha")
 	private List<Campanha> campanha;
+	
+	@Column(name = "id_horarioInicio", nullable = false) 
 	private LocalTime horarioInicio;
+	
+	@Column(name = "id_horarioDuracao", nullable = false)
 	private Duration horarioDuracao;
+	
+	@OneToOne(fetch = FetchType.LAZY) 
+	@MapsId
+	@Column(name = "id_doacoes")
 	private List<Doacao> doacoes;
 
 	public Hemocentro() {
