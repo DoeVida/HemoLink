@@ -14,14 +14,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
-import br.senac.hemolink.modelo.entidade.estoque.Estoque;
+import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
 
 @Entity 
 @Table(name = "Hemocentro")
-class Hemocentro extends Usuario implements Serializable {
+public class Hemocentro extends Usuario implements Serializable {
 	
 	@Id
 	@Column(name = "id_cnpj", length = 14, nullable = false, unique = true) 
@@ -34,8 +34,8 @@ class Hemocentro extends Usuario implements Serializable {
 	
 	@OneToOne(fetch = FetchType.LAZY) 
 	@MapsId
-	@Column(name = "id_estoque")
-	private List<Estoque> estoque;
+	@Column(name = "id_estoqueSangue")
+	private List<EstoqueSangue> estoqueSangue;
 	
 	@OneToOne(fetch = FetchType.LAZY) 
 	@MapsId
@@ -57,12 +57,12 @@ class Hemocentro extends Usuario implements Serializable {
 
 	}
 
-	public Hemocentro(String cnpj, List<Demanda> demanda, List<Estoque> estoque, List<Campanha> campanha,
+	public Hemocentro(String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue, List<Campanha> campanha,
 			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
 		super();
 		this.cnpj = cnpj;
 		this.demanda = demanda;
-		this.estoque = estoque;
+		this.estoqueSangue = estoqueSangue;
 		this.campanha = campanha;
 		this.horarioInicio = horarioInicio;
 		this.horarioDuracao = horarioDuracao;
@@ -87,12 +87,12 @@ class Hemocentro extends Usuario implements Serializable {
 		this.demanda = demanda;
 	}
 
-	public List<Estoque> getEstoque() {
-		return estoque;
+	public List<EstoqueSangue> getEstoqueSangue() {
+		return estoqueSangue;
 	}
 
-	public void setEstoque(List<Estoque> estoque) {
-		this.estoque = estoque;
+	public void setEstoqueSangue(List<EstoqueSangue> estoqueSangue) {
+		this.estoqueSangue = estoqueSangue;
 	}
 
 	public List<Campanha> getCampanha() {
