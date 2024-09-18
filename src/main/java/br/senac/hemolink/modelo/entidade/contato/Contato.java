@@ -23,9 +23,9 @@ public class Contato implements Serializable {
 	@Column(name = "telefone", length = 12, nullable = false, unique = false)
 	private String telefone;
 	
-	public void Contato () { }
+	public Contato () { }
 	
-	public void Contato (int idContato, String email, String telefone) {
+	public Contato (int idContato, String email, String telefone) {
 		this.idContato = idContato;
 		this.email = email;
 		this.telefone = telefone;
