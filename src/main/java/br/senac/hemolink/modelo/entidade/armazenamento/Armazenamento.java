@@ -57,8 +57,6 @@ public class Armazenamento implements Serializable {
     }
 	
 	
-	
-	
 	public int getIdArmazenamento() {
 		return idArmazenamento;
 	}
