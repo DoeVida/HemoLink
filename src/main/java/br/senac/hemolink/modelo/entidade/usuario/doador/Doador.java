@@ -4,22 +4,56 @@ import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Doador extends Usuario{
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Doador")
+public class Doador extends Usuario implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column (name = "cpf_doador")
 	private String cpf;
-	private char genero;
-	private TipoSanguineo tipoSanguineo;
+	
+	@Column (name = "sexo_doador", length = 1, nullable = false)
+	private char sexo;
+	
+	@Column (name = "dataDeNascimento_doador", nullable = false)
 	private LocalDate dataDeNascimento ;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@MapsId
+	@Column (name = "tipoSanguineo_doador", length = 11, nullable = true)
+	private TipoSanguineo tipoSanguineo;
+	
+	@OneToMany(mappedBy = "doador", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+	orphanRemoval = true)
+	@MapsId
+	@Column (name = "historicoDeDoacao")
 	private List<Doacao>historicoDeDoacao;
 
 	public Doador(){}
 
-	public Doador(String cpf, char genero, TipoSanguineo tipoSanguineo, 
+	public Doador(String cpf, char sexo, TipoSanguineo tipoSanguineo, 
 			LocalDate dataDeNascimento, List<Doacao>historicoDeDoacao ){
 		this.cpf = cpf;
-        this.genero = genero;
+        this.sexo = sexo;
         this.tipoSanguineo = tipoSanguineo;
         this.dataDeNascimento = dataDeNascimento;
         this.historicoDeDoacao = historicoDeDoacao;
@@ -33,12 +67,12 @@ public class Doador extends Usuario{
 		this.cpf = cpf;
 	}
 
-	public char getGenero() {
-		return genero;
+	public char getsexo() {
+		return sexo;
 	}
 
-	public void setGenero(char genero) {
-		this.genero = genero;
+	public void setsexo(char sexo) {
+		this.sexo = sexo;
 	}
 
 	public TipoSanguineo getTipoSanguineo() {
