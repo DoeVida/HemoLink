@@ -24,13 +24,23 @@ public class EstoqueSangue implements Serializable {
 	@Column(name = "quantidade_disponivel", nullable = false, unique = false)
 	private float quantidadeDisponivel;
 
-	public EstoqueSangue() {
+	public EstoqueSangue() {}
 
-	}
 
-	public EstoqueSangue(TipoSanguineo tipoSanguineo, float quantidadeDisponivel) {
+
+	public EstoqueSangue(int idEstoqueSangue, br.senac.hemolink.modelo.entidade.estoqueSangue.TipoSanguineo tipoSanguineo, float quantidadeDisponivel) {
+		super();
+		this.idEstoqueSangue = idEstoqueSangue;
 		this.tipoSanguineo = tipoSanguineo;
 		this.quantidadeDisponivel = quantidadeDisponivel;
+	}
+
+	public int getIdEstoqueSangue() {
+		return idEstoqueSangue;
+	}
+
+	public void setIdEstoqueSangue(int idEstoqueSangue) {
+		this.idEstoqueSangue = idEstoqueSangue;
 	}
 
 	public TipoSanguineo getTipoSanguineo() {
@@ -48,4 +58,8 @@ public class EstoqueSangue implements Serializable {
 	public void setQuantidadeDisponivel(float quantidadeDisponivel) {
 		this.quantidadeDisponivel = quantidadeDisponivel;
 	}
+	
+	
+
+	
 }
