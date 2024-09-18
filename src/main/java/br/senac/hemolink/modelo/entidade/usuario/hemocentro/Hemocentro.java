@@ -9,7 +9,7 @@ import br.senac.hemolink.modelo.entidade.estoque.Estoque;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
-class Hemocentro extends Usuario {
+public class Hemocentro extends Usuario {
 	private String cnpj;
 	private List<Demanda> demanda;
 	private List<Estoque> estoque;

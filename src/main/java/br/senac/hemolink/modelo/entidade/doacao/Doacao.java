@@ -2,9 +2,18 @@ package br.senac.hemolink.modelo.entidade.doacao;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import javax.persistence.*;
-import br.senac.hemolink.modelo.entidade.hemocentro.Hemocentro;
-import br.senac.hemolink.modelo.entidade.doador.Doador;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 
 @Entity
 @Table(name = "doacao")
@@ -14,11 +23,11 @@ public class Doacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "doador_id", nullable = false)
 	private Doador doador;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "hemocentro_id", nullable = false)
 	private Hemocentro hemocentro;
 
@@ -29,6 +38,7 @@ public class Doacao {
 	private LocalTime horaDoacao;
 
 	public Doacao() {
+	
 	}
 
 	public Doacao(Doador doador, Hemocentro hemocentro, LocalDate dataDoacao, LocalTime horaDoacao) {
@@ -37,8 +47,6 @@ public class Doacao {
 		this.dataDoacao = dataDoacao;
 		this.horaDoacao = horaDoacao;
 	}
-
-	// Getters e Setters
 
 	public Long getId() {
 		return id;
