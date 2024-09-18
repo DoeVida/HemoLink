@@ -8,7 +8,7 @@ import br.senac.hemolink.modelo.entidade.estoqueSangue.Table;
 
 @Entity
 @Table (name = "conquista")
-public class implements Serializable {
+public class Contato implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
