@@ -4,13 +4,13 @@ import java.util.List;
 
 import br.senac.hemolink.modelo.entidade.contato.Contato;
 
-public interface ClienteDAO {
+public interface ContatoDAO {
 
-	void inserirCliente(Cliente cliente);
+	void inserirContato(Contato contato);
 
-	void deletarCliente(Cliente cliente);
+	void deletarContato(Contato contato);
 
-	void atualizarCliente(Cliente cliente);
+	void atualizarContato(Contato contato);
 
-	List<Cliente> recuperarClientes();
+	List<Contato> recuperarContatos();
 }
