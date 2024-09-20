@@ -1,4 +1,4 @@
-package br.senac.hemolink.modelo.dao.contato;
+package br.senac.hemolink.modelo.dao.demanda;
 
 import java.util.List;
 
@@ -8,18 +8,18 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import br.senac.hemolink.modelo.entidade.contato.Contato;
+import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
-public class ContatoDAOImpl implements ContatoDAO {
+public class DemandaDAOImpl implements DemandaDAO {
 
 	private ConexaoFactory fabrica;
 
-	public ContatoDAOImpl() {
+	public DemandaDAOImpl() {
 		fabrica = new ConexaoFactory();
 	}
 
-	public void inserirContato(Contato contato) {
+	public void inserirDemanda(Demanda demanda) {
 
 		Session sessao = null;
 
@@ -28,7 +28,7 @@ public class ContatoDAOImpl implements ContatoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.save(contato);
+			sessao.save(demanda);
 
 			sessao.getTransaction().commit();
 
@@ -48,7 +48,7 @@ public class ContatoDAOImpl implements ContatoDAO {
 		}
 	}
 
-	public void deletarContato(Contato contato) {
+	public void deletarDemanda(Demanda demanda) {
 
 		Session sessao = null;
 
@@ -57,7 +57,7 @@ public class ContatoDAOImpl implements ContatoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.delete(contato);
+			sessao.delete(demanda);
 
 			sessao.getTransaction().commit();
 
@@ -77,7 +77,7 @@ public class ContatoDAOImpl implements ContatoDAO {
 		}
 	}
 
-	public void atualizarContato(Contato contato) {
+	public void atualizarDemanda(Demanda demanda) {
 
 		Session sessao = null;
 
@@ -86,7 +86,7 @@ public class ContatoDAOImpl implements ContatoDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.update(contato);
+			sessao.update(demanda);
 
 			sessao.getTransaction().commit();
 
@@ -106,10 +106,10 @@ public class ContatoDAOImpl implements ContatoDAO {
 		}
 	}
 
-	public List<Contato> recuperarContatos() {
+	public List<Demanda> recuperarDemandas() {
 
 		Session sessao = null;
-		List<Contato> contatos = null;
+		List<Demanda> demandas = null;
 
 		try {
 
@@ -118,12 +118,12 @@ public class ContatoDAOImpl implements ContatoDAO {
 
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
 
-			CriteriaQuery<Contato> criteria = construtor.createQuery(Contato.class);
-			Root<Contato> raizContato = criteria.from(Contato.class);
+			CriteriaQuery<Demanda> criteria = construtor.createQuery(Demanda.class);
+			Root<Demanda> raizDemanda = criteria.from(Demanda.class);
 
-			criteria.select(raizContato);
+			criteria.select(raizDemanda);
 
-			contatos = sessao.createQuery(criteria).getResultList();
+			demandas = sessao.createQuery(criteria).getResultList();
 
 			sessao.getTransaction().commit();
 
@@ -142,6 +142,6 @@ public class ContatoDAOImpl implements ContatoDAO {
 			}
 		}
 
-		return contatos;
+		return demandas;
 	}
 }
