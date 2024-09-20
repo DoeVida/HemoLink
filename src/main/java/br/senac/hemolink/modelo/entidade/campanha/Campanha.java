@@ -1,28 +1,51 @@
 package br.senac.hemolink.modelo.entidade.campanha;
 
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
-import java.util.List;
+@Entity
+@Table(name = "campanha")
+public class Campanha {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idCampanha;
 
-class Campanha {
-	private int idCampanha;
-	private String titulo;
-	private String descricaoCampanha;
-	private List<Doacao> doacoes;
-	private Demanda demanda;
+    @Column(name = "titulo", nullable = false, length = 100)
+    private String titulo;
+
+    @Column(name = "descricao_campanha", nullable = false, length = 255)
+    private String descricaoCampanha;
+
+    @OneToMany(mappedBy = "campanha")
+    private List<Doacao> doacoes;
+
+    @ManyToOne
+    @JoinColumn(name = "demanda_id", nullable = false)
+    private Demanda demanda;
 
 	public Campanha() {
 
 	}
 
 	public Campanha(int idCampanha, String titulo, String descricaoCampanha, List<Doacao> doacoes, Demanda demanda) {
-	    super();
-	    this.idCampanha = idCampanha;
-	    this.titulo = titulo;
-	    this.descricaoCampanha = descricaoCampanha;
-	    this.doacoes = doacoes;
-	    this.demanda = demanda;
+		super();
+		this.idCampanha = idCampanha;
+		this.titulo = titulo;
+		this.descricaoCampanha = descricaoCampanha;
+		this.doacoes = doacoes;
+		this.demanda = demanda;
 	}
 
 	public int getIdCampanha() {
