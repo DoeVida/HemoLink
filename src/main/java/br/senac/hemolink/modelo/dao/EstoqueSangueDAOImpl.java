@@ -1,129 +1,147 @@
 package br.senac.hemolink.modelo.dao.impl;
 
 import java.util.List;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import br.senac.hemolink.modelo.dao.EstoqueSangueDAO;
-import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
+
+import exemplo.modelo.entidade.cliente.Cliente;
+import exemplo.modelo.factory.conexao.ConexaoFactory;
 
 public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 
-    @Override
-    public void inserirEstoqueSangue(EstoqueSangue estoqueSangue) {
-        Session sessao = null;
-        try {
-            sessao = conectarBanco().openSession();
-            sessao.beginTransaction();
+	private ConexaoFactory fabrica;
 
-            sessao.save(estoqueSangue);
+	public EstoqueSangueDAOImpl() {
+		fabrica = new ConexaoFactory();
+	}
 
-            sessao.getTransaction().commit();
+	public void inserirEstoque(EstoqueSangue estoquesangue) {
 
-        } catch (Exception sqlException) {
-            sqlException.printStackTrace();
-            if (sessao.getTransaction() != null) {
-                sessao.getTransaction().rollback();
-            }
-        } finally {
-            if (sessao != null) {
-                sessao.close();
-            }
-        }
-    }
+		Session sessao = null;
 
-    @Override
-    public void deletarEstoqueSangue(EstoqueSangue estoqueSangue) {
-        Session sessao = null;
-        try {
-            sessao = conectarBanco().openSession();
-            sessao.beginTransaction();
+		try {
 
-            sessao.remove(estoqueSangue);
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
 
-            sessao.getTransaction().commit();
+			sessao.save(estoquesangue);
 
-        } catch (Exception sqlException) {
-            sqlException.printStackTrace();
-            if (sessao.getTransaction() != null) {
-                sessao.getTransaction().rollback();
-            }
-        } finally {
-            if (sessao != null) {
-                sessao.close();
-            }
-        }
-    }
+			sessao.getTransaction().commit();
 
-    @Override
-    public void atualizarEstoqueSangue(EstoqueSangue estoqueSangue) {
-        Session sessao = null;
-        try {
-            sessao = conectarBanco().openSession();
-            sessao.beginTransaction();
+		} catch (Exception sqlException) {
 
-            sessao.update(estoqueSangue);
+			sqlException.printStackTrace();
 
-            sessao.getTransaction().commit();
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
 
-        } catch (Exception sqlException) {
-            sqlException.printStackTrace();
-            if (sessao.getTransaction() != null) {
-                sessao.getTransaction().rollback();
-            }
-        } finally {
-            if (sessao != null) {
-                sessao.close();
-            }
-        }
-    }
+		} finally {
 
-    @Override
-    public List<EstoqueSangue> recuperarEstoques() {
-        Session sessao = null;
-        List<EstoqueSangue> estoques = null;
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+	}
 
-        try {
-            sessao = conectarBanco().openSession();
-            sessao.beginTransaction();
+	public void deletarEstoque(EstoqueSangue estoquesangue) {
 
-            CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-            CriteriaQuery<EstoqueSangue> criteria = construtor.createQuery(EstoqueSangue.class);
-            Root<EstoqueSangue> raizEstoque = criteria.from(EstoqueSangue.class);
+		Session sessao = null;
 
-            criteria.select(raizEstoque);
+		try {
 
-            estoques = sessao.createQuery(criteria).getResultList();
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
 
-            sessao.getTransaction().commit();
+			sessao.delete(estoquesangue);
 
-        } catch (Exception sqlException) {
-            sqlException.printStackTrace();
-            if (sessao.getTransaction() != null) {
-                sessao.getTransaction().rollback();
-            }
-        } finally {
-            if (sessao != null) {
-                sessao.close();
-            }
-        }
+			sessao.getTransaction().commit();
 
-        return estoques;
-    }
+		} catch (Exception sqlException) {
 
-    private SessionFactory conectarBanco() {
-        Configuration configuracao = new Configuration();
-        configuracao.addAnnotatedClass(EstoqueSangue.class);
-        configuracao.configure("hibernate.cfg.xml");
+			sqlException.printStackTrace();
 
-        ServiceRegistry servico = new StandardServiceRegistryBuilder()
-            .applySettings(configuracao.getProperties()).build();
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
 
-        return configuracao.buildSessionFactory(servico);
-    }
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+	}
+
+	public void atualizarEstoque(EstoqueSangue estoquesangue) {
+
+		Session sessao = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			sessao.update(estoquesangue);
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+	}
+
+	public List<EstoqueSangue> recuperarEstoque() {
+
+		Session sessao = null;
+		List<EstoqueSangue> estoques = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+		CriteriaQuery<EstoqueSangue> criteria = construtor.createQuery(EstoqueSangue.class);
+			Root<EstoqueSangue> raizEstoqueSangue = criteria.from(EstoqueSangue.class);
+
+			criteria.select(raizEstoqueSangue);
+
+			estoques = sessao.createQuery(criteria).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return estoques;
+	}
 }
