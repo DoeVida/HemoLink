@@ -1,4 +1,4 @@
-package br.senac.hemolink.modelo.dao.impl;
+package br.senac.hemolink.modelo.dao.contato;
 
 import java.util.List;
 
@@ -8,18 +8,18 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import exemplo.modelo.entidade.cliente.Cliente;
-import exemplo.modelo.factory.conexao.ConexaoFactory;
+import br.senac.hemolink.modelo.entidade.contato.Contato;
+import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
-public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
+public class ContatoDAOImpl implements ContatoDAO {
 
 	private ConexaoFactory fabrica;
 
-	public EstoqueSangueDAOImpl() {
+	public ContatoDAOImpl() {
 		fabrica = new ConexaoFactory();
 	}
 
-	public void inserirEstoque(EstoqueSangue estoquesangue) {
+	public void inserirContato(Contato contato) {
 
 		Session sessao = null;
 
@@ -28,7 +28,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.save(estoquesangue);
+			sessao.save(contato);
 
 			sessao.getTransaction().commit();
 
@@ -48,7 +48,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 		}
 	}
 
-	public void deletarEstoque(EstoqueSangue estoquesangue) {
+	public void deletarContato(Contato contato) {
 
 		Session sessao = null;
 
@@ -57,7 +57,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.delete(estoquesangue);
+			sessao.delete(contato);
 
 			sessao.getTransaction().commit();
 
@@ -77,7 +77,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 		}
 	}
 
-	public void atualizarEstoque(EstoqueSangue estoquesangue) {
+	public void atualizarContato(Contato contato) {
 
 		Session sessao = null;
 
@@ -86,7 +86,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 
-			sessao.update(estoquesangue);
+			sessao.update(contato);
 
 			sessao.getTransaction().commit();
 
@@ -106,10 +106,10 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 		}
 	}
 
-	public List<EstoqueSangue> recuperarEstoque() {
+	public List<Contato> recuperarContatos() {
 
 		Session sessao = null;
-		List<EstoqueSangue> estoques = null;
+		List<Contato> contatos = null;
 
 		try {
 
@@ -118,12 +118,12 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
 
-		CriteriaQuery<EstoqueSangue> criteria = construtor.createQuery(EstoqueSangue.class);
-			Root<EstoqueSangue> raizEstoqueSangue = criteria.from(EstoqueSangue.class);
+			CriteriaQuery<Contato> criteria = construtor.createQuery(Contato.class);
+			Root<Contato> raizContato = criteria.from(Contato.class);
 
-			criteria.select(raizEstoqueSangue);
+			criteria.select(raizContato);
 
-			estoques = sessao.createQuery(criteria).getResultList();
+			contatos = sessao.createQuery(criteria).getResultList();
 
 			sessao.getTransaction().commit();
 
@@ -142,6 +142,6 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 			}
 		}
 
-		return estoques;
+		return contatos;
 	}
 }

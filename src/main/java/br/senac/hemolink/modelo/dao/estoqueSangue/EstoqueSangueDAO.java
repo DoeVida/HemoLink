@@ -1,6 +1,8 @@
-package br.senac.hemolink.modelo.dao;
+package br.senac.hemolink.modelo.dao.estoqueSangue;
 
 import java.util.List;
+
+import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
 
 public interface EstoqueSangueDAO {
     
