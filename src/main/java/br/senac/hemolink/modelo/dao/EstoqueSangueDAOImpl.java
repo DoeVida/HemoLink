@@ -1,4 +1,4 @@
-package br.senac.hemolink.modelo.dao.impl;
+package br.senac.hemolink.modelo.dao;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 
-import exemplo.modelo.entidade.cliente.Cliente;
-import exemplo.modelo.factory.conexao.ConexaoFactory;
+import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
+import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
 public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 
@@ -19,7 +19,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 		fabrica = new ConexaoFactory();
 	}
 
-	public void inserirEstoque(EstoqueSangue estoquesangue) {
+	public void inserirEstoqueSangue(EstoqueSangue estoquesangue) {
 
 		Session sessao = null;
 
@@ -48,7 +48,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 		}
 	}
 
-	public void deletarEstoque(EstoqueSangue estoquesangue) {
+	public void deletarEstoqueSangue(EstoqueSangue estoquesangue) {
 
 		Session sessao = null;
 
@@ -77,7 +77,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 		}
 	}
 
-	public void atualizarEstoque(EstoqueSangue estoquesangue) {
+	public void atualizarEstoqueSangue(EstoqueSangue estoquesangue) {
 
 		Session sessao = null;
 
@@ -106,7 +106,7 @@ public class EstoqueSangueDAOImpl implements EstoqueSangueDAO {
 		}
 	}
 
-	public List<EstoqueSangue> recuperarEstoque() {
+	public List<EstoqueSangue> recuperarEstoques() {
 
 		Session sessao = null;
 		List<EstoqueSangue> estoques = null;
