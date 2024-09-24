@@ -1,13 +1,35 @@
 package br.senac.hemolink.modelo.entidade.endereco;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Column;
+
 public class Endereco {
 	
-	private String estado;
-	private String cidade;
-	private String bairro;
-	private String logradouro;
-	private int numero;
-	private String cep;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigo")
+    private Long id; 
+
+    @Column(name = "estado", nullable = false, length = 45)
+    private String estado;
+
+    @Column(name = "cidade", nullable = false, length = 45)
+    private String cidade;
+
+    @Column(name = "bairro", nullable = false, length = 45)
+    private String bairro;
+
+    @Column(name = "logradouro", nullable = false, length = 45)
+    private String logradouro;
+
+    @Column(name = "numero", nullable = false)
+    private int numero;
+
+    @Column(name = "cep", nullable = true, length = 13)
+    private String cep;
 	
 	public void Endereco() {}
 	
