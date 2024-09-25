@@ -48,7 +48,9 @@ public class Doador extends Usuario implements Serializable{
 	@Column (name = "historicoDeDoacao")
 	private List<Doacao>historicoDeDoacao;
 
-	public Doador(){}
+	public Doador(){
+		
+	}
 
 	public Doador(String cpf, char sexo, TipoSanguineo tipoSanguineo, 
 			LocalDate dataDeNascimento, List<Doacao>historicoDeDoacao ){
@@ -67,11 +69,11 @@ public class Doador extends Usuario implements Serializable{
 		this.cpf = cpf;
 	}
 
-	public char getsexo() {
+	public char getSexo() {
 		return sexo;
 	}
 
-	public void setsexo(char sexo) {
+	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
 
