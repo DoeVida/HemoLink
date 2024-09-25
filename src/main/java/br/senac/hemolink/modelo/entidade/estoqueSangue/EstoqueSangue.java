@@ -38,7 +38,6 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 		
 		public EstoqueSangue(int idEstoqueSangue, TipoSanguineo tipoSanguineo, float quantidadeDisponivel,
 				int idArmazenamento) {
-			super();
 			this.idEstoqueSangue = idEstoqueSangue;
 			this.tipoSanguineo = tipoSanguineo;
 			this.quantidadeDisponivel = quantidadeDisponivel;
