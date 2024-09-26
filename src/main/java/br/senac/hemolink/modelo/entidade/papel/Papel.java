@@ -1,26 +1,22 @@
 package br.senac.hemolink.modelo.entidade.papel;
-
+ 
 import java.io.Serializable;
-
-import javax.persistence.FetchType;
+ 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.Table;
+ 
 @Entity
-@Table(name= "papel")
+@Table(name= "Papel")
 public class Papel implements Serializable{
-
+ 
 	@Id
-	@Column(name="idPapel") 
-	private Long id;
-	
-	@Column(name="nomePapel", length = 50, nullable = false, unique = true)
-	private String nomePapel;
-	
-	@OnetoOne(fetch = FetchType.LAZY)
-    @MapsId
-    @JoinColumn(name = "idPapel")
-	
+	@Column(name="idPapel", nullable = false, unique = true)
 	private int idPapel;
+	
+	@Column(name="nomePapel", length = 15, nullable = false, unique = true)
 	private String nomePapel;
 	
 	public void Papel () {
@@ -48,3 +44,4 @@ public class Papel implements Serializable{
 		return this.nomePapel;
 	}
 }
+ 
