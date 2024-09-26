@@ -1,5 +1,7 @@
 package br.senac.hemolink.modelo.entidade.demanda;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,42 +15,42 @@ import br.senac.hemolink.modelo.enumeracao.Capacidade;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 @Entity
-@Table(name = "demanda")
-public class Demanda {
+@Table(name = "Demanda")
+public class Demanda implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@JoinColumn(name = "id_demanda", nullable = false)
+	private int idDemanda;
 	
 	@ManyToOne
-	@JoinColumn(name = "tipo_sanguineo_id", nullable = false)
+	@JoinColumn(name = "tipoSanguineo_demanda", nullable = false)
 	private TipoSanguineo tipoSanguineo;
 	
 	@ManyToOne
-	@JoinColumn(name = "capacidade_id", nullable = false)
+	@JoinColumn(name = "capacidade_demanda", nullable = false)
 	private Capacidade capacidade;
 	
-	@Column(name = "quantidade_litros", precision = 10, scale = 2, columnDefinition = "DOUBLE DEFAULT 0.0")
+	@Column(name = "quantidadeLitros_demanda", nullable = false)
 	private double quantidadeLitros;
 
 	public Demanda() {
 
 	}
 
-	public Demanda(int id, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros) {
-		super();
-		this.id = id;
+	public Demanda(int idDemanda, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros) {
+		this.idDemanda = idDemanda;
 		this.tipoSanguineo = tipoSanguineo;
 		this.capacidade = capacidade;
 		this.quantidadeLitros = quantidadeLitros;
 	}
 
 	public int getIdDemanda() {
-		return id;
+		return idDemanda;
 	}
 
 	public void setIdDemanda(int idDemanda) {
-		this.id = idDemanda;
+		this.idDemanda = idDemanda;
 	}
 
 	public TipoSanguineo getTipoSanguineo() {
