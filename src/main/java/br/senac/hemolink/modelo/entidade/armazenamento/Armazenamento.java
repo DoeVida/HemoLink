@@ -1,5 +1,6 @@
 package br.senac.hemolink.modelo.entidade.armazenamento;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
@@ -15,32 +16,32 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 
 @Entity
-@Table(name = "armazenamento")
-public class Armazenamento {
+@Table(name = "Armazenamento")
+public class Armazenamento implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_armazenamento")
 	private int idArmazenamento;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "armazenamento_id")
+	@OneToMany (fetch = FetchType.LAZY)
+	@JoinColumn(name = "estoqueSangue_armazenamento")
 	private EstoqueSangue[] estoqueSangue = new EstoqueSangue[8];
 
-	@Column(name = "data_ultima_atualizacao")
+	@Column(name = "dataUltimaAtualizacao_armazenamento")
 	private LocalDate dataUltimaAtualizacao;
 
 	@ManyToOne
-	@JoinColumn(name = "hemocentro_id")
+	@JoinColumn(name = "id_hemocentro")
 	private Hemocentro hemocentro;
 
 	public Armazenamento() {
 	}
 
-	public Armazenamento(int idArmazenamento, EstoqueSangue[] estoqueSangue, LocalDate dataUltimaAtualizacao,
-			Hemocentro hemocentro) {
+	public Armazenamento(int idArmazenamento, EstoqueSangue[] estoqueSangue, LocalDate dataUltimaAtualizacao,Hemocentro hemocentro) {
 		this.idArmazenamento = idArmazenamento;
 		this.estoqueSangue = estoqueSangue;
 		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
