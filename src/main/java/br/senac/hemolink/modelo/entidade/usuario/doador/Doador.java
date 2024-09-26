@@ -42,8 +42,7 @@ public class Doador extends Usuario implements Serializable{
 	@Column (name = "tipoSanguineo_doador", length = 11, nullable = true)
 	private TipoSanguineo tipoSanguineo;
 	
-	@OneToMany(mappedBy = "doador", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-	orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY )
 	@MapsId
 	@Column (name = "historicoDeDoacao")
 	private List<Doacao>historicoDeDoacao;
@@ -101,5 +100,4 @@ public class Doador extends Usuario implements Serializable{
 		this.historicoDeDoacao = historicoDeDoacao;
 	}
 
-	
 }
