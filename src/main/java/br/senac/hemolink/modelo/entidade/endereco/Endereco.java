@@ -16,7 +16,7 @@ import javax.persistence.Column;
 @Table(name= "Endereco")
 public class Endereco implements Serializable{
 	
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_endereco", nullable = false, unique = true )
     private int idEndereco; 
