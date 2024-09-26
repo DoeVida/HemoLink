@@ -24,13 +24,14 @@ public class AquisicaoConquista implements Serializable{
 	 
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-		private Long id;
+	 @Column(name = "id_aquisicao", nullable = false, unique = true)
+		private int idAquisicaoConquista;
 	 
-	 @Column(name = "data_aquisicaoconquista", nullable = false)
+	 @Column(name = "data_aquisicao", nullable = false)
 		private LocalDate dataAquisicao;
 	 
 	 @OneToMany
-	 @JoinColumn(name = "doador_id", nullable = false)
+	 @JoinColumn(name = "id_doador", nullable = false, unique = true)
 		private Doador doador;
 	 
 	 @OneToOne
@@ -38,12 +39,23 @@ public class AquisicaoConquista implements Serializable{
 	    private Conquista conquista;
 
 	
-	public AquisicaoConquista(){}
+	public AquisicaoConquista(){
+		
+	}
 
-	public AquisicaoConquista(LocalDate dataAquisicao, Conquista conquista, Doador doador){
+	public AquisicaoConquista( int idAquisicaoConquista, LocalDate dataAquisicao, Conquista conquista, Doador doador){
+		this.idAquisicaoConquista = idAquisicaoConquista;
 		this.dataAquisicao = dataAquisicao;
         this.conquista = conquista;
         this.doador = doador;
+	}
+	
+	public int getIdAquisicaoConquista() {
+		return idAquisicaoConquista;
+	}
+	
+	public void setIdAquisicaoConquista(int idAquisicaoConquista) {
+		this.idAquisicaoConquista = idAquisicaoConquista;
 	}
 
 	public LocalDate getDataAquisicao() {
@@ -69,8 +81,5 @@ public class AquisicaoConquista implements Serializable{
 	public void setDoador(Doador doador) {
 		this.doador = doador;
 	}
-
-	
-	
 
 }
