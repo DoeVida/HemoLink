@@ -1,5 +1,6 @@
 package br.senac.hemolink.modelo.entidade.doacao;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -16,19 +17,20 @@ import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 
 @Entity
-@Table(name = "doacao")
-public class Doacao {
+@Table(name = "Doacao")
+public class Doacao implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@JoinColumn (name = "id_doacao", nullable = false, unique = true)
+	private int idDoacao;
 
 	@OneToOne
-	@JoinColumn(name = "doador_id", nullable = false)
+	@JoinColumn(name = "id_doador", nullable = false, unique = true)
 	private Doador doador;
 
 	@OneToOne
-	@JoinColumn(name = "hemocentro_id", nullable = false)
+	@JoinColumn(name = "id_hemocentro", nullable = false, unique = true)
 	private Hemocentro hemocentro;
 
 	@Column(name = "data_doacao", nullable = false)
@@ -48,12 +50,12 @@ public class Doacao {
 		this.horaDoacao = horaDoacao;
 	}
 
-	public Long getId() {
-		return id;
+	public int getIdDoacao() {
+		return idDoacao;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(int idDoacao) {
+		this.idDoacao = idDoacao;
 	}
 
 	public Doador getDoador() {
