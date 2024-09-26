@@ -1,9 +1,11 @@
 package br.senac.hemolink.modelo.entidade.campanha;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,23 +18,24 @@ import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
 @Entity
-@Table(name = "campanha")
-public class Campanha {
+@Table(name = "Campanha")
+public class Campanha implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn (name = "id_campanha", nullable = false, unique = true)
     private int idCampanha;
 
-    @Column(name = "titulo", nullable = false, length = 100)
+    @Column(name = "titulo_campanha", nullable = false, length = 40)
     private String titulo;
 
-    @Column(name = "descricao_campanha", nullable = false, length = 255)
+    @Column(name = "descricao_campanha", nullable = false, length = 100)
     private String descricaoCampanha;
 
-    @OneToMany(mappedBy = "campanha")
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Doacao> doacoes;
 
-    @ManyToOne
-    @JoinColumn(name = "demanda_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_demanda", nullable = false)
     private Demanda demanda;
 
 	public Campanha() {
@@ -40,7 +43,6 @@ public class Campanha {
 	}
 
 	public Campanha(int idCampanha, String titulo, String descricaoCampanha, List<Doacao> doacoes, Demanda demanda) {
-		super();
 		this.idCampanha = idCampanha;
 		this.titulo = titulo;
 		this.descricaoCampanha = descricaoCampanha;
