@@ -1,67 +1,33 @@
 package br.senac.hemolink.modelo.entidade.usuario.hemocentro;
 
-import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
-import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
+import br.senac.hemolink.modelo.entidade.estoque.Estoque;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
-@Entity 
-@Table(name = "Hemocentro")
-public class Hemocentro extends Usuario implements Serializable {
-
-	@Id
-	@Column(name = "id_cnpj", length = 14, nullable = false, unique = true)
+class Hemocentro extends Usuario {
 	private String cnpj;
-	
-	@OneToOne(fetch = FetchType.LAZY) 
-	@MapsId
-	@Column(name = "id_demanda")
 	private List<Demanda> demanda;
-	
-	@OneToOne(fetch = FetchType.LAZY) 
-	@MapsId
-	@Column(name = "id_estoqueSangue")
-	private List<EstoqueSangue> estoqueSangue;
-	
-	@OneToOne(fetch = FetchType.LAZY) 
-	@MapsId
-	@Column(name = "id_campanha")
+	private List<Estoque> estoque;
 	private List<Campanha> campanha;
-	
-	@Column(name = "id_horarioInicio", nullable = false) 
 	private LocalTime horarioInicio;
-
-	@Column(name = "id_horarioDuracao", nullable = false)
 	private Duration horarioDuracao;
-
-	@OneToOne(fetch = FetchType.LAZY) 
-	@MapsId
-	@Column(name = "id_doacoes")
 	private List<Doacao> doacoes;
-	
+
 	public Hemocentro() {
 
 	}
 
-	public Hemocentro(String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue, List<Campanha> campanha,
+	public Hemocentro(String cnpj, List<Demanda> demanda, List<Estoque> estoque, List<Campanha> campanha,
 			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
-
+		super();
 		this.cnpj = cnpj;
 		this.demanda = demanda;
-		this.estoqueSangue = estoqueSangue;
+		this.estoque = estoque;
 		this.campanha = campanha;
 		this.horarioInicio = horarioInicio;
 		this.horarioDuracao = horarioDuracao;
@@ -86,12 +52,12 @@ public class Hemocentro extends Usuario implements Serializable {
 		this.demanda = demanda;
 	}
 
-	public List<EstoqueSangue> getEstoqueSangue() {
-		return estoqueSangue;
+	public List<Estoque> getEstoque() {
+		return estoque;
 	}
 
-	public void setEstoqueSangue(List<EstoqueSangue> estoqueSangue) {
-		this.estoqueSangue = estoqueSangue;
+	public void setEstoque(List<Estoque> estoque) {
+		this.estoque = estoque;
 	}
 
 	public List<Campanha> getCampanha() {
