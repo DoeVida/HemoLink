@@ -87,7 +87,7 @@ public class DoacaoDAOImpl implements DoacaoDAO{
 			sessao = fabrica.getConexao().openSession();
 			sessao.beginTransaction();
 			
-			sessao.delete(doacao);
+			sessao.update(doacao);
 			
 			sessao.getTransaction().commit();
 			
@@ -107,80 +107,4 @@ public class DoacaoDAOImpl implements DoacaoDAO{
 		}
 	}
 
-	public List<Doacao> recuperarDoacoes() {
-
-		Session sessao = null;
-		List<Doacao> doacoes = null;
-		
-		try {
-			
-			sessao = fabrica.getConexao().openSession();
-			sessao.beginTransaction();
-			
-			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-
-			CriteriaQuery<Doacao> criteria = construtor.createQuery(Doacao.class);
-			Root<Doacao> raizDoacao = criteria.from(Doacao.class);
-
-			criteria.select(raizDoacao);
-
-			doacoes = sessao.createQuery(criteria).getResultList();
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException){
-			
-			sqlException.printStackTrace();
-			
-			if(sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-				
-		} finally {
-			
-			if(sessao != null) {
-				sessao.close();
-			}
-		}
-		
-		return doacoes;
-	}
-
-	public List<Doacao> recuperarDoacoesDoador(Doacao doacao) {
-		
-		Session sessao = null;
-		List<Doacao> doacoes = null;
-		
-		try {
-			
-			sessao = fabrica.getConexao().openSession();
-			sessao.beginTransaction();
-			
-			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-
-			CriteriaQuery<Doacao> criteria = construtor.createQuery(Doacao.class);
-			Root<Doacao> raizDoacao = criteria.from(Doacao.class);
-
-			criteria.select(raizDoacao);
-
-			doacoes = sessao.createQuery(criteria).getResultList();
-
-			sessao.getTransaction().commit();
-		
-		} catch (Exception sqlException){
-			
-			sqlException.printStackTrace();
-			
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-			
-		} finally {
-			
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-		return doacoes;
-	}
 }
