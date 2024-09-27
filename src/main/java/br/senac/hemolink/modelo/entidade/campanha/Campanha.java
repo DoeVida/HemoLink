@@ -1,28 +1,53 @@
 package br.senac.hemolink.modelo.entidade.campanha;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
-import java.util.List;
+@Entity
+@Table(name = "Campanha")
+public class Campanha implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn (name = "id_campanha", nullable = false, unique = true)
+    private int idCampanha;
 
-class Campanha {
-	private int idCampanha;
-	private String titulo;
-	private String descricaoCampanha;
-	private List<Doacao> doacoes;
-	private Demanda demanda;
+    @Column(name = "titulo_campanha", nullable = false, length = 40)
+    private String titulo;
+
+    @Column(name = "descricao_campanha", nullable = false, length = 100)
+    private String descricaoCampanha;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Doacao> doacoes;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_demanda", nullable = false)
+    private Demanda demanda;
 
 	public Campanha() {
 
 	}
 
 	public Campanha(int idCampanha, String titulo, String descricaoCampanha, List<Doacao> doacoes, Demanda demanda) {
-	    super();
-	    this.idCampanha = idCampanha;
-	    this.titulo = titulo;
-	    this.descricaoCampanha = descricaoCampanha;
-	    this.doacoes = doacoes;
-	    this.demanda = demanda;
+		this.idCampanha = idCampanha;
+		this.titulo = titulo;
+		this.descricaoCampanha = descricaoCampanha;
+		this.doacoes = doacoes;
+		this.demanda = demanda;
 	}
 
 	public int getIdCampanha() {
