@@ -42,9 +42,9 @@ public class Endereco implements Serializable {
     @JoinColumn (name = "nickname_hemocentro", nullable = false)
     private Hemocentro hemocentro;
 	
-	public void Endereco() {}
+	public Endereco() {}
 	
-	public void Endereco (String estado, String cidade, String bairro, String logradouro, int numero, String cep) {
+	public Endereco (String estado, String cidade, String bairro, String logradouro, int numero, String cep) {
 		this.estado = estado;
 		this.cidade = cidade;
 		this.bairro = bairro;
