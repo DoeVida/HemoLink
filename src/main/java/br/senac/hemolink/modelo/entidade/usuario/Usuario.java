@@ -1,6 +1,7 @@
 package br.senac.hemolink.modelo.entidade.usuario;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,18 +20,19 @@ import br.senac.hemolink.modelo.entidade.papel.Papel;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table (name = "Usuario")
 public abstract class Usuario implements Serializable  {
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "nickname", length = 30, nullable = false)
+	@Column(name = "nickname_usuario", length = 25, nullable = false)
 	private String nickname;
 	
-	@Column(name = "nome", length = 45, nullable = false)
+	@Column(name = "nome_usuario", length = 50, nullable = false)
 	private String nome;
 	
-	@Column(name = "senha", length = 45, nullable = false)
+	@Column(name = "senha_usuario", length = 35, nullable = false)
 	private String senha;
-	// 
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_papel")
 	private Papel papel;
