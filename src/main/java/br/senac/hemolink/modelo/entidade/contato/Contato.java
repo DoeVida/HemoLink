@@ -6,11 +6,9 @@ public class Contato {
 	private String email;
 	private String telefone;
 	
-	public void Contato () {
-		
-	}
+	public Contato () {}
 	
-	public void Contato (int idContato, String email, String telefone) {
+	public Contato (int idContato, String email, String telefone) {
 		this.idContato = idContato;
 		this.email = email;
 		this.telefone = telefone;
