@@ -3,23 +3,49 @@ package br.senac.hemolink.modelo.entidade.campanha;
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
+import java.io.Serializable;
 import java.util.List;
 
-class Campanha {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name= "Campanha")
+public class Campanha implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_endereco", nullable = false, unique = true )
 	private int idCampanha;
-	private String titulo;
+	
+	@Column(name = "titulo_campanha", nullable = false, length = 40)
+	private String tituloCampanha;
+	 
+	@Column(name = "decricao_campanha", nullable = false, length = 100)
 	private String descricaoCampanha;
+	
+	@OneToMany
+	@MapsId
+	@Column(name = "doacoes_campanha")
 	private List<Doacao> doacoes;
+	
+	@OneToMany
+	@Column(name = "demanda_campanha", nullable = true)
 	private Demanda demanda;
 
-	public Campanha() {
+	public Campanha() {}
 
-	}
-
-	public Campanha(int idCampanha, String titulo, String descricaoCampanha, List<Doacao> doacoes, Demanda demanda) {
-	    super();
+	public Campanha(int idCampanha, String tituloCampanha, String descricaoCampanha, List<Doacao> doacoes, Demanda demanda) {
 	    this.idCampanha = idCampanha;
-	    this.titulo = titulo;
+	    this.tituloCampanha = tituloCampanha;
 	    this.descricaoCampanha = descricaoCampanha;
 	    this.doacoes = doacoes;
 	    this.demanda = demanda;
@@ -33,12 +59,12 @@ class Campanha {
 		this.idCampanha = idCampanha;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getTituloCampanha() {
+		return tituloCampanha;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTituloCampanha(String tituloCampanha) {
+		this.tituloCampanha = tituloCampanha;
 	}
 
 	public String getDescricaoCampanha() {
@@ -64,5 +90,4 @@ class Campanha {
 	public void setDemanda(Demanda demanda) {
 		this.demanda = demanda;
 	}
-
 }
