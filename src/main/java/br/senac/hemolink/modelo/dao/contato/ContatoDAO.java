@@ -1,4 +1,4 @@
-package br.senac.hemolink.modelo.dao;
+package br.senac.hemolink.modelo.dao.contato;
 
 import java.util.List;
 
