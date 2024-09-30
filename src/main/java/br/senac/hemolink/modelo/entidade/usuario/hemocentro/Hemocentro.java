@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,26 +18,28 @@ import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
 @Entity 
 @Table(name = "Hemocentro")
 public class Hemocentro extends Usuario implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "id_cnpj", length = 14, nullable = false, unique = true)
+	
+	@Column(name = "cnpj_usuario", length = 14, nullable = false, unique = true)
 	private String cnpj;
 	
-	@OneToOne(fetch = FetchType.LAZY) 
+	@OneToMany
 	@MapsId
 	@Column(name = "id_demanda")
 	private List<Demanda> demanda;
 	
-	@OneToOne(fetch = FetchType.LAZY) 
+	@OneToMany
 	@MapsId
 	@Column(name = "id_estoqueSangue")
 	private List<EstoqueSangue> estoqueSangue;
 	
-	@OneToOne(fetch = FetchType.LAZY) 
+	@OneToMany
 	@MapsId
 	@Column(name = "id_campanha")
 	private List<Campanha> campanha;
@@ -47,14 +50,12 @@ public class Hemocentro extends Usuario implements Serializable {
 	@Column(name = "id_horarioDuracao", nullable = false)
 	private Duration horarioDuracao;
 
-	@OneToOne(fetch = FetchType.LAZY) 
+	@OneToMany
 	@MapsId
 	@Column(name = "id_doacoes")
 	private List<Doacao> doacoes;
 	
-	public Hemocentro() {
-
-	}
+	public Hemocentro() {}
 
 	public Hemocentro(String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue, List<Campanha> campanha,
 			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
@@ -67,9 +68,7 @@ public class Hemocentro extends Usuario implements Serializable {
 		this.horarioDuracao = horarioDuracao;
 		this.doacoes = doacoes;
 	}
-	//
 
-	// Get Set
 	public String getCnpj() {
 		return cnpj;
 	}
