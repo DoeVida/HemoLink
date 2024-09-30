@@ -48,7 +48,8 @@ public class Doador extends Usuario implements Serializable {
 	@Column(name = "Doacao")
 	private List<Doacao> historicoDeDoacao;
 
-	public Doador() {}
+	public Doador() {
+	}
 
 	public Doador(String apelido, String cpf, char genero, LocalDate dataDeNascimento, TipoSanguineo tipoSanguineo,
 			List<Doacao> historicoDeDoacao) {
