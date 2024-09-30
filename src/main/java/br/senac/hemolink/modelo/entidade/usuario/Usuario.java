@@ -16,64 +16,78 @@ import br.senac.hemolink.modelo.entidade.papel.Papel;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table (name = "Usuario")
-public abstract class Usuario implements Serializable  {
+@Table(name = "Usuario")
+
+public abstract class Usuario implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@Column(name = "nickname", length = 30, nullable = false)
-	private String nickname;
+	@Column(name = "apelido", length = 30, nullable = false)
+	private String apelido;
+
 	@Column(name = "nome", length = 45, nullable = false)
 	private String nome;
+
 	@Column(name = "senha", length = 45, nullable = false)
 	private String senha;
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_papel")
 	private Papel papel;
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_contato")
 	private Contato contato;
-	
-	public void Usuario () {
-		
-	}
-	
-	public void Usuario (String nome, String senha, Papel papel, Contato contato) {
+
+	public Usuario() {}
+
+	public Usuario(String apelido, String nome, String senha, Papel papel, Contato contato) {
+		this.apelido = apelido;
 		this.nome = nome;
 		this.senha = senha;
 		this.papel = papel;
 		this.contato = contato;
 	}
-	
-	public void setNome (String nome) {
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public String getNome () {
-		return this.nome;
+
+	public String getSenha() {
+		return senha;
 	}
-	
-	public void setSenha (String senha) {
+
+	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	public String getSenha () {
-		return this.senha;
+
+	public Papel getPapel() {
+		return papel;
 	}
-	
-	public void setPapel (Papel papel) {
+
+	public void setPapel(Papel papel) {
 		this.papel = papel;
 	}
-	
-	public Papel getPapel () {
-		return this.papel;
+
+	public Contato getContato() {
+		return contato;
 	}
-	
-	public void setContato (Contato contato) {
+
+	public void setContato(Contato contato) {
 		this.contato = contato;
 	}
-	
-	public Contato getContato () {
-		return this.contato;
-	}
+
 }
