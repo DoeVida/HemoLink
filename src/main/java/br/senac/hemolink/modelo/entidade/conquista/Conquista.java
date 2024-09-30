@@ -25,7 +25,13 @@ public class Conquista implements Serializable {
 	@Column(name = "descricao_conquista", length = 100, nullable = false, unique = true)
 	private String descricaoConquista;
 
+<<<<<<< HEAD
 	public Conquista () { }
+=======
+	public Conquista () {
+
+	}
+>>>>>>> 69845ce957ca30a9632c514feba8d3e3156e887a
 
 	public Conquista (int idConquista, String nomeConquista, String descricaoConquista) {
 		this.idConquista = idConquista;
