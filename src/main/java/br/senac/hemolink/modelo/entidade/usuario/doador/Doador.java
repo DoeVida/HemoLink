@@ -4,20 +4,54 @@ import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Doador extends Usuario{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "Doador")
+public class Doador extends Usuario implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@OneToOne
+	@MapsId
+	@Column (name = "nickname_usuario", nullable = false, unique = true)
+	private String nickname;
+	
+	@Column (name = "cpf_doador", nullable = false, unique = true)
 	private String cpf;
+	
+	@Column (name = "genero_doador", nullable = false, length = 1)
 	private char genero;
-	private TipoSanguineo tipoSanguineo;
+	
+	@Column (name = "dataDeNascimento_doador")
 	private LocalDate dataDeNascimento ;
+	
+	@ManyToOne
+	@MapsId
+	@Column (name = "tipoSanguineo_doador")
+	private TipoSanguineo tipoSanguineo;
+	
+	@OneToMany
+	@MapsId
+	@Column (name = "Doacao")
 	private List<Doacao>historicoDeDoacao;
 
-	public Doador(){}
+	public Doador() {}
 
-	public Doador(String cpf, char genero, TipoSanguineo tipoSanguineo, 
-			LocalDate dataDeNascimento, List<Doacao>historicoDeDoacao ){
+	public Doador(String cpf, char sexo, TipoSanguineo tipoSanguineo, 
+			LocalDate dataDeNascimento, List<Doacao>historicoDeDoacao ) {
 		this.cpf = cpf;
         this.genero = genero;
         this.tipoSanguineo = tipoSanguineo;
@@ -65,5 +99,4 @@ public class Doador extends Usuario{
 		this.historicoDeDoacao = historicoDeDoacao;
 	}
 
-	
 }
