@@ -38,11 +38,20 @@ public abstract class Usuario implements Serializable  {
 		
 	}
 	
-	public void Usuario (String nome, String senha, Papel papel, Contato contato) {
+	public void Usuario (String nickname, String nome, String senha, Papel papel, Contato contato) {
+		this.nickname = nickname;
 		this.nome = nome;
 		this.senha = senha;
 		this.papel = papel;
 		this.contato = contato;
+	}
+	
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 	public void setNome (String nome) {
