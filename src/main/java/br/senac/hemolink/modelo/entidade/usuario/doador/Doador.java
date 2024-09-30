@@ -37,7 +37,7 @@ public class Doador extends Usuario implements Serializable {
 
 	@Column(name = "dataDeNascimento_doador")
 	private LocalDate dataDeNascimento;
-
+sss
 	@ManyToOne
 	@MapsId
 	@Column(name = "tipoSanguineo_doador")
