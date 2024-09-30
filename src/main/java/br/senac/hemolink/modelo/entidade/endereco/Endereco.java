@@ -10,10 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 
 @Entity
-@Table(name= "Endereco")
+@Table(name= "Endereco", uniqueConstraints = {@UniqueConstraint(columnNames = {"logradouro_endereco", "numero_endereco"})})
 public class Endereco implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,13 +48,14 @@ public class Endereco implements Serializable {
 	
 	public Endereco() {}
 	
-	public Endereco (String estado, String cidade, String bairro, String logradouro, int numero, String cep) {
+	public Endereco (String estado, String cidade, String bairro, String logradouro, int numero, String cep, Hemocentro hemocentro) {
 		this.estado = estado;
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.cep = cep;
+		this.hemocentro = hemocentro;
 	}
 	
 	public void setEstado (String estado) {
@@ -99,5 +104,13 @@ public class Endereco implements Serializable {
 	
 	public String getCep () {
 		return this.cep;
+	}
+	
+	public void setHemocentro (Hemocentro hemocentro) {
+		this.hemocentro = hemocentro;
+	}
+	
+	public Hemocentro getHemocentro () {
+		return hemocentro;
 	}
 }
