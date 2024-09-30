@@ -39,7 +39,7 @@ public class Endereco implements Serializable {
     private String cep;
 
     @OneToOne
-    @JoinColumn (name = "nickname_hemocentro", nullable = false)
+    @JoinColumn (name = "nome_hemocentro", nullable = false)
     private Hemocentro hemocentro;
 	
 	public Endereco() {}

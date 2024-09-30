@@ -1,76 +1,84 @@
 package br.senac.hemolink.modelo.entidade.estoqueSangue;
 
 import java.io.Serializable;
-import java.util.Objects;
-import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
-public class EstoqueSangue {
-@Entity
-@Table(name = "estoque")
-public class EstoqueSangue implements Serializable {
+	@Entity
+	@Table(name = "EstoqueDeSangue")
+	public class EstoqueSangue implements Serializable {
+	    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_estoque", nullable = false)
-	private int idEstoqueSangue;
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name = "id_estoqueDeSangue", nullable = false, unique = true)
+		private int idEstoqueSangue;
 
-	@Column(name = "tipo_sanguineo", length = 3, nullable = false, unique = false)
-	private TipoSanguineo tipoSanguineo;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@Column (name = "tipoSanguineo_estoqueSangue")
-	private TipoSanguineo tipoSanguineo;
+		@ManyToOne(fetch = FetchType.LAZY)
+		@MapsId
+		@Column(name = "tipoSanguineo_estoqueDeSangue", nullable = false)
+		private TipoSanguineo tipoSanguineo;
+		
+		@Column(name = "quantidadeDisponivel_estoqueDeSangue", nullable = false)
+		private float quantidadeDisponivel;
+		
+		@Column(name = "id_armazenamento")
+		private int idArmazenamento;
 
-    public EstoqueSangue(TipoSanguineo tipoSanguineo, float quantidadeDisponivel) {
-        this.tipoSanguineo = tipoSanguineo;
-        this.quantidadeDisponivel = quantidadeDisponivel;
-    }
-    
-	public EstoqueSangue() { }
+		
+		public EstoqueSangue(int idEstoqueSangue, TipoSanguineo tipoSanguineo, float quantidadeDisponivel,
+				int idArmazenamento) {
+			this.idEstoqueSangue = idEstoqueSangue;
+			this.tipoSanguineo = tipoSanguineo;
+			this.quantidadeDisponivel = quantidadeDisponivel;
+			this.idArmazenamento = idArmazenamento;
+		}
 
-	public EstoqueSangue(int idEstoqueSangue,
-			br.senac.hemolink.modelo.entidade.estoqueSangue.TipoSanguineo tipoSanguineo, float quantidadeDisponivel) {
-		this.idEstoqueSangue = idEstoqueSangue;
-		this.tipoSanguineo = tipoSanguineo;
-		this.quantidadeDisponivel = quantidadeDisponivel;
-	}
+		public EstoqueSangue() {
+			
+		}
 
-	public int getIdEstoqueSangue() {
-		return idEstoqueSangue;
-	}
+		public int getIdEstoqueSangue() {
+			return idEstoqueSangue;
+		}
 
-	public void setIdEstoqueSangue(int idEstoqueSangue) {
-		this.idEstoqueSangue = idEstoqueSangue;
-	}
+		public void setIdEstoqueSangue(int idEstoqueSangue) {
+			this.idEstoqueSangue = idEstoqueSangue;
+		}
 
-    public TipoSanguineo getTipoSanguineo() {
-        return tipoSanguineo;
-    }
-	public TipoSanguineo getTipoSanguineo() {
-		return tipoSanguineo;
-	}
+		public TipoSanguineo getTipoSanguineo() {
+			return tipoSanguineo;
+		}
 
-    public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
-        this.tipoSanguineo = tipoSanguineo;
-    }
-	public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
-		this.tipoSanguineo = tipoSanguineo;
-	}
+		public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
+			this.tipoSanguineo = tipoSanguineo;
+		}
 
-    public float getQuantidadeDisponivel() {
-        return quantidadeDisponivel;
-    }
-	public float getQuantidadeDisponivel() {
-		return quantidadeDisponivel;
-	}
+		public float getQuantidadeDisponivel() {
+			return quantidadeDisponivel;
+		}
 
-    public void setQuantidadeDisponivel(float quantidadeDisponivel) {
-        this.quantidadeDisponivel = quantidadeDisponivel;
-    }
-	public void setQuantidadeDisponivel(float quantidadeDisponivel) {
-		this.quantidadeDisponivel = quantidadeDisponivel;
-	}
+		public void setQuantidadeDisponivel(float quantidadeDisponivel) {
+			this.quantidadeDisponivel = quantidadeDisponivel;
+		}
+
+		public int getIdArmazenamento() {
+			return idArmazenamento;
+		}
+
+		public void setIdArmazenamento(int idArmazenamento) {
+			this.idArmazenamento = idArmazenamento;
+		}
+
+		
 }
