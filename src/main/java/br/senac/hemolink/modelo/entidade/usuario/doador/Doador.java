@@ -18,45 +18,55 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "Doador")
-public class Doador extends Usuario implements Serializable{
+@Table(name = "Doador")
+public class Doador extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@OneToOne
 	@MapsId
-	@Column (name = "nickname_usuario", nullable = false, unique = true)
-	private String nickname;
-	
-	@Column (name = "cpf_doador", nullable = false, unique = true)
+	@Column(name = "apelido_usuario", nullable = false, unique = true)
+	private String apelido;
+
+	@Column(name = "cpf_doador", nullable = false, unique = true)
 	private String cpf;
-	
-	@Column (name = "genero_doador", nullable = false, length = 1)
+
+	@Column(name = "genero_doador", nullable = false, length = 1)
 	private char genero;
-	
-	@Column (name = "dataDeNascimento_doador")
-	private LocalDate dataDeNascimento ;
-	
+
+	@Column(name = "dataDeNascimento_doador")
+	private LocalDate dataDeNascimento;
+
 	@ManyToOne
 	@MapsId
-	@Column (name = "tipoSanguineo_doador")
+	@Column(name = "tipoSanguineo_doador")
 	private TipoSanguineo tipoSanguineo;
-	
+
 	@OneToMany
 	@MapsId
-	@Column (name = "Doacao")
-	private List<Doacao>historicoDeDoacao;
+	@Column(name = "Doacao")
+	private List<Doacao> historicoDeDoacao;
 
-	public Doador() {}
+	public Doador() {
+	}
 
-	public Doador(String cpf, char sexo, TipoSanguineo tipoSanguineo, 
-			LocalDate dataDeNascimento, List<Doacao>historicoDeDoacao ) {
+	public Doador(String apelido, String cpf, char genero, LocalDate dataDeNascimento, TipoSanguineo tipoSanguineo,
+			List<Doacao> historicoDeDoacao) {
+		this.apelido = apelido;
 		this.cpf = cpf;
-        this.genero = genero;
-        this.tipoSanguineo = tipoSanguineo;
-        this.dataDeNascimento = dataDeNascimento;
-        this.historicoDeDoacao = historicoDeDoacao;
+		this.genero = genero;
+		this.dataDeNascimento = dataDeNascimento;
+		this.tipoSanguineo = tipoSanguineo;
+		this.historicoDeDoacao = historicoDeDoacao;
+	}
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
 	}
 
 	public String getCpf() {
@@ -75,20 +85,20 @@ public class Doador extends Usuario implements Serializable{
 		this.genero = genero;
 	}
 
-	public TipoSanguineo getTipoSanguineo() {
-		return tipoSanguineo;
-	}
-
-	public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
-		this.tipoSanguineo = tipoSanguineo;
-	}
-
 	public LocalDate getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
 	public void setDataDeNascimento(LocalDate dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
+	}
+
+	public TipoSanguineo getTipoSanguineo() {
+		return tipoSanguineo;
+	}
+
+	public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
+		this.tipoSanguineo = tipoSanguineo;
 	}
 
 	public List<Doacao> getHistoricoDeDoacao() {
