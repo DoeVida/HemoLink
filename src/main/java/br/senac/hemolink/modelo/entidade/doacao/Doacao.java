@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,17 +21,18 @@ import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 @Entity
 @Table(name = "Doacao")
 public class Doacao implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JoinColumn (name = "id_doacao", nullable = false, unique = true)
 	private int idDoacao;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_doador", nullable = false, unique = true)
 	private Doador doador;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_hemocentro", nullable = false, unique = true)
 	private Hemocentro hemocentro;
 
@@ -39,9 +42,7 @@ public class Doacao implements Serializable{
 	@Column(name = "hora_doacao", nullable = false)
 	private LocalTime horaDoacao;
 
-	public Doacao() {
-	
-	}
+	public Doacao() {}
 
 	public Doacao(Doador doador, Hemocentro hemocentro, LocalDate dataDoacao, LocalTime horaDoacao) {
 		this.doador = doador;
