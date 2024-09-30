@@ -17,6 +17,7 @@ import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 @Entity
 @Table(name= "Endereco", uniqueConstraints = {@UniqueConstraint(columnNames = {"logradouro_endereco", "numero_endereco"})})
 public class Endereco implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	
     @Id
