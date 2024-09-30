@@ -21,6 +21,7 @@ import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 @Entity
 @Table(name = "Doacao")
 public class Doacao implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
