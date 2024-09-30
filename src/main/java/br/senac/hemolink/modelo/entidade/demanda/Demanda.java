@@ -18,25 +18,25 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 @Table(name = "Demanda")
 public class Demanda implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JoinColumn(name = "id_demanda", nullable = false)
 	private int idDemanda;
 	
 	@ManyToOne
-	@JoinColumn(name = "tipoSanguineo_demanda", nullable = false)
+	@JoinColumn(name = "tipo_sanguineo_demanda", nullable = false)
 	private TipoSanguineo tipoSanguineo;
 	
 	@ManyToOne
 	@JoinColumn(name = "capacidade_demanda", nullable = false)
 	private Capacidade capacidade;
 	
-	@Column(name = "quantidadeLitros_demanda", nullable = false)
+	@Column(name = "quantidade_litros_demanda", nullable = false)
 	private double quantidadeLitros;
 
-	public Demanda() {
-
-	}
+	public Demanda() {}
 
 	public Demanda(int idDemanda, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros) {
 		this.idDemanda = idDemanda;
