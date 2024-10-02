@@ -7,11 +7,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
@@ -30,28 +26,24 @@ public class Hemocentro extends Usuario implements Serializable {
 	private String cnpj;
 	
 	@OneToMany
-	@MapsId
 	@Column(name = "id_demanda")
 	private List<Demanda> demanda;
 	
 	@OneToMany
-	@MapsId
-	@Column(name = "id_estoqueSangue")
+	@Column(name = "id_estoque_sangue")
 	private List<EstoqueSangue> estoqueSangue;
 	
 	@OneToMany
-	@MapsId
 	@Column(name = "id_campanha")
 	private List<Campanha> campanha;
 	
-	@Column(name = "id_horarioInicio", nullable = false) 
+	@Column(name = "id_horario_inicio", nullable = false) 
 	private LocalTime horarioInicio;
 
-	@Column(name = "id_horarioDuracao", nullable = false)
+	@Column(name = "id_horario_duracao", nullable = false)
 	private Duration horarioDuracao;
 
 	@OneToMany
-	@MapsId
 	@Column(name = "id_doacoes")
 	private List<Doacao> doacoes;
 	
