@@ -3,12 +3,9 @@ package br.senac.hemolink.modelo.entidade.armazenamento;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,13 +18,15 @@ import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 @Entity
 @Table(name = "Armazenamento")
 public class Armazenamento implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_armazenamento")
 	private int idArmazenamento;
 
-	@OneToMany (fetch = FetchType.LAZY)
+	@OneToMany 
 	@JoinColumn(name = "estoqueSangue_armazenamento")
 	private EstoqueSangue[] estoqueSangue = new EstoqueSangue[8];
 
@@ -38,8 +37,7 @@ public class Armazenamento implements Serializable{
 	@JoinColumn(name = "id_hemocentro")
 	private Hemocentro hemocentro;
 
-	public Armazenamento() {
-	}
+	public Armazenamento() {}
 
 	public Armazenamento(int idArmazenamento, EstoqueSangue[] estoqueSangue, LocalDate dataUltimaAtualizacao,Hemocentro hemocentro) {
 		this.idArmazenamento = idArmazenamento;
