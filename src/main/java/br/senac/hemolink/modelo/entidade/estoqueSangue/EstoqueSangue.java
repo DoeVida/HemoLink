@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +16,7 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 	@Entity
 	@Table(name = "EstoqueDeSangue")
 	public class EstoqueSangue implements Serializable {
+		
 	    private static final long serialVersionUID = 1L;
 
 		@Id
@@ -24,7 +24,7 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 		@Column(name = "id_estoqueDeSangue", nullable = false, unique = true)
 		private int idEstoqueSangue;
 
-		@ManyToOne(fetch = FetchType.LAZY)
+		@ManyToOne
 		@MapsId
 		@Column(name = "tipoSanguineo_estoqueDeSangue", nullable = false)
 		private TipoSanguineo tipoSanguineo;
@@ -35,17 +35,13 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 		@Column(name = "id_armazenamento")
 		private int idArmazenamento;
 
+		public EstoqueSangue() {}
 		
-		public EstoqueSangue(int idEstoqueSangue, TipoSanguineo tipoSanguineo, float quantidadeDisponivel,
-				int idArmazenamento) {
+		public EstoqueSangue(int idEstoqueSangue, TipoSanguineo tipoSanguineo, float quantidadeDisponivel, int idArmazenamento) {
 			this.idEstoqueSangue = idEstoqueSangue;
 			this.tipoSanguineo = tipoSanguineo;
 			this.quantidadeDisponivel = quantidadeDisponivel;
 			this.idArmazenamento = idArmazenamento;
-		}
-
-		public EstoqueSangue() {
-			
 		}
 
 		public int getIdEstoqueSangue() {
@@ -79,6 +75,4 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 		public void setIdArmazenamento(int idArmazenamento) {
 			this.idArmazenamento = idArmazenamento;
 		}
-
-		
 }
