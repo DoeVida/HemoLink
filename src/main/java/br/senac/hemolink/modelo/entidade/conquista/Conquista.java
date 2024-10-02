@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table (name = "Conquista")
 public class Conquista implements Serializable {
+	
     private static final long serialVersionUID = 1L;
 
 	@Id
@@ -25,9 +26,7 @@ public class Conquista implements Serializable {
 	@Column(name = "descricao_conquista", length = 100, nullable = false, unique = true)
 	private String descricaoConquista;
 
-	public Conquista () {
-
-	}
+	public Conquista () {}
 
 	public Conquista (int idConquista, String nomeConquista, String descricaoConquista) {
 		this.idConquista = idConquista;
