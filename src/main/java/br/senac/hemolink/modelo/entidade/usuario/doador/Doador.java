@@ -1,25 +1,18 @@
 package br.senac.hemolink.modelo.entidade.usuario.doador;
 
-import br.senac.hemolink.modelo.entidade.doacao.Doacao;
-import br.senac.hemolink.modelo.entidade.usuario.Usuario;
-import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
+import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 @Entity
 @Table (name = "Doador")
@@ -27,37 +20,31 @@ public class Doador extends Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	@Column (name = "cpf_doador")
 	private String cpf;
 	
 	@Column (name = "sexo_doador", length = 1, nullable = false)
 	private char sexo;
 	
-	@Column (name = "dataDeNascimento_doador", nullable = false)
+	@Column (name = "data_nascimento_doador", nullable = false)
 	private LocalDate dataDeNascimento ;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@Column (name = "tipoSanguineo_doador", length = 11, nullable = true)
+	@ManyToOne
+	@Column (name = "tipo_sanguineo_doador", length = 11, nullable = true)
 	private TipoSanguineo tipoSanguineo;
 	
-	@OneToMany(fetch = FetchType.LAZY )
-	@MapsId
-	@Column (name = "historicoDeDoacao")
-	private List<Doacao>historicoDeDoacao;
+	@OneToMany
+	@Column (name = "doacoes_doador")
+	private List<Doacao>doacoesDoador;
 
-	public Doador(){
-		
-	}
+	public Doador(){}
 
-	public Doador(String cpf, char sexo, TipoSanguineo tipoSanguineo, 
-			LocalDate dataDeNascimento, List<Doacao>historicoDeDoacao ){
+	public Doador(String cpf, char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento, List<Doacao>doacoesDoador ){
 		this.cpf = cpf;
         this.sexo = sexo;
         this.tipoSanguineo = tipoSanguineo;
         this.dataDeNascimento = dataDeNascimento;
-        this.historicoDeDoacao = historicoDeDoacao;
+        this.doacoesDoador = doacoesDoador;
 	}
 
 	public String getCpf() {
@@ -92,12 +79,11 @@ public class Doador extends Usuario implements Serializable{
 		this.dataDeNascimento = dataDeNascimento;
 	}
 
-	public List<Doacao> getHistoricoDeDoacao() {
-		return historicoDeDoacao;
+	public List<Doacao> getDoacoesDoador() {
+		return doacoesDoador;
 	}
 
-	public void setHistoricoDeDoacao(List<Doacao> historicoDeDoacao) {
-		this.historicoDeDoacao = historicoDeDoacao;
+	public void setDoacoesDoador(List<Doacao> doacoesDoador) {
+		this.doacoesDoador = doacoesDoador;
 	}
-
 }
