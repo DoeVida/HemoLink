@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Papel")
-
 public class Papel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,16 +20,11 @@ public class Papel implements Serializable {
 	@Column(name = "nome_papel", length = 15, nullable = false, unique = true)
 	private String nomePapel;
 
-	@Column(name = "apelido_usuario", length = 25, nullable = false)
-	private String apelido;
+	public Papel() {}
 
-	public void Papel() {}
-
-	public Papel(int idPapel, String nomePapel, String apelido) {
-		super();
+	public Papel(int idPapel, String nomePapel) {
 		this.idPapel = idPapel;
 		this.nomePapel = nomePapel;
-		this.apelido = apelido;
 	}
 
 	public int getIdPapel() {
@@ -48,13 +42,4 @@ public class Papel implements Serializable {
 	public void setNomePapel(String nomePapel) {
 		this.nomePapel = nomePapel;
 	}
-
-	public String getApelido() {
-		return apelido;
-	}
-
-	public void setApelido(String apelido) {
-		this.apelido = apelido;
-	}
-
 }
