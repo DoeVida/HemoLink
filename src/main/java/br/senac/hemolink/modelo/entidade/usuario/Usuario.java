@@ -17,19 +17,18 @@ import br.senac.hemolink.modelo.entidade.papel.Papel;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "Usuario")
- 
 public abstract class Usuario implements Serializable {
  
 	private static final long serialVersionUID = 1L;
  
 	@Id
-	@Column(name = "apelido", length = 30, nullable = false)
+	@Column(name = "apelido_usuario", length = 30, nullable = false)
 	private String apelido;
  
-	@Column(name = "nome", length = 45, nullable = false)
+	@Column(name = "nome_usuario", length = 45, nullable = false)
 	private String nome;
  
-	@Column(name = "senha", length = 45, nullable = false)
+	@Column(name = "senha_usuario", length = 45, nullable = false)
 	private String senha;
  
 	@OneToOne(fetch = FetchType.LAZY)
@@ -89,5 +88,4 @@ public abstract class Usuario implements Serializable {
 	public void setContato(Contato contato) {
 		this.contato = contato;
 	}
- 
 }
