@@ -9,10 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table (name = "Contato")
 public class Contato implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -26,9 +26,7 @@ public class Contato implements Serializable {
 	@Column(name = "telefone", length = 13, nullable = false, unique = false)
 	private String telefone;
 	
-	public Contato () { 
-		
-	}
+	public Contato () {}
 	
 	public Contato (int idContato, String email, String telefone) {
 		this.idContato = idContato;
@@ -41,7 +39,7 @@ public class Contato implements Serializable {
 	}
 	
 	public int getIdContato () {
-		return this.idContato;
+		return idContato;
 	}
 	
 	public void setEmail (String email) {
@@ -49,7 +47,7 @@ public class Contato implements Serializable {
 	}
 	
 	public String getEmail () {
-		return this.email;
+		return email;
 	}
 	
 	public void setTelefone (String telefone) {
@@ -57,6 +55,6 @@ public class Contato implements Serializable {
 	}
 	
 	public String getTelefone () {
-		return this.telefone;
+		return telefone;
 	}
 }
