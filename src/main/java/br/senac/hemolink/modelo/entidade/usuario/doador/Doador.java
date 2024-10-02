@@ -9,17 +9,17 @@ import java.util.List;
 
 public class Doador extends Usuario{
 	private String cpf;
-	private char genero;
+	private char Sexo;
 	private TipoSanguineo tipoSanguineo;
 	private LocalDate dataDeNascimento ;
 	private List<Doacao>historicoDeDoacao;
 
 	public Doador(){}
 
-	public Doador(String cpf, char genero, TipoSanguineo tipoSanguineo, 
+	public Doador(String cpf, char Sexo, TipoSanguineo tipoSanguineo, 
 			LocalDate dataDeNascimento, List<Doacao>historicoDeDoacao ){
 		this.cpf = cpf;
-        this.genero = genero;
+        this.Sexo = Sexo;
         this.tipoSanguineo = tipoSanguineo;
         this.dataDeNascimento = dataDeNascimento;
         this.historicoDeDoacao = historicoDeDoacao;
@@ -33,12 +33,12 @@ public class Doador extends Usuario{
 		this.cpf = cpf;
 	}
 
-	public char getGenero() {
-		return genero;
+	public char getSexo() {
+		return Sexo;
 	}
 
-	public void setGenero(char genero) {
-		this.genero = genero;
+	public void setSexo(char Sexo) {
+		this.Sexo = Sexo;
 	}
 
 	public TipoSanguineo getTipoSanguineo() {

@@ -34,7 +34,7 @@ public class Conquista {
 		this.descricaoConquista = descricaoConquista;
 	}
 	
-	public String getDescxricaoConquista (){
+	public String getDescricaoConquista (){
 		return descricaoConquista;
 	}
 }
