@@ -1,5 +1,7 @@
 package br.senac.hemolink.modelo.entidade.armazenamento;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -28,7 +30,7 @@ public class Armazenamento implements Serializable{
 
 	@OneToMany 
 	@JoinColumn(name = "estoqueSangue_armazenamento")
-	private EstoqueSangue[] estoqueSangue = new EstoqueSangue[8];
+	private List<EstoqueSangue> estoqueSangue = new ArrayList<>();
 
 	@Column(name = "dataUltimaAtualizacao_armazenamento")
 	private LocalDate dataUltimaAtualizacao;
