@@ -39,9 +39,7 @@ public class AquisicaoConquista implements Serializable{
 	    private Conquista conquista;
 
 	
-	public AquisicaoConquista(){
-		
-	}
+	public AquisicaoConquista(){}
 
 	public AquisicaoConquista( int idAquisicaoConquista, LocalDate dataAquisicao, Conquista conquista, Doador doador){
 		this.idAquisicaoConquista = idAquisicaoConquista;
@@ -81,5 +79,4 @@ public class AquisicaoConquista implements Serializable{
 	public void setDoador(Doador doador) {
 		this.doador = doador;
 	}
-
 }
