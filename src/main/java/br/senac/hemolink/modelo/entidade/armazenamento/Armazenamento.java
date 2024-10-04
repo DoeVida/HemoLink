@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,10 +28,10 @@ public class Armazenamento implements Serializable{
 	private int idArmazenamento;
 
 	@OneToMany 
-	@JoinColumn(name = "estoqueSangue_armazenamento")
+	@JoinColumn(name = "estoque_sangue_armazenamento")
 	private EstoqueSangue[] estoqueSangue = new EstoqueSangue[8];
 
-	@Column(name = "dataUltimaAtualizacao_armazenamento")
+	@Column(name = "data_ultima_atualizacao_armazenamento")
 	private LocalDate dataUltimaAtualizacao;
 
 	@ManyToOne
