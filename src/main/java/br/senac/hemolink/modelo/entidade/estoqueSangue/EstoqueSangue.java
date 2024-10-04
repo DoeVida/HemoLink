@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 	@Entity
-	@Table(name = "EstoqueSangue")
+	@Table(name = "estoque_sangue")
 	public class EstoqueSangue implements Serializable {
 		
 	    private static final long serialVersionUID = 1L;
@@ -33,7 +33,9 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 		@Column(name = "id_armazenamento")
 		private int idArmazenamento;
 
-		public EstoqueSangue() {}
+		public EstoqueSangue() {
+			
+		}
 		
 		public EstoqueSangue(int idEstoqueSangue, TipoSanguineo tipoSanguineo, float quantidadeDisponivel,int idArmazenamento) {
 			this.idEstoqueSangue = idEstoqueSangue;
