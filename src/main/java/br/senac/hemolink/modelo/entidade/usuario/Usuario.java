@@ -3,7 +3,6 @@ package br.senac.hemolink.modelo.entidade.usuario;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -16,7 +15,7 @@ import br.senac.hemolink.modelo.entidade.papel.Papel;
  
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "Usuario")
+@Table(name = "usuario")
 public abstract class Usuario implements Serializable {
  
 	private static final long serialVersionUID = 1L;
@@ -31,15 +30,17 @@ public abstract class Usuario implements Serializable {
 	@Column(name = "senha_usuario", length = 45, nullable = false)
 	private String senha;
  
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "id_papel")
 	private Papel papel;
  
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "id_contato")
 	private Contato contato;
  
-	public Usuario() {}
+	public Usuario() {
+		
+	}
  
 	public Usuario(String apelido, String nome, String senha, Papel papel, Contato contato) {
 		this.apelido = apelido;
