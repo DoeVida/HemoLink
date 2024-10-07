@@ -17,7 +17,7 @@ import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
 @Entity 
-@Table(name = "Hemocentro")
+@Table(name = "hemocentro")
 public class Hemocentro extends Usuario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -47,7 +47,9 @@ public class Hemocentro extends Usuario implements Serializable {
 	@Column(name = "id_doacoes")
 	private List<Doacao> doacoes;
 	
-	public Hemocentro() {}
+	public Hemocentro() {
+		
+	}
 
 	public Hemocentro(String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue, List<Campanha> campanha,LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
 		this.cnpj = cnpj;
