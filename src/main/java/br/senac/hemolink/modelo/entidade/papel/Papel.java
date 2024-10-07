@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Papel")
+@Table(name = "papel")
 public class Papel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -20,7 +20,9 @@ public class Papel implements Serializable {
 	@Column(name = "nome_papel", length = 15, nullable = false, unique = true)
 	private String nomePapel;
 
-	public Papel() {}
+	public Papel() {
+		
+	}
 
 	public Papel(int idPapel, String nomePapel) {
 		this.idPapel = idPapel;
