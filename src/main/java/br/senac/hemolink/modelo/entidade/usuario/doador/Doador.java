@@ -15,7 +15,7 @@ import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 @Entity
-@Table (name = "Doador")
+@Table (name = "doador")
 public class Doador extends Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
