@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "Campanha")
+@Table(name= "campanha")
 public class Campanha implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -41,7 +41,9 @@ public class Campanha implements Serializable {
 	@Column(name = "demanda_campanha", nullable = true)
 	private Demanda demanda;
 
-	public Campanha() {}
+	public Campanha() {
+		
+	}
 
 	public Campanha(int idCampanha, String tituloCampanha, String descricaoCampanha, List<Doacao> doacoes, Demanda demanda) {
 	    this.idCampanha = idCampanha;
