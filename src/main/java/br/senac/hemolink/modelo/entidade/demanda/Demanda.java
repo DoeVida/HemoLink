@@ -15,7 +15,7 @@ import br.senac.hemolink.modelo.enumeracao.Capacidade;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 @Entity
-@Table(name = "Demanda")
+@Table(name = "demanda")
 public class Demanda implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -36,7 +36,9 @@ public class Demanda implements Serializable {
 	@Column(name = "quantidade_litros_demanda", nullable = false)
 	private double quantidadeLitros;
 
-	public Demanda() {}
+	public Demanda() {
+		
+	}
 
 	public Demanda(int idDemanda, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros) {
 		this.idDemanda = idDemanda;
