@@ -15,7 +15,7 @@ import javax.persistence.UniqueConstraint;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 
 @Entity
-@Table(name= "Endereco", uniqueConstraints = {@UniqueConstraint(columnNames = {"logradouro_endereco", "numero_endereco"})})
+@Table(name= "endereco", uniqueConstraints = {@UniqueConstraint(columnNames = {"logradouro_endereco", "numero_endereco"})})
 public class Endereco implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -47,7 +47,9 @@ public class Endereco implements Serializable {
     @JoinColumn (name = "apelido_hemocentro", nullable = false)
     private Hemocentro hemocentro;
 	
-	public Endereco() {}
+	public Endereco() {
+		
+	}
 	
 	public Endereco (String estado, String cidade, String bairro, String logradouro, int numero, String cep, Hemocentro hemocentro) {
 		this.estado = estado;
