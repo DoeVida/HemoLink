@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "Contato")
+@Table (name = "contato")
 public class Contato implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -20,13 +20,15 @@ public class Contato implements Serializable {
 	@Column(name = "id_contato", nullable = false, unique = true)
 	private int idContato;
 	
-	@Column(name = "email", length = 50, nullable = false, unique = false)
+	@Column(name = "email_contato", length = 50, nullable = false, unique = false)
 	private String email;
 	
-	@Column(name = "telefone", length = 13, nullable = false, unique = false)
+	@Column(name = "telefone_contato", length = 13, nullable = false, unique = false)
 	private String telefone;
 	
-	public Contato () {}
+	public Contato () {
+		
+	}
 	
 	public Contato (int idContato, String email, String telefone) {
 		this.idContato = idContato;
