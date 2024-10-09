@@ -23,7 +23,7 @@ import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 @Table(name = "hemocentro")
 public class Hemocentro extends Usuario implements Serializable {
 
-	private static final long serialVersionUID = -6839362470884832206L;
+	private static final long serialVersionUID = 5082517849085199550L;
 
 	@MapsId
 	@Column(name = "id_usuario")
