@@ -5,53 +5,56 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.senac.hemolink.modelo.entidade.demanda.Demanda;
-import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
+import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
-@Entity 
+@Entity
 @Table(name = "hemocentro")
 public class Hemocentro extends Usuario implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Column(name = "cnpj_usuario", length = 14, nullable = false, unique = true)
+
+	private static final long serialVersionUID = -6839362470884832206L;
+
+	@MapsId
+	@Column(name = "id_usuario")
+	private Usuario usuario;
+
+	@Column(name = "cnpj_hemocentro", length = 14, nullable = false, unique = true)
 	private String cnpj;
-	
-	@OneToMany
-	@Column(name = "id_demanda")
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.REMOVE)
 	private List<Demanda> demanda;
-	
-	@OneToMany
-	@Column(name = "id_estoque_sangue")
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.REMOVE)
 	private List<EstoqueSangue> estoqueSangue;
-	
-	@OneToMany
-	@Column(name = "id_campanha")
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Campanha> campanha;
-	
-	@Column(name = "id_horario_inicio", nullable = false) 
+
+	@Column(name = "horario_abertura_hemocentro", nullable = false)
 	private LocalTime horarioInicio;
 
-	@Column(name = "id_horario_duracao", nullable = false)
+	@Column(name = "horario_fechamento_hemocentro", nullable = false)
 	private Duration horarioDuracao;
 
-	@OneToMany
-	@Column(name = "id_doacoes")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.DETACH)
 	private List<Doacao> doacoes;
-	
+
 	public Hemocentro() {
-		
 	}
 
-	public Hemocentro(String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue, List<Campanha> campanha,LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
+	public Hemocentro(String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue, List<Campanha> campanha,
+			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
 		this.cnpj = cnpj;
 		this.demanda = demanda;
 		this.estoqueSangue = estoqueSangue;
