@@ -12,7 +12,7 @@ public class Armazenamento {
 	private Hemocentro hemocentro;
 	
 	
-	public Armazenamento(){}
+	public Armazenamento(){} 
 
 	public Armazenamento(int idArmazenamento, EstoqueSangue[] estoqueSangue, LocalDate dataUltimaAtualizacao, Hemocentro hemocentro) {
         this.idArmazenamento = idArmazenamento;
