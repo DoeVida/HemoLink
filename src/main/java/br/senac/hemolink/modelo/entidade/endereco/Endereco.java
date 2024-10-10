@@ -1,23 +1,64 @@
 package br.senac.hemolink.modelo.entidade.endereco;
 
-public class Endereco {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
+
+@Entity
+@Table(name= "endereco", uniqueConstraints = {@UniqueConstraint(columnNames = {"logradouro_endereco", "numero_endereco"})})
+public class Endereco implements Serializable {
 	
-	private String estado;
-	private String cidade;
-	private String bairro;
-	private String logradouro;
-	private int numero;
-	private String cep;
+	private static final long serialVersionUID = 1L;
 	
-	public void Endereco() {}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_endereco", nullable = false, unique = true )
+    private int idEndereco; 
+
+    @Column(name = "estado", nullable = false, length = 2)
+    private String estado;
+
+    @Column(name = "cidade_endereco", nullable = false, length = 45)
+    private String cidade;
+
+    @Column(name = "bairro_endereco", nullable = false, length = 45)
+    private String bairro;
+
+    @Column(name = "logradouro_endereco", nullable = false, length = 45)
+    private String logradouro;
+
+    @Column(name = "numero_endereco", nullable = false)
+    private int numero;
+
+    @Column(name = "cep_endereco", nullable = false, length = 8)
+    private String cep;
+
+    @OneToOne
+    @JoinColumn (name = "apelido_hemocentro", nullable = false)
+    private Hemocentro hemocentro;
 	
-	public void Endereco (String estado, String cidade, String bairro, String logradouro, int numero, String cep) {
+	public Endereco() {
+		
+	}
+	
+	public Endereco (String estado, String cidade, String bairro, String logradouro, int numero, String cep, Hemocentro hemocentro) {
 		this.estado = estado;
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.cep = cep;
+		this.hemocentro = hemocentro;
 	}
 	
 	public void setEstado (String estado) {
@@ -66,5 +107,13 @@ public class Endereco {
 	
 	public String getCep () {
 		return this.cep;
+	}
+	
+	public void setHemocentro (Hemocentro hemocentro) {
+		this.hemocentro = hemocentro;
+	}
+	
+	public Hemocentro getHemocentro () {
+		return hemocentro;
 	}
 }

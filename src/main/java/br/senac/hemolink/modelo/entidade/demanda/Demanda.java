@@ -1,33 +1,58 @@
 package br.senac.hemolink.modelo.entidade.demanda;
 
-import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
-import br.senac.hemolink.modelo.enumeracao.Capacidade;
+import java.io.Serializable;
 
-public class Demanda {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import br.senac.hemolink.modelo.enumeracao.Capacidade;
+import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
+
+@Entity
+@Table(name = "demanda")
+public class Demanda implements Serializable {
 	
-	private int id;
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JoinColumn(name = "id_demanda", nullable = false)
+	private int idDemanda;
+	
+	@ManyToOne
+	@JoinColumn(name = "tipo_sanguineo_demanda", nullable = false)
 	private TipoSanguineo tipoSanguineo;
+	
+	@ManyToOne
+	@JoinColumn(name = "capacidade_demanda", nullable = false)
 	private Capacidade capacidade;
+	
+	@Column(name = "quantidade_litros_demanda", nullable = false)
 	private double quantidadeLitros;
 
 	public Demanda() {
-
+		
 	}
 
-	public Demanda(int id, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros) {
-		super();
-		this.id = id;
+	public Demanda(int idDemanda, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros) {
+		this.idDemanda = idDemanda;
 		this.tipoSanguineo = tipoSanguineo;
 		this.capacidade = capacidade;
 		this.quantidadeLitros = quantidadeLitros;
 	}
 
 	public int getIdDemanda() {
-		return id;
+		return idDemanda;
 	}
 
 	public void setIdDemanda(int idDemanda) {
-		this.id = idDemanda;
+		this.idDemanda = idDemanda;
 	}
 
 	public TipoSanguineo getTipoSanguineo() {
