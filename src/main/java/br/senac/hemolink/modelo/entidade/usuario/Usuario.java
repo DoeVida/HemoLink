@@ -18,6 +18,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.contato.Contato;
+import br.senac.hemolink.modelo.entidade.foto.Foto;
 import br.senac.hemolink.modelo.entidade.papel.Papel;
 
 @Entity
@@ -30,9 +31,9 @@ public abstract class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
-	private Long usuario;
+	private Long id;
 
-	@Column(name = "apelido_usuario", length = 30, nullable = false)
+	@Column(name = "apelido_usuario", length = 35, nullable = false)
 	private String apelido;
 
 	@Column(name = "nome_usuario", length = 45, nullable = false)
@@ -40,6 +41,10 @@ public abstract class Usuario implements Serializable {
 
 	@Column(name = "senha_usuario", length = 45, nullable = false)
 	private String senha;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_foto", referencedColumnName = "id_foto")
+	private Foto fotoPerfil;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_papel", referencedColumnName = "id_papel")
@@ -53,20 +58,37 @@ public abstract class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(String apelido, String nome, String senha, Papel papel, Contato contato) {
+	public Usuario(String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
 		this.apelido = apelido;
 		this.nome = nome;
+		this.fotoPerfil = fotoPerfil;
 		this.senha = senha;
 		this.papel = papel;
 		this.contato = contato;
 	}
 
 	public Long getUsuario() {
-		return usuario;
+		return id;
 	}
 
 	public void setUsuario(Long usuario) {
-		this.usuario = usuario;
+		this.id = usuario;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Foto getFotoPerfil() {
+		return fotoPerfil;
+	}
+
+	public void setFotoPerfil(Foto fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
 	}
 
 	public String getApelido() {
