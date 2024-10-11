@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 import br.senac.hemolink.modelo.enumeracao.Capacidade;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
@@ -33,26 +34,31 @@ public class Demanda implements Serializable {
 	private TipoSanguineo tipoSanguineo;
 
 	@ManyToOne
-	@JoinColumn(name = "capacidade_demanda", nullable = false)
+	@JoinColumn(name = "id_capacidade", referencedColumnName = "id_capacidade")
 	private Capacidade capacidade;
 
 	@Column(name = "quantidade_litros_demanda", nullable = false)
 	private double quantidadeLitros;
 
 	@ManyToOne
-	@JoinColumn(name = "hemocentro_demanda", nullable = false)
+	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_hemocentro")
 	private Hemocentro hemocentro;
+
+	@ManyToOne
+	@JoinColumn(name = "id_campanha", referencedColumnName = "id_campanha")
+	private Campanha campanha;
 
 	public Demanda() {
 	}
 
 	public Demanda(Long id, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros,
-			Hemocentro hemocentro) {
+			Hemocentro hemocentro, Campanha campanha) {
 		this.id = id;
 		this.tipoSanguineo = tipoSanguineo;
 		this.capacidade = capacidade;
 		this.quantidadeLitros = quantidadeLitros;
 		this.hemocentro = hemocentro;
+		this.campanha = campanha;
 	}
 
 	public Long getId() {

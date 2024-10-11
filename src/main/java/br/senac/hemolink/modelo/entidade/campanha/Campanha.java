@@ -1,36 +1,67 @@
 package br.senac.hemolink.modelo.entidade.campanha;
 
-import br.senac.hemolink.modelo.entidade.demanda.Demanda;
-import br.senac.hemolink.modelo.entidade.doacao.Doacao;
-
+import java.io.Serializable;
 import java.util.List;
 
-public class Campanha {
-	private int idCampanha;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import br.senac.hemolink.modelo.entidade.demanda.Demanda;
+import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
+
+@Entity
+@Table(name = "campanha")
+public class Campanha implements Serializable {
+
+	private static final long serialVersionUID = 3240164749097482522L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name = "titulo", nullable = false, length = 45)
 	private String titulo;
+
+	@Column(name = "descricao_campanha", nullable = false, length = 255)
 	private String descricaoCampanha;
+
+	@ManyToOne
+	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_hemocentro")
+	private Hemocentro hemocentro;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "campanha", cascade = CascadeType.REMOVE)
+	private List<Demanda> demandas;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "campanha", cascade = CascadeType.DETACH)
 	private List<Doacao> doacoes;
-	private Demanda demanda;
 
 	public Campanha() {
-
 	}
 
-	public Campanha(int idCampanha, String titulo, String descricaoCampanha, List<Doacao> doacoes, Demanda demanda) {
-	    super();
-	    this.idCampanha = idCampanha;
-	    this.titulo = titulo;
-	    this.descricaoCampanha = descricaoCampanha;
-	    this.doacoes = doacoes;
-	    this.demanda = demanda;
+	public Campanha(Long id, String titulo, String descricaoCampanha, List<Doacao> doacoes, List<Demanda> demandas) {
+		this.id = id;
+		this.titulo = titulo;
+		this.descricaoCampanha = descricaoCampanha;
+		this.doacoes = doacoes;
+		this.demandas = demandas;
 	}
 
-	public int getIdCampanha() {
-		return idCampanha;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdCampanha(int idCampanha) {
-		this.idCampanha = idCampanha;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitulo() {
@@ -49,6 +80,22 @@ public class Campanha {
 		this.descricaoCampanha = descricaoCampanha;
 	}
 
+	public Hemocentro getHemocentro() {
+		return hemocentro;
+	}
+
+	public void setHemocentro(Hemocentro hemocentro) {
+		this.hemocentro = hemocentro;
+	}
+
+	public List<Demanda> getDemandas() {
+		return demandas;
+	}
+
+	public void setDemandas(List<Demanda> demandas) {
+		this.demandas = demandas;
+	}
+
 	public List<Doacao> getDoacoes() {
 		return doacoes;
 	}
@@ -56,13 +103,4 @@ public class Campanha {
 	public void setDoacoes(List<Doacao> doacoes) {
 		this.doacoes = doacoes;
 	}
-
-	public Demanda getDemanda() {
-		return demanda;
-	}
-
-	public void setDemanda(Demanda demanda) {
-		this.demanda = demanda;
-	}
-
 }
