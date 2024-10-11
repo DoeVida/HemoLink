@@ -44,7 +44,7 @@ public class Hemocentro extends Usuario implements Serializable {
 	private Armazenamento armazenamento;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	private List<Campanha> campanha;
+	private List<Campanha> campanhas;
 
 	@Column(name = "horario_abertura_hemocentro", nullable = false)
 	private LocalTime horarioInicio;
@@ -69,7 +69,7 @@ public class Hemocentro extends Usuario implements Serializable {
 		this.cnpj = cnpj;
 		this.demanda = demanda;
 		this.armazenamento = armazenamento;
-		this.campanha = campanha;
+		this.campanhas = campanha;
 		this.horarioInicio = horarioInicio;
 		this.horarioDuracao = horarioDuracao;
 		this.doacoes = doacoes;
@@ -99,12 +99,12 @@ public class Hemocentro extends Usuario implements Serializable {
 		this.armazenamento = armazenamento;
 	}
 
-	public List<Campanha> getCampanha() {
-		return campanha;
+	public List<Campanha> getCampanhas() {
+		return campanhas;
 	}
 
-	public void setCampanha(List<Campanha> campanha) {
-		this.campanha = campanha;
+	public void setCampanhas(List<Campanha> campanhas) {
+		this.campanhas = campanhas;
 	}
 
 	public LocalTime getHorarioInicio() {
