@@ -15,11 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.senac.hemolink.modelo.entidade.armazenamento.Armazenamento;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import br.senac.hemolink.modelo.entidade.endereco.Endereco;
-import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
 @Entity
@@ -38,8 +38,10 @@ public class Hemocentro extends Usuario implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.REMOVE)
 	private List<Demanda> demanda;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.REMOVE)
-	private List<EstoqueSangue> estoqueSangue;
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
+	@JoinColumn(name = "id_armazenamento")
+	private Armazenamento armazenamento;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Campanha> campanha;
@@ -61,12 +63,12 @@ public class Hemocentro extends Usuario implements Serializable {
 	public Hemocentro() {
 	}
 
-	public Hemocentro(Usuario usuario, String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue,
+	public Hemocentro(Usuario usuario, String cnpj, List<Demanda> demanda, Armazenamento armazenamento,
 			List<Campanha> campanha, LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
 		this.usuario = usuario;
 		this.cnpj = cnpj;
 		this.demanda = demanda;
-		this.estoqueSangue = estoqueSangue;
+		this.armazenamento = armazenamento;
 		this.campanha = campanha;
 		this.horarioInicio = horarioInicio;
 		this.horarioDuracao = horarioDuracao;
@@ -89,12 +91,12 @@ public class Hemocentro extends Usuario implements Serializable {
 		this.demanda = demanda;
 	}
 
-	public List<EstoqueSangue> getEstoqueSangue() {
-		return estoqueSangue;
+	public Armazenamento getArmazenamento() {
+		return armazenamento;
 	}
 
-	public void setEstoqueSangue(List<EstoqueSangue> estoqueSangue) {
-		this.estoqueSangue = estoqueSangue;
+	public void setArmazenamento(Armazenamento armazenamento) {
+		this.armazenamento = armazenamento;
 	}
 
 	public List<Campanha> getCampanha() {

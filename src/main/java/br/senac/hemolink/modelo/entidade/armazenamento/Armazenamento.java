@@ -1,53 +1,85 @@
 package br.senac.hemolink.modelo.entidade.armazenamento;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 
-public class Armazenamento {
+@Entity
+@Table(name = "armazenamento")
+public class Armazenamento implements Serializable {
 
-	private int idArmazenamento;
-	private EstoqueSangue[] estoqueSangue = new EstoqueSangue[8];
+	private static final long serialVersionUID = -3368069000446318432L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_armazenamento")
+	private Long id;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "armazenamento", cascade = CascadeType.REMOVE)
+	private List<EstoqueSangue> estoqueSangue;
+
+	@Column(name = "data_ultima_atualizacao_armazenamento")
 	private LocalDate dataUltimaAtualizacao;
-	private Hemocentro hemocentro;
-	
-	
-	public Armazenamento(){}
 
-	public Armazenamento(int idArmazenamento, EstoqueSangue[] estoqueSangue, LocalDate dataUltimaAtualizacao, Hemocentro hemocentro) {
-        this.idArmazenamento = idArmazenamento;
-        this.estoqueSangue = estoqueSangue;
-        this.dataUltimaAtualizacao = dataUltimaAtualizacao;
-        this.hemocentro = hemocentro;
-    }
-	
-	
-	
-	
-	public int getIdArmazenamento() {
-		return idArmazenamento;
+	@ManyToOne
+	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_hemocentro")
+	private Hemocentro hemocentro;
+
+	public Armazenamento() {
 	}
-	public void setIdArmazenamento(int idArmazenamento) {
-		this.idArmazenamento = idArmazenamento;
+
+	public Armazenamento(Long id, List<EstoqueSangue> estoqueSangue, LocalDate dataUltimaAtualizacao,
+			Hemocentro hemocentro) {
+		this.id = id;
+		this.estoqueSangue = estoqueSangue;
+		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+		this.hemocentro = hemocentro;
 	}
-	public EstoqueSangue[] getEstoqueSangue() {
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<EstoqueSangue> getEstoqueSangue() {
 		return estoqueSangue;
 	}
-	public void setEstoqueSangue(EstoqueSangue[] estoqueSangue) {
+
+	public void setEstoqueSangue(List<EstoqueSangue> estoqueSangue) {
 		this.estoqueSangue = estoqueSangue;
 	}
+
 	public LocalDate getDataUltimaAtualizacao() {
 		return dataUltimaAtualizacao;
 	}
+
 	public void setDataUltimaAtualizacao(LocalDate dataUltimaAtualizacao) {
 		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
 	}
+
 	public Hemocentro getHemocentro() {
 		return hemocentro;
 	}
+
 	public void setHemocentro(Hemocentro hemocentro) {
 		this.hemocentro = hemocentro;
 	}
-	
-	
 }
