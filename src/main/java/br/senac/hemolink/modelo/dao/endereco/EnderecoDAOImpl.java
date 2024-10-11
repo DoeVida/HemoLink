@@ -1,19 +1,30 @@
 package br.senac.hemolink.modelo.dao.endereco;
 
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
+import br.senac.hemolink.modelo.entidade.usuario.Usuario_;
 import br.senac.hemolink.modelo.entidade.endereco.Endereco;
+import br.senac.hemolink.modelo.entidade.endereco.Endereco_;
 import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
 public class EnderecoDAOImpl implements EnderecoDAO{
 	
 	private ConexaoFactory fabrica;
 	
-	public EnderecoDAOImpl () {
+	public EnderecoDAOImpl() {
 		fabrica = new ConexaoFactory();
 	}
 
-	public void inserirEnderecos(Endereco endereco) {
+	public void inserirEndereco(Endereco endereco) {
 		
 		Session sessao = null;
 
@@ -99,5 +110,84 @@ public class EnderecoDAOImpl implements EnderecoDAO{
 			}
 		}
 	}
+	public List<Endereco> recuperarEnderecos() {
 
+		Session sessao = null;
+		List<Endereco> enderecos = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Endereco> criteria = construtor.createQuery(Endereco.class);
+			Root<Endereco> raizEndereco = criteria.from(Endereco.class);
+
+			criteria.select(raizEndereco);
+
+			enderecos = sessao.createQuery(criteria).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return enderecos;
+	}
+
+	public List<Endereco> recuperarEnderecosCliente(Cliente cliente) {
+
+		Session sessao = null;
+		List<Endereco> enderecos = null;
+
+		try {
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+			CriteriaQuery<Endereco> criteria = construtor.createQuery(Endereco.class);
+			Root<Endereco> raizEndereco = criteria.from(Endereco.class);
+
+			Join<Endereco, Cliente> juncaoCliente = raizEndereco.join(Endereco_.clientes);
+
+			ParameterExpression<String> cpfCliente = construtor.parameter(String.class);
+			criteria.where(construtor.equal(juncaoCliente.get(Cliente_.CPF), cpfCliente));
+
+			enderecos = sessao.createQuery(criteria).setParameter(cpfCliente, cliente.getCpf()).getResultList();
+
+			sessao.getTransaction().commit();
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
+
+		return enderecos;
+	}
 }
