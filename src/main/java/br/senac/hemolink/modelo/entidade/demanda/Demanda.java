@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 import br.senac.hemolink.modelo.enumeracao.Capacidade;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
@@ -25,7 +26,7 @@ public class Demanda implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_demanda")
-	private Long idDemanda;
+	private Long id;
 
 	@Column(name = "tipo_sanguineo_demanda")
 	@Enumerated(EnumType.STRING)
@@ -38,22 +39,36 @@ public class Demanda implements Serializable {
 	@Column(name = "quantidade_litros_demanda", nullable = false)
 	private double quantidadeLitros;
 
+	@ManyToOne
+	@JoinColumn(name = "hemocentro_demanda", nullable = false)
+	private Hemocentro hemocentro;
+
 	public Demanda() {
 	}
 
-	public Demanda(Long idDemanda, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros) {
-		this.idDemanda = idDemanda;
+	public Demanda(Long id, TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros,
+			Hemocentro hemocentro) {
+		this.id = id;
 		this.tipoSanguineo = tipoSanguineo;
 		this.capacidade = capacidade;
 		this.quantidadeLitros = quantidadeLitros;
+		this.hemocentro = hemocentro;
 	}
 
-	public Long getIdDemanda() {
-		return idDemanda;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdDemanda(Long idDemanda) {
-		this.idDemanda = idDemanda;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Hemocentro getHemocentro() {
+		return hemocentro;
+	}
+
+	public void setHemocentro(Hemocentro hemocentro) {
+		this.hemocentro = hemocentro;
 	}
 
 	public TipoSanguineo getTipoSanguineo() {
