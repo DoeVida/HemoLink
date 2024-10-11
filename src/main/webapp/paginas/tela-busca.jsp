@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
  
-<<head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Busca</title>
+    <title>Cadastro de Usuario</title>
 </head>
  
 <body>
@@ -16,9 +16,11 @@
         </div>
  
         <div class="caixa-de-pesquisa">
-            <div>
-                <input type="text" placeholder="Buscar...">
-            </div>
+            <form action="pesquisar">
+                <div>
+                    <input type="text" placeholder="Buscar...">
+                </div>
+            </form>
             <div>
                 <button type="submit">Pesquisar</button>
             </div>
