@@ -10,41 +10,44 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 
 @Entity
-@Table(name= "Endereco")
+@Table(name = "endereco", uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "logradouro_endereco", "numero_endereco" }) })
 public class Endereco implements Serializable {
-	
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_endereco", nullable = false, unique = true )
-    private int idEndereco; 
 
-    @Column(name = "estado", nullable = false, length = 2)
-    private String estado;
+	private static final long serialVersionUID = 1L;
 
-    @Column(name = "cidade_endereco", nullable = false, length = 45)
-    private String cidade;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_endereco")
+	private Long idEndereco;
 
-    @Column(name = "bairro_endereco", nullable = false, length = 45)
-    private String bairro;
+	@Column(name = "estado_endereco", nullable = false, length = 2)
+	private String estado;
 
-    @Column(name = "logradouro_endereco", nullable = false, length = 45)
-    private String logradouro;
+	@Column(name = "cidade_endereco", nullable = false, length = 45)
+	private String cidade;
 
-    @Column(name = "numero_endereco", nullable = false)
-    private int numero;
+	@Column(name = "bairro_endereco", nullable = false, length = 45)
+	private String bairro;
 
-    @Column(name = "cep_endereco", nullable = false, length = 8)
-    private String cep;
+	@Column(name = "logradouro_endereco", nullable = false, length = 45)
+	private String logradouro;
 
-    @OneToOne
-    @JoinColumn (name = "nome_hemocentro", nullable = false)
-    private Hemocentro hemocentro;
-	
-	public Endereco() {}
-	
-	public Endereco (String estado, String cidade, String bairro, String logradouro, int numero, String cep) {
+	@Column(name = "numero_endereco", nullable = false)
+	private int numero;
+
+	@Column(name = "cep_endereco", nullable = false, length = 8)
+	private String cep;
+
+	public Endereco() {
+	}
+
+	public Endereco(String estado, String cidade, String bairro, String logradouro, int numero, String cep) {
 		this.estado = estado;
 		this.cidade = cidade;
 		this.bairro = bairro;
@@ -52,52 +55,53 @@ public class Endereco implements Serializable {
 		this.numero = numero;
 		this.cep = cep;
 	}
-	
-	public void setEstado (String estado) {
+
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	
-	public String getEstado () {
+
+	public String getEstado() {
 		return this.estado;
 	}
-	
-	public void setCidade (String cidade) {
+
+	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	
-	public String getCidade () {
+
+	public String getCidade() {
 		return this.cidade;
 	}
-	
-	public void setBairro (String bairro) {
+
+	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	
-	public String getBairro () {
+
+	public String getBairro() {
 		return this.bairro;
 	}
-	
-	public void setLogradouro (String logradouro) {
+
+	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
 	}
-	
-	public String getLogradouro () {
+
+	public String getLogradouro() {
 		return this.logradouro;
 	}
-	
-	public void setNumero (int numero) {
+
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	
-	public int getNumero () {
+
+	public int getNumero() {
 		return this.numero;
 	}
-	
-	public void setCep (String cep) {
+
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	
-	public String getCep () {
+
+	public String getCep() {
 		return this.cep;
 	}
+
 }

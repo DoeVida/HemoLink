@@ -1,32 +1,49 @@
 package br.senac.hemolink.modelo.entidade.papel;
 
-public class Papel {
-	
-	private int idPapel;
-	private String nomePapel;
-	
-	public void Papel () {
-		
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "papel")
+public class Papel implements Serializable {
+
+	private static final long serialVersionUID = 6932779876314475336L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_papel")
+	private Long id;
+
+	@Column(name = "nome_papel", length = 15, nullable = false, unique = true)
+	private String nome;
+
+	public Papel() {
 	}
-	
-	public void Papel (int idPapel, String nomePapel) {
-		this.idPapel = idPapel;
-		this.nomePapel = nomePapel;
+
+	public Papel(Long id, String nome) {
+		this.id = id;
+		this.nome = nome;
 	}
-	
-	public void setIdPapel (int idPapel) {
-		this.idPapel = idPapel;
+
+	public Long getIdPapel() {
+		return id;
 	}
-	
-	public int getIdPapel () {
-		return this.idPapel;
+
+	public void setIdPapel(Long id) {
+		this.id = id;
 	}
-	
-	public void setNomePapel (String nomePapel) {
-		this.nomePapel = nomePapel;
+
+	public String getNomePapel() {
+		return nome;
 	}
-	
-	public String getNomePapel () {
-		return this.nomePapel;
+
+	public void setNomePapel(String nome) {
+		this.nome = nome;
 	}
 }

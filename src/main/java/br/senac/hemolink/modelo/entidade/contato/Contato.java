@@ -9,52 +9,55 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table (name = "contato")
+@Table(name = "contato")
 public class Contato implements Serializable {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -6703668574524890052L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_contato", nullable = false, unique = true)
-	private int idContato;
-	
-	@Column(name = "email", length = 45, nullable = false, unique = false)
+	@Column(name = "id_contato")
+	private Long id;
+
+	@Column(name = "email_contato", length = 50, nullable = false, unique = false)
 	private String email;
-	
-	@Column(name = "telefone", length = 12, nullable = false, unique = false)
+
+	@Column(name = "telefone_contato", length = 15, nullable = false, unique = false)
 	private String telefone;
-	
-	public Contato () { }
-	
-	public Contato (int idContato, String email, String telefone) {
-		this.idContato = idContato;
+
+	public Contato() { }
+
+	public Contato(Long id, String email, String telefone) {
+		this.id = id;
 		this.email = email;
 		this.telefone = telefone;
 	}
-	
-	public void setIdContato (int idContato) {
-		this.idContato = idContato;
+
+	public Long getId() {
+		return id;
 	}
-	
-	public int getIdContato () {
-		return this.idContato;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
-	public void setEmail (String email) {
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getEmail () {
-		return this.email;
+
+	public String getTelefone() {
+		return telefone;
 	}
-	
-	public void setTelefone (String telefone) {
+
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
 	
-	public String getTelefone () {
-		return this.telefone;
-	}
+	
 }

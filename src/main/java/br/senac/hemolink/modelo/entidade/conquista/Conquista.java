@@ -1,40 +1,80 @@
 package br.senac.hemolink.modelo.entidade.conquista;
 
-public class Conquista {
+import java.io.Serializable;
+import java.util.List;
 
-	private int idConquista;
-	private String nomeConquista;
-	private String descricaoConquista;
-	
-	public Conquista () {}
-	
-	public Conquista (int idConquista, String nomeConquista, String descricaoConquista) {
-		this.idConquista = idConquista;
-		this.nomeConquista = nomeConquista;
-		this.descricaoConquista = descricaoConquista;
-		
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import br.senac.hemolink.modelo.entidade.aquisicaoConquista.AquisicaoConquista;
+
+@Entity
+@Table(name = "conquista")
+public class Conquista implements Serializable {
+
+	private static final long serialVersionUID = -5949909897149816799L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_conquista")
+	private Long id;
+
+	@Column(name = "nome_conquista", length = 35, nullable = false, unique = true)
+	private String nome;
+
+	@Column(name = "descricao_conquista", length = 100, nullable = false, unique = true)
+	private String descricao;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "conquista", cascade = CascadeType.REMOVE)
+	private List<AquisicaoConquista> aquisicaoConquista;
+
+	public Conquista() {
 	}
-	
-	public void setIdConquista (int idConquista) {
-		this.idConquista = idConquista;
+
+	public Conquista(Long idConquista, String nomeConquista, String descricaoConquista,
+			List<AquisicaoConquista> aquisicoesConquista) {
+		this.id = idConquista;
+		this.nome = nomeConquista;
+		this.descricao = descricaoConquista;
+		this.aquisicaoConquista = aquisicoesConquista;
 	}
-	
-	public int getIdConquista() {
-		return idConquista;
+
+	public List<AquisicaoConquista> getAquisicaoConquista() {
+		return aquisicaoConquista;
 	}
-	
-	public void setNomeConquista (String nomeConquista) {
-		this.nomeConquista = nomeConquista;
+
+	public void setAquisicaoConquista(List<AquisicaoConquista> aquisicaoConquista) {
+		this.aquisicaoConquista = aquisicaoConquista;
 	}
-	public String getNomeConquista () {
-		return nomeConquista;
+
+	public Long getId() {
+		return id;
 	}
-	
-	public void setDescricaoConquista (String descricaoConquista) {
-		this.descricaoConquista = descricaoConquista;
+
+	public void setId(Long id) {
+		this.id = id;
 	}
-	
-	public String getDescxricaoConquista (){
-		return descricaoConquista;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 }
