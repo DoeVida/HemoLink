@@ -14,6 +14,7 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.senac.hemolink.modelo.entidade.aquisicaoConquista.AquisicaoConquista;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
@@ -44,17 +45,29 @@ public class Doador extends Usuario implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.DETACH)
 	private List<Doacao> doacoes;
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.REMOVE)
+	private List<AquisicaoConquista> aquisicaoConquista;
+
 	public Doador() {
 	}
 
 	public Doador(Usuario usuario, String cpf, char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento,
-			List<Doacao> doacoesDoador) {
+			List<Doacao> doacoes, List<AquisicaoConquista> aquisicoesConquista) {
 		this.usuario = usuario;
 		this.cpf = cpf;
 		this.sexo = sexo;
 		this.tipoSanguineo = tipoSanguineo;
 		this.dataDeNascimento = dataDeNascimento;
-		this.doacoes = doacoesDoador;
+		this.doacoes = doacoes;
+		this.aquisicaoConquista = aquisicoesConquista;
+	}
+
+	public List<AquisicaoConquista> getAquisicaoConquista() {
+		return aquisicaoConquista;
+	}
+
+	public void setAquisicaoConquista(List<AquisicaoConquista> aquisicaoConquista) {
+		this.aquisicaoConquista = aquisicaoConquista;
 	}
 
 	public String getCpf() {
