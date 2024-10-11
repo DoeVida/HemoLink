@@ -6,6 +6,9 @@ import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,24 +18,26 @@ import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
+import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
+import br.senac.hemolink.modelo.enumeracao.Status;
 
 @Entity
 @Table(name = "Doacao")
-public class Doacao implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+public class Doacao implements Serializable {
+
+	private static final long serialVersionUID = -3011186404724313934L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JoinColumn (name = "id_doacao", nullable = false, unique = true)
+	@Column(name = "id_doacao")
 	private int idDoacao;
 
-	@ManyToOne
-	@JoinColumn(name = "id_doador", nullable = false, unique = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_doador", referencedColumnName = "id_doador")
 	private Doador doador;
 
-	@ManyToOne
-	@JoinColumn(name = "id_hemocentro", nullable = false, unique = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_hemocentro")
 	private Hemocentro hemocentro;
 
 	@Column(name = "data_doacao", nullable = false)
@@ -41,13 +46,45 @@ public class Doacao implements Serializable{
 	@Column(name = "hora_doacao", nullable = false)
 	private LocalTime horaDoacao;
 
-	public Doacao() {}
+	@Column(name = "tipo_sanguineo_doacao")
+	@Enumerated(EnumType.STRING)
+	private TipoSanguineo tipoSanguineo;
 
-	public Doacao(Doador doador, Hemocentro hemocentro, LocalDate dataDoacao, LocalTime horaDoacao) {
+	@Column(name = "status_doacao")
+	@Enumerated(EnumType.STRING)
+	private Status status;
+
+	public Doacao() {
+	}
+
+	public Doacao(Doador doador, Hemocentro hemocentro, LocalDate dataDoacao, LocalTime horaDoacao, Status status,
+			TipoSanguineo tipoSanguineo) {
 		this.doador = doador;
 		this.hemocentro = hemocentro;
 		this.dataDoacao = dataDoacao;
 		this.horaDoacao = horaDoacao;
+		this.status = status;
+		this.tipoSanguineo = tipoSanguineo;
+	}
+
+	public TipoSanguineo getTipoSanguineo() {
+		return tipoSanguineo;
+	}
+
+	public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
+		this.tipoSanguineo = tipoSanguineo;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public void setIdDoacao(int idDoacao) {
+		this.idDoacao = idDoacao;
 	}
 
 	public int getIdDoacao() {

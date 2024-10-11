@@ -10,53 +10,52 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "contato")
+@Table(name = "contato")
 public class Contato implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -6703668574524890052L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_contato", nullable = false, unique = true)
-	private int idContato;
-	
+	@Column(name = "id_contato")
+	private Long idContato;
+
 	@Column(name = "email_contato", length = 50, nullable = false, unique = false)
 	private String email;
-	
-	@Column(name = "telefone_contato", length = 13, nullable = false, unique = false)
+
+	@Column(name = "telefone_contato", length = 15, nullable = false, unique = false)
 	private String telefone;
-	
-	public Contato () {
-		
+
+	public Contato() {
 	}
-	
-	public Contato (int idContato, String email, String telefone) {
+
+	public Contato(Long idContato, String email, String telefone) {
 		this.idContato = idContato;
 		this.email = email;
 		this.telefone = telefone;
 	}
-	
-	public void setIdContato (int idContato) {
+
+	public void setIdContato(Long idContato) {
 		this.idContato = idContato;
 	}
-	
-	public int getIdContato () {
+
+	public Long getIdContato() {
 		return idContato;
 	}
-	
-	public void setEmail (String email) {
+
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	public String getEmail () {
+
+	public String getEmail() {
 		return email;
 	}
-	
-	public void setTelefone (String telefone) {
+
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
-	public String getTelefone () {
+
+	public String getTelefone() {
 		return telefone;
 	}
 }

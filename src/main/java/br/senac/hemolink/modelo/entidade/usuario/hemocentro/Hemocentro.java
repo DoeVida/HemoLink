@@ -9,13 +9,16 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.endereco.Endereco;
 import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
@@ -47,14 +50,20 @@ public class Hemocentro extends Usuario implements Serializable {
 	@Column(name = "horario_fechamento_hemocentro", nullable = false)
 	private Duration horarioDuracao;
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@MapsId
+	@JoinColumn(name = "id_endereco")
+	private Endereco endereco;
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.DETACH)
 	private List<Doacao> doacoes;
 
 	public Hemocentro() {
 	}
 
-	public Hemocentro(String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue, List<Campanha> campanha,
-			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
+	public Hemocentro(Usuario usuario, String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue,
+			List<Campanha> campanha, LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
+		this.usuario = usuario;
 		this.cnpj = cnpj;
 		this.demanda = demanda;
 		this.estoqueSangue = estoqueSangue;
@@ -110,6 +119,14 @@ public class Hemocentro extends Usuario implements Serializable {
 
 	public void setHorarioDuracao(Duration horarioDuracao) {
 		this.horarioDuracao = horarioDuracao;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	public List<Doacao> getDoacoes() {

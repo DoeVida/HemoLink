@@ -5,7 +5,7 @@ import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 
 import java.util.List;
 
-class Campanha {
+public class Campanha {
 	private int idCampanha;
 	private String titulo;
 	private String descricaoCampanha;
