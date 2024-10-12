@@ -44,7 +44,7 @@ public abstract class Usuario implements Serializable {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_foto", referencedColumnName = "id_foto")
-	private Foto fotoPerfil;
+	private Foto foto;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_papel", referencedColumnName = "id_papel")
@@ -58,10 +58,10 @@ public abstract class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
+	public Usuario(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato) {
 		this.apelido = apelido;
 		this.nome = nome;
-		this.fotoPerfil = fotoPerfil;
+		this.foto = foto;
 		this.senha = senha;
 		this.papel = papel;
 		this.contato = contato;
@@ -83,12 +83,12 @@ public abstract class Usuario implements Serializable {
 		this.id = id;
 	}
 
-	public Foto getFotoPerfil() {
-		return fotoPerfil;
+	public Foto getFoto() {
+		return foto;
 	}
 
-	public void setFotoPerfil(Foto fotoPerfil) {
-		this.fotoPerfil = fotoPerfil;
+	public void setFoto(Foto foto) {
+		this.foto = foto;
 	}
 
 	public String getApelido() {
