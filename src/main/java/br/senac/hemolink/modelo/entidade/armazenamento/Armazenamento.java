@@ -37,7 +37,7 @@ public class Armazenamento implements Serializable {
 	private LocalDate dataUltimaAtualizacao;
 
 	@ManyToOne
-	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_hemocentro")
+	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_usuario")
 	private Hemocentro hemocentro;
 
 	public Armazenamento() {

@@ -17,9 +17,12 @@ import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.armazenamento.Armazenamento;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
+import br.senac.hemolink.modelo.entidade.contato.Contato;
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import br.senac.hemolink.modelo.entidade.endereco.Endereco;
+import br.senac.hemolink.modelo.entidade.foto.Foto;
+import br.senac.hemolink.modelo.entidade.papel.Papel;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
 @Entity
@@ -27,7 +30,7 @@ import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 public class Hemocentro extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 5082517849085199550L;
-
+	
 	@MapsId
 	@Column(name = "id_usuario")
 	private Usuario usuario;
@@ -63,9 +66,10 @@ public class Hemocentro extends Usuario implements Serializable {
 	public Hemocentro() {
 	}
 
-	public Hemocentro(Usuario usuario, String cnpj, List<Demanda> demanda, Armazenamento armazenamento,
-			List<Campanha> campanha, LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
-		this.usuario = usuario;
+	public Hemocentro(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cnpj,
+			List<Demanda> demanda, Armazenamento armazenamento, List<Campanha> campanha, LocalTime horarioInicio,
+			Duration horarioDuracao, List<Doacao> doacoes) {
+		super(apelido, nome, foto, senha, papel, contato);
 		this.cnpj = cnpj;
 		this.demanda = demanda;
 		this.armazenamento = armazenamento;

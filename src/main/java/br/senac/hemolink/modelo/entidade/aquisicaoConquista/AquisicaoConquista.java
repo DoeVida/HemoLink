@@ -30,7 +30,7 @@ public class AquisicaoConquista implements Serializable {
 	private LocalDate dataAquisicao;
 
 	@ManyToOne
-	@JoinColumn(name = "id_doador", referencedColumnName = "id_doador")
+	@JoinColumn(name = "id_doador", referencedColumnName = "id_usuario")
 	private Doador doador;
 
 	@ManyToOne

@@ -33,11 +33,11 @@ public class Doacao implements Serializable {
 	private int idDoacao;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_doador", referencedColumnName = "id_doador")
+	@JoinColumn(name = "id_doador", referencedColumnName = "id_usuario")
 	private Doador doador;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_hemocentro")
+	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_usuario")
 	private Hemocentro hemocentro;
 
 	@Column(name = "data_doacao", nullable = false)

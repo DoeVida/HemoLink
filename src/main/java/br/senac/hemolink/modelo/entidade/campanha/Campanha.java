@@ -27,6 +27,7 @@ public class Campanha implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_campanha")
 	private Long id;
 
 	@Column(name = "titulo", nullable = false, length = 45)
@@ -36,13 +37,13 @@ public class Campanha implements Serializable {
 	private String descricaoCampanha;
 
 	@ManyToOne
-	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_hemocentro")
+	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_usuario")
 	private Hemocentro hemocentro;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "campanha", cascade = CascadeType.REMOVE)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Demanda> demandas;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "campanha", cascade = CascadeType.DETACH)
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
 	private List<Doacao> doacoes;
 
 	public Campanha() {

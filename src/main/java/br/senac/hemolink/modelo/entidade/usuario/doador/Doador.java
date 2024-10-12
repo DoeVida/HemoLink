@@ -15,7 +15,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.aquisicaoConquista.AquisicaoConquista;
+import br.senac.hemolink.modelo.entidade.contato.Contato;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.foto.Foto;
+import br.senac.hemolink.modelo.entidade.papel.Papel;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
@@ -24,11 +27,11 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 public class Doador extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = -2615132801850413921L;
-
+	
 	@MapsId
 	@Column(name = "id_usuario")
 	private Usuario usuario;
-
+	
 	@Column(name = "cpf_doador", length = 11, nullable = false, unique = true)
 	private String cpf;
 
@@ -51,8 +54,10 @@ public class Doador extends Usuario implements Serializable {
 	public Doador() {
 	}
 
-	public Doador(Usuario usuario, String cpf, char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento,
-			List<Doacao> doacoes, List<AquisicaoConquista> aquisicoesConquista) {
+	public Doador(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, Usuario usuario,
+			String cpf, char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento, List<Doacao> doacoes,
+			List<AquisicaoConquista> aquisicoesConquista) {
+		super(apelido, nome, foto, senha, papel, contato);
 		this.usuario = usuario;
 		this.cpf = cpf;
 		this.sexo = sexo;
