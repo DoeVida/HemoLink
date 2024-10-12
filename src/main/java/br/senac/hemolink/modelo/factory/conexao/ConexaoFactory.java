@@ -24,6 +24,7 @@ public class ConexaoFactory {
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.Usuario.class);
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.doador.Doador.class);
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.foto.Foto.class);
 		
 		configuracao.configure("hibernate.cfg.xml");
 
