@@ -9,9 +9,9 @@ public class TesteDAOConquista {
 		ConquistaDAOImpl conquistaDAO = new ConquistaDAOImpl();
 		Conquista conquista = new Conquista();
 		
-		conquista.setDescricao("Décima-Segunda Doação realizada com sucesso");
-		conquista.setId((long) 4);
-		conquista.setNome("Nona Gota");
+		conquista.setDescricao("Primeira doação realizada");
+		conquista.setId((long) 1);
+		conquista.setNome("Primeira Gota");
 		conquista.setAquisicaoConquista(null);
 		
 		conquistaDAO.atualizarConquista(conquista);
