@@ -30,7 +30,7 @@ import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 public class Hemocentro extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 5082517849085199550L;
-
+	
 	@MapsId
 	@Column(name = "id_usuario")
 	private Usuario usuario;
@@ -66,8 +66,11 @@ public class Hemocentro extends Usuario implements Serializable {
 	public Hemocentro() {
 	}
 
-	public Hemocentro(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cnpj, List<Demanda> demanda, Armazenamento armazenamento,
-			List<Campanha> campanha, LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
+
+	public Hemocentro(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cnpj,
+			List<Demanda> demanda, Armazenamento armazenamento, List<Campanha> campanha, LocalTime horarioInicio,
+			Duration horarioDuracao, List<Doacao> doacoes) {
+
 		super(apelido, nome, foto, senha, papel, contato);
 		this.cnpj = cnpj;
 		this.demanda = demanda;

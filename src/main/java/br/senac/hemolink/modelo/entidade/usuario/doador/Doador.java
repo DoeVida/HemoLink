@@ -27,11 +27,11 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 public class Doador extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = -2615132801850413921L;
-
+	
 	@MapsId
 	@Column(name = "id_usuario")
 	private Usuario usuario;
-
+	
 	@Column(name = "cpf_doador", length = 11, nullable = false, unique = true)
 	private String cpf;
 
@@ -54,9 +54,11 @@ public class Doador extends Usuario implements Serializable {
 	public Doador() {
 	}
 
-	public Doador(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cpf, char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento,
-			List<Doacao> doacoes, List<AquisicaoConquista> aquisicoesConquista) {
+	public Doador(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, Usuario usuario,
+			String cpf, char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento, List<Doacao> doacoes,
+			List<AquisicaoConquista> aquisicoesConquista) {
 		super(apelido, nome, foto, senha, papel, contato);
+		this.usuario = usuario;
 		this.cpf = cpf;
 		this.sexo = sexo;
 		this.tipoSanguineo = tipoSanguineo;

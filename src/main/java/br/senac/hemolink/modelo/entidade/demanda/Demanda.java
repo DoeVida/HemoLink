@@ -33,15 +33,15 @@ public class Demanda implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoSanguineo tipoSanguineo;
 
-	@ManyToOne
-	@JoinColumn(name = "id_capacidade", referencedColumnName = "id_capacidade")
+	@Column(name = "capacidade_demanda")
+	@Enumerated(EnumType.STRING)
 	private Capacidade capacidade;
 
 	@Column(name = "quantidade_litros_demanda", nullable = false)
 	private double quantidadeLitros;
 
 	@ManyToOne
-	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_hemocentro")
+	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_usuario")
 	private Hemocentro hemocentro;
 
 	@ManyToOne

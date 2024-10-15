@@ -31,7 +31,7 @@ public abstract class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
-	private Long id;
+	protected Long id;
 
 	@Column(name = "apelido_usuario", length = 35, nullable = false)
 	private String apelido;
@@ -43,6 +43,7 @@ public abstract class Usuario implements Serializable {
 	private String senha;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@MapsId
 	@JoinColumn(name = "id_foto", referencedColumnName = "id_foto")
 	private Foto foto;
 
@@ -58,10 +59,12 @@ public abstract class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato) {
+	public Usuario(String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
+		super();
 		this.apelido = apelido;
 		this.nome = nome;
-		this.foto = foto;
+		this.foto = fotoPerfil;
+
 		this.senha = senha;
 		this.papel = papel;
 		this.contato = contato;
@@ -82,6 +85,7 @@ public abstract class Usuario implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public Foto getFoto() {
 		return foto;
