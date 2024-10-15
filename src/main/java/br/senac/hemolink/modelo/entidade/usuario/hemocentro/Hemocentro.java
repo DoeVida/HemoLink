@@ -66,9 +66,11 @@ public class Hemocentro extends Usuario implements Serializable {
 	public Hemocentro() {
 	}
 
+
 	public Hemocentro(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cnpj,
 			List<Demanda> demanda, Armazenamento armazenamento, List<Campanha> campanha, LocalTime horarioInicio,
 			Duration horarioDuracao, List<Doacao> doacoes) {
+
 		super(apelido, nome, foto, senha, papel, contato);
 		this.cnpj = cnpj;
 		this.demanda = demanda;

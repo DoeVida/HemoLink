@@ -64,6 +64,7 @@ public abstract class Usuario implements Serializable {
 		this.apelido = apelido;
 		this.nome = nome;
 		this.foto = fotoPerfil;
+
 		this.senha = senha;
 		this.papel = papel;
 		this.contato = contato;
@@ -85,12 +86,13 @@ public abstract class Usuario implements Serializable {
 		this.id = id;
 	}
 
-	public Foto getFotoPerfil() {
+
+	public Foto getFoto() {
 		return foto;
 	}
 
-	public void setFotoPerfil(Foto fotoPerfil) {
-		this.foto = fotoPerfil;
+	public void setFoto(Foto foto) {
+		this.foto = foto;
 	}
 
 	public String getApelido() {
