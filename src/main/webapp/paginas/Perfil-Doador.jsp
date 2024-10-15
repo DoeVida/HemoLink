@@ -11,7 +11,7 @@
 
     <div class="perfil-doador">
         <div class="Botão Perfil">
-            <button type="button"><a href="../Perfil-Doador.html"></a><img
+            <button type="button"><a href="../Perfil-Doador.jsp"></a><img
                     src="C:\Users\User\Desktop\Html teste\imagens"></button>
         </div>
 
@@ -33,7 +33,7 @@
         </div>
 
         <div class="botao-perfil">
-            <button type="button"><a href="../Perfil-Doador.html"></a><img
+            <button type="button"><a href="../Perfil-Doador.jsp"></a><img
                     src="C:\Users\User\Desktop\Html teste\imagens"></button>
         </div>
         <div class="foto-e-nome">
@@ -81,7 +81,7 @@
             </div>
             <div>
                 <select id="tipo-sanguineo" name="tipo-sanguineo"><br>
-                    <option value="">Usuário Burro kkk</option>
+                    <option value="">Selecione</option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
                     <option value="B+">B+</option>
@@ -104,7 +104,7 @@
         </div>
         <div class-="calendario-doacoes">
             <div>
-                <h3>Calendario de doações</h3>
+                <h3>Calendario de doa��es</h3>
             </div>
             <div class="botoes-calendario">
                 <div>
