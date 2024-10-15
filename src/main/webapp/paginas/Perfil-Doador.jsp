@@ -10,7 +10,7 @@
 <body>
 
     <div class="perfil-doador">
-        <div class="botao-perfil">
+        <div class="Botão Perfil">
             <button type="button"><a href="../Perfil-Doador.html"></a><img
                     src="C:\Users\User\Desktop\Html teste\imagens"></button>
         </div>
