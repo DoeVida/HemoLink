@@ -10,32 +10,6 @@
 <body>
 
     <div class="perfil-doador">
-        <div class="Botão Perfil">
-            <button type="button"><a href="../Perfil-Doador.jsp"></a><img
-                    src="C:\Users\User\Desktop\Html teste\imagens"></button>
-        </div>
-
-        <div class="caixa-de-pesquisa">
-            <div>
-                <input type="text" placeholder="Buscar...">
-            </div>
-            <div>
-                <button type="submit">Pesquisar</button>
-            </div>
-        </div>
-
-        <div class="registrar">
-            <button type="button">Registrar</button>
-        </div>
-
-        <div class="entrar">
-            <button type="button">Entrar</button>
-        </div>
-
-        <div class="botao-perfil">
-            <button type="button"><a href="../Perfil-Doador.jsp"></a><img
-                    src="C:\Users\User\Desktop\Html teste\imagens"></button>
-        </div>
         <div class="foto-e-nome">
             <div>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Sukhoi_Su-30SM_in_flight_2014.jpg"
