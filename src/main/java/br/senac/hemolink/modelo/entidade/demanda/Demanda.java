@@ -100,4 +100,12 @@ public class Demanda implements Serializable {
 	public void setQuantidadeLitros(double quantidadeLitros) {
 		this.quantidadeLitros = quantidadeLitros;
 	}
+	
+	public Campanha getCampanha (Campanha campanha) {
+		return campanha;
+	}
+	
+	public void setCampanha (Campanha campanha) {
+		this.campanha = campanha;
+	}
 }
