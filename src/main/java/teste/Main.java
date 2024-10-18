@@ -1,8 +1,17 @@
 package teste;
 
-import br.senac.hemolink.modelo.dao.doacao.DoacaoDAOImpl;
-import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import java.time.LocalDate;
+import java.time.LocalTime;
+
+import br.senac.hemolink.modelo.dao.doacao.DoacaoDAOImpl;
+import br.senac.hemolink.modelo.dao.endereco.EnderecoDAOImpl;
+import br.senac.hemolink.modelo.dao.papel.PapelDAOImpl;
+import br.senac.hemolink.modelo.entidade.conquista.Conquista;
+import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.endereco.Endereco;
+import br.senac.hemolink.modelo.entidade.papel.Papel;
+import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 
 
 public class Main {
@@ -256,7 +265,6 @@ public class Main {
 				// Teste de selecionar dados
 				try {
 					for (Endereco enderecos : enderecoDAO.recuperarEnderecos()) {
-						System.out.println("ID: " + enderecos.getIdEndereco());
 						System.out.println("Estado: " + enderecos.getEstado());
 						System.out.println("Cidade: " + enderecos.getCidade());
 						System.out.println("Bairro: " + enderecos.getBairro());
