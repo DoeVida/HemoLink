@@ -11,19 +11,20 @@ public class ConexaoFactory {
 
 		Configuration configuracao = new Configuration();
 
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.aquisicaoConquista.AquisicaoConquista.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.armazenamento.Armazenamento.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.campanha.Campanha.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.conquista.Conquista.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.contato.Contato.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.demanda.Demanda.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.aquisicaoConquista.AquisicaoConquista.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.armazenamento.Armazenamento.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.campanha.Campanha.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.conquista.Conquista.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.contato.Contato.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.demanda.Demanda.class);
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.doacao.Doacao.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.endereco.Endereco.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.papel.Papel.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.Usuario.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.doador.Doador.class);
-		//configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.endereco.Endereco.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.papel.Papel.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.Usuario.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.doador.Doador.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.foto.Foto.class);
 		
 		configuracao.configure("hibernate.cfg.xml");
 

@@ -20,10 +20,10 @@
 		<mapping class="br.senac.hemolink.modelo.entidade.doacao.Doacao" />
 		<mapping class="br.senac.hemolink.modelo.entidade.endereco.Endereco" />
 		<mapping class="br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue" />
-	    <mapping class="br.senac.hemolink.modelo.entidade.papel.Papel" />
+		<mapping class="br.senac.hemolink.modelo.entidade.papel.Papel" />
 		<mapping class="br.senac.hemolink.modelo.entidade.usuario.Usuario" />
 		<mapping class="br.senac.hemolink.modelo.entidade.usuario.doador.Doador" />
 		<mapping class="br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro" />
-		
+		<mapping class="br.senac.hemolink.modelo.entidade.foto.Foto"/>
 	</session-factory>
 </hibernate-configuration>
