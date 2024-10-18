@@ -49,12 +49,13 @@ public class Campanha implements Serializable {
 	public Campanha() {
 	}
 
-	public Campanha(Long id, String titulo, String descricaoCampanha, List<Doacao> doacoes, List<Demanda> demandas) {
+	public Campanha(Long id, Hemocentro hemocentro, String titulo, String descricaoCampanha, List<Doacao> doacoes, List<Demanda> demandas) {
 		this.id = id;
 		this.titulo = titulo;
 		this.descricaoCampanha = descricaoCampanha;
 		this.doacoes = doacoes;
 		this.demandas = demandas;
+		this.hemocentro = hemocentro;
 	}
 
 	public Long getId() {
