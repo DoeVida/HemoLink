@@ -30,7 +30,7 @@ public class Doacao implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_doacao")
-	private int idDoacao;
+	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_doador", referencedColumnName = "id_usuario")
@@ -83,16 +83,12 @@ public class Doacao implements Serializable {
 		this.status = status;
 	}
 
-	public void setIdDoacao(int idDoacao) {
-		this.idDoacao = idDoacao;
+	public Long getId() {
+		return id;
 	}
 
-	public int getIdDoacao() {
-		return idDoacao;
-	}
-
-	public void setId(int idDoacao) {
-		this.idDoacao = idDoacao;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Doador getDoador() {
