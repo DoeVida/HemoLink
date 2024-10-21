@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,7 +8,6 @@
     <title>Visão Adm Gerenciar hemocentros</title>
     <title>Gerenciar Hemocentros</title>
 </head>
-
 <body>
     <div class="cadastro">
         <div class="titulo">
