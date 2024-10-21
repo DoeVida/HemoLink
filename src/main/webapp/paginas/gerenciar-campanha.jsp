@@ -5,29 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visão Adm Gerenciar conquistas</title>
-    <title>Gerenciar conquistas</title>
+    <title>Visão Adm Gerenciar campanhas</title>
+    <title>Gerenciar campanhas</title>
 </head>
 
 <body>
     <div class="cadastro">
         <div class="titulo">
             <h1>
-                Cadastro de Conquista
+                Cadastro de Campanha
             </h1>
         </div>
-        <div class="botao-cadastrar-conquista">
-            <input type="submit" value="Cadastrar Conquista">
+        <div class="botao-cadastrar-campanha">
+            <input type="submit" value="Cadastrar campanha">
         </div>
-        <div class="conquista1">
-            <div class="titulo-conquista">
+        <div class="campanha1">
+            <div class="titulo-campanha">
                 <h2>
-                    Conquista 1
+                    Campanha 1
                 </h2>
             </div>
-            <div class="conteudo-conquista">
+            <div class="conteudo-campanha">
                 <h4>
-                    "Conteudo da Conquista"
+                    "Conteudo da Campanha"
                 </h4>
             </div>
             <div class="botoes">
@@ -36,19 +36,22 @@
                 </div>
                 <div class="botao-editar">
                     <input type="submit" value="Editar">
+                </div>
+                <div class="botao-validar">
+                    <input type="submit" value="Validar">
                 </div>
             </div>
         </div>
 
-        <div class="conquista2">
-            <div class="titulo-conquista">
+        <div class="campanha2">
+            <div class="titulo-campanha">
                 <h2>
-                    Conquista 2
+                    Campanha 2
                 </h2>
             </div>
-            <div class="conteudo-conquista">
+            <div class="conteudo-campanha">
                 <h4>
-                    "Conteudo da Conquista"
+                    "Conteudo da Campanha"
                 </h4>
             </div>
             <div class="botoes">
@@ -57,6 +60,9 @@
                 </div>
                 <div class="botao-editar">
                     <input type="submit" value="Editar">
+                </div>
+                <div class="botao-validar">
+                    <input type="submit" value="Validar">
                 </div>
             </div>
         </div>
