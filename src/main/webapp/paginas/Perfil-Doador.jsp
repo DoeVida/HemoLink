@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuario</title>
+    <title>Perfil do doador</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
                     width="100">
             </div>
             <div>
-                <h2>@Apelidotá uma bosta</h2>
+                <h2>@Apelido</h2>
             </div>
         </div>
         <div class="conquistas">
