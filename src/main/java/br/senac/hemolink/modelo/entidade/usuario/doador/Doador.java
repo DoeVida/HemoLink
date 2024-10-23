@@ -27,11 +27,11 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 public class Doador extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = -2615132801850413921L;
-	
+
 	@MapsId
 	@Column(name = "id_usuario")
 	private Usuario usuario;
-	
+
 	@Column(name = "cpf_doador", length = 11, nullable = false, unique = true)
 	private String cpf;
 
@@ -54,24 +54,14 @@ public class Doador extends Usuario implements Serializable {
 	public Doador() {
 	}
 
-	public Doador(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, Usuario usuario,
-			String cpf, char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento, List<Doacao> doacoes,
-			List<AquisicaoConquista> aquisicoesConquista) {
-		super(apelido, nome, foto, senha, papel, contato);
+	public Doador(Usuario usuario, String cpf, char sexo, LocalDate dataDeNascimento, TipoSanguineo tipoSanguineo,
+			List<Doacao> doacoes, List<AquisicaoConquista> aquisicaoConquista) {
 		this.usuario = usuario;
 		this.cpf = cpf;
 		this.sexo = sexo;
-		this.tipoSanguineo = tipoSanguineo;
 		this.dataDeNascimento = dataDeNascimento;
+		this.tipoSanguineo = tipoSanguineo;
 		this.doacoes = doacoes;
-		this.aquisicaoConquista = aquisicoesConquista;
-	}
-
-	public List<AquisicaoConquista> getAquisicaoConquista() {
-		return aquisicaoConquista;
-	}
-
-	public void setAquisicaoConquista(List<AquisicaoConquista> aquisicaoConquista) {
 		this.aquisicaoConquista = aquisicaoConquista;
 	}
 
@@ -114,4 +104,13 @@ public class Doador extends Usuario implements Serializable {
 	public void setDoacoes(List<Doacao> doacoes) {
 		this.doacoes = doacoes;
 	}
+
+	public List<AquisicaoConquista> getAquisicaoConquista() {
+		return aquisicaoConquista;
+	}
+
+	public void setAquisicaoConquista(List<AquisicaoConquista> aquisicaoConquista) {
+		this.aquisicaoConquista = aquisicaoConquista;
+	}
+
 }

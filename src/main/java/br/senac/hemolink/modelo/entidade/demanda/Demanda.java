@@ -89,6 +89,14 @@ public class Demanda implements Serializable {
 		return capacidade;
 	}
 
+	public Campanha getCampanha (Campanha campanha) {
+		return campanha;
+	}
+
+	public void setCampanha (Campanha campanha) {
+		this.campanha = campanha;
+	}
+
 	public void setCapacidade(Capacidade capacidade) {
 		this.capacidade = capacidade;
 	}

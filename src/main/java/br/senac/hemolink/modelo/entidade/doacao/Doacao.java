@@ -27,11 +27,11 @@ public class Doacao implements Serializable {
 
 	private static final long serialVersionUID = -3011186404724313934L;
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_doacao")
-	private int idDoacao;
-
+	@Column(name = "id_doacao", unique = true)
+	private Long id;
+	
+	@Id
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_doador", referencedColumnName = "id_usuario")
 	private Doador doador;
@@ -83,16 +83,12 @@ public class Doacao implements Serializable {
 		this.status = status;
 	}
 
-	public void setIdDoacao(int idDoacao) {
-		this.idDoacao = idDoacao;
+	public Long getId() {
+		return id;
 	}
 
-	public int getIdDoacao() {
-		return idDoacao;
-	}
-
-	public void setId(int idDoacao) {
-		this.idDoacao = idDoacao;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Doador getDoador() {

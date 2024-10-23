@@ -27,7 +27,7 @@ public class Armazenamento implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_armazenamento")
+	@Column(name = "id_armazenamento", length = 200)
 	private Long id;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "armazenamento", cascade = CascadeType.REMOVE)

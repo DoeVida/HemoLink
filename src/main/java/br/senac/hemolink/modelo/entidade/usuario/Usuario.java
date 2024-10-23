@@ -32,7 +32,7 @@ public abstract class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
 	protected Long id;
-
+	
 	@Column(name = "apelido_usuario", length = 35, nullable = false)
 	private String apelido;
 
@@ -59,13 +59,13 @@ public abstract class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
+	public Usuario(Long id, String apelido, String nome, String senha, Foto foto, Papel papel, Contato contato) {
 		super();
+		this.id = id;
 		this.apelido = apelido;
 		this.nome = nome;
-		this.foto = fotoPerfil;
-
 		this.senha = senha;
+		this.foto = foto;
 		this.papel = papel;
 		this.contato = contato;
 	}
@@ -85,7 +85,6 @@ public abstract class Usuario implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public Foto getFoto() {
 		return foto;

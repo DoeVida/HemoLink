@@ -13,4 +13,5 @@ public interface DoacaoDAO {
 	void atualizarDoacao (Doacao doacao);
 	
 	List<Doacao> recuperarDoacoes();
+	
 }

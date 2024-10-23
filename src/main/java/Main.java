@@ -1,34 +1,33 @@
-import java.time.LocalDate;
-import java.time.LocalTime;
-
-import br.senac.hemolink.modelo.dao.doacao.DoacaoDAOImpl;
-import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.dao.usuario.UsuarioDAOImpl;
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 
 public class Main {
 
 	public static void main(String[] args) {
-		DoacaoDAOImpl doacaoDAO = new DoacaoDAOImpl();
-		Doador doador = new Doador();
-	
-		Doacao doacao = new Doacao();
-		doacao.setDoador(null);
-		doacao.setHemocentro(null);
-		doacao.setDataDoacao(LocalDate.now());
-		doacao.setHoraDoacao(LocalTime.now());
-		doacao.setStatus(null);
-		doacao.setTipoSanguineo(null);
+		UsuarioDAOImpl usuarioDAO = new UsuarioDAOImpl();
 
-		
-		
-		// Teste de deletar dados
+		Usuario usuario = new Doador();
 
-		for (Doacao d : doacaoDAO.recuperarDoacoes()) {
-			System.out.println("ID: " + d.getIdDoacao());
-			System.out.println("Data: " + d.getDataDoacao());
-			System.out.println("Hora: " + d.getHoraDoacao());
+		usuario.setApelido("ddd");
+		usuario.setId(null);
+		// Teste de insert de dados
+		try {
+			usuarioDAO.inserirUsuario(usuario);
+		} catch (Exception e) {
+			System.out.println("Erro no código!");
+		} finally {
+			System.out.println("Acabou");
 		}
-				
+		/*
+		 * // Teste de deletar dados try { usuarioDAO.deletarUsuario(usuario); } catch
+		 * (Exception e) { System.out.println("Erro no código!"); } finally {
+		 * System.out.println("Enviado ao banco com Sucesso!"); }
+		 * 
+		 * // Teste de atualizar dados try { usuario.setContato(null); } catch
+		 * (Exception e) { System.out.println("Erro no código!"); } finally {
+		 * System.out.println("Enviado ao banco com Sucesso!"); }
+		 */
 	}
 
 }
