@@ -16,7 +16,7 @@
                     width="100">
             </div>
             <div>
-                <h2>@Apelido</h2>
+                <h2>@Apelidotá uma bosta</h2>
             </div>
         </div>
         <div class="conquistas">
