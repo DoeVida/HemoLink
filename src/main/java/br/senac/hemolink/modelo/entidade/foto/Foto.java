@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
 @Entity
 @Table(name = "foto")
@@ -25,6 +28,9 @@ public class Foto implements Serializable {
 
 	@Column(name = "extensao_foto", nullable = false)
 	private String extensao;
+
+	@OneToOne(mappedBy = "foto")
+	private Usuario usuario;
 
 	public Foto() {
 	}
@@ -57,5 +63,13 @@ public class Foto implements Serializable {
 
 	public void setExtensao(String extensao) {
 		this.extensao = extensao;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 }

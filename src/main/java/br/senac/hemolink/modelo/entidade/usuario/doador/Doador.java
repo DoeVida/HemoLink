@@ -2,6 +2,7 @@ package br.senac.hemolink.modelo.entidade.usuario.doador;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,11 +28,7 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 public class Doador extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = -2615132801850413921L;
-	
-	@MapsId
-	@Column(name = "id_usuario")
-	private Usuario usuario;
-	
+
 	@Column(name = "cpf_doador", length = 11, nullable = false, unique = true)
 	private String cpf;
 
@@ -45,20 +42,19 @@ public class Doador extends Usuario implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoSanguineo tipoSanguineo;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.DETACH)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.DETACH) // mappedby usuario ou doador ?
 	private List<Doacao> doacoes;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.REMOVE)
-	private List<AquisicaoConquista> aquisicaoConquista;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	private List<AquisicaoConquista> aquisicaoConquista; // mappedby usuario ou doador ?
 
 	public Doador() {
 	}
 
-	public Doador(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, Usuario usuario,
-			String cpf, char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento, List<Doacao> doacoes,
+	public Doador(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cpf,
+			char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento, List<Doacao> doacoes,
 			List<AquisicaoConquista> aquisicoesConquista) {
 		super(apelido, nome, foto, senha, papel, contato);
-		this.usuario = usuario;
 		this.cpf = cpf;
 		this.sexo = sexo;
 		this.tipoSanguineo = tipoSanguineo;

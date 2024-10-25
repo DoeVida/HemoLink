@@ -31,7 +31,7 @@ public abstract class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
-	protected Long id;
+	private Long id;
 
 	@Column(name = "apelido_usuario", length = 35, nullable = false)
 	private String apelido;
@@ -85,7 +85,6 @@ public abstract class Usuario implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public Foto getFoto() {
 		return foto;
