@@ -59,12 +59,12 @@ public abstract class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
+	public Usuario(Long id, String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
 		super();
+		this.id = id;
 		this.apelido = apelido;
 		this.nome = nome;
 		this.foto = fotoPerfil;
-
 		this.senha = senha;
 		this.papel = papel;
 		this.contato = contato;
