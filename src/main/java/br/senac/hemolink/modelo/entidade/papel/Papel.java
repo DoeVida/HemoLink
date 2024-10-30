@@ -4,57 +4,46 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Papel")
-
+@Table(name = "papel")
 public class Papel implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6932779876314475336L;
 
 	@Id
-	@Column(name = "id_papel", nullable = false, unique = true)
-	private int idPapel;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_papel")
+	private Long id;
 
 	@Column(name = "nome_papel", length = 15, nullable = false, unique = true)
-	private String nomePapel;
+	private String nome;
 
-	@Column(name = "apelido_usuario", length = 25, nullable = false)
-	private String apelido;
-
-	public void Papel() {}
-
-	public Papel(int idPapel, String nomePapel, String apelido) {
-		super();
-		this.idPapel = idPapel;
-		this.nomePapel = nomePapel;
-		this.apelido = apelido;
+	public Papel() {
 	}
 
-	public int getIdPapel() {
-		return idPapel;
+	public Papel(Long id, String nome) {
+		this.id = id;
+		this.nome = nome;
 	}
 
-	public void setIdPapel(int idPapel) {
-		this.idPapel = idPapel;
+	public Long getIdPapel() {
+		return id;
+	}
+
+	public void setIdPapel(Long id) {
+		this.id = id;
 	}
 
 	public String getNomePapel() {
-		return nomePapel;
+		return nome;
 	}
 
-	public void setNomePapel(String nomePapel) {
-		this.nomePapel = nomePapel;
+	public void setNomePapel(String nome) {
+		this.nome = nome;
 	}
-
-	public String getApelido() {
-		return apelido;
-	}
-
-	public void setApelido(String apelido) {
-		this.apelido = apelido;
-	}
-
 }

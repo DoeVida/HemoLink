@@ -5,71 +5,82 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import br.senac.hemolink.modelo.entidade.demanda.Demanda;
-import br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue;
+import br.senac.hemolink.modelo.entidade.armazenamento.Armazenamento;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
+import br.senac.hemolink.modelo.entidade.contato.Contato;
+import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.endereco.Endereco;
+import br.senac.hemolink.modelo.entidade.foto.Foto;
+import br.senac.hemolink.modelo.entidade.papel.Papel;
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
-@Entity 
-@Table(name = "Hemocentro")
+@Entity
+@Table(name = "hemocentro")
 public class Hemocentro extends Usuario implements Serializable {
 
-	@Id
-	@Column(name = "id_cnpj", length = 14, nullable = false, unique = true)
+	private static final long serialVersionUID = 5082517849085199550L;
+	
+	@MapsId
+	@Column(name = "id_usuario")
+	private Usuario usuario;
+
+	@Column(name = "cnpj_hemocentro", length = 14, nullable = false, unique = true)
 	private String cnpj;
-	
-	@OneToOne(fetch = FetchType.LAZY) 
-	@MapsId
-	@Column(name = "id_demanda")
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.REMOVE)
 	private List<Demanda> demanda;
-	
-	@OneToOne(fetch = FetchType.LAZY) 
+
+	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
-	@Column(name = "id_estoqueSangue")
-	private List<EstoqueSangue> estoqueSangue;
-	
-	@OneToOne(fetch = FetchType.LAZY) 
-	@MapsId
-	@Column(name = "id_campanha")
-	private List<Campanha> campanha;
-	
-	@Column(name = "id_horarioInicio", nullable = false) 
+	@JoinColumn(name = "id_armazenamento")
+	private Armazenamento armazenamento;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private List<Campanha> campanhas;
+
+	@Column(name = "horario_abertura_hemocentro", nullable = false)
 	private LocalTime horarioInicio;
 
-	@Column(name = "id_horarioDuracao", nullable = false)
+	@Column(name = "horario_fechamento_hemocentro", nullable = false)
 	private Duration horarioDuracao;
 
-	@OneToOne(fetch = FetchType.LAZY) 
+	@OneToOne(fetch = FetchType.LAZY)
 	@MapsId
-	@Column(name = "id_doacoes")
-	private List<Doacao> doacoes;
-	
-	public Hemocentro() {
+	@JoinColumn(name = "id_endereco")
+	private Endereco endereco;
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.DETACH)
+	private List<Doacao> doacoes;
+
+	public Hemocentro() {
 	}
 
-	public Hemocentro(String cnpj, List<Demanda> demanda, List<EstoqueSangue> estoqueSangue, List<Campanha> campanha,
-			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
 
+	public Hemocentro(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cnpj,
+			List<Demanda> demanda, Armazenamento armazenamento, List<Campanha> campanha, LocalTime horarioInicio,
+			Duration horarioDuracao, List<Doacao> doacoes) {
+
+		super(apelido, nome, foto, senha, papel, contato);
 		this.cnpj = cnpj;
 		this.demanda = demanda;
-		this.estoqueSangue = estoqueSangue;
-		this.campanha = campanha;
+		this.armazenamento = armazenamento;
+		this.campanhas = campanha;
 		this.horarioInicio = horarioInicio;
 		this.horarioDuracao = horarioDuracao;
 		this.doacoes = doacoes;
 	}
-	//
 
-	// Get Set
 	public String getCnpj() {
 		return cnpj;
 	}
@@ -86,20 +97,20 @@ public class Hemocentro extends Usuario implements Serializable {
 		this.demanda = demanda;
 	}
 
-	public List<EstoqueSangue> getEstoqueSangue() {
-		return estoqueSangue;
+	public Armazenamento getArmazenamento() {
+		return armazenamento;
 	}
 
-	public void setEstoqueSangue(List<EstoqueSangue> estoqueSangue) {
-		this.estoqueSangue = estoqueSangue;
+	public void setArmazenamento(Armazenamento armazenamento) {
+		this.armazenamento = armazenamento;
 	}
 
-	public List<Campanha> getCampanha() {
-		return campanha;
+	public List<Campanha> getCampanhas() {
+		return campanhas;
 	}
 
-	public void setCampanha(List<Campanha> campanha) {
-		this.campanha = campanha;
+	public void setCampanhas(List<Campanha> campanhas) {
+		this.campanhas = campanhas;
 	}
 
 	public LocalTime getHorarioInicio() {
@@ -116,6 +127,14 @@ public class Hemocentro extends Usuario implements Serializable {
 
 	public void setHorarioDuracao(Duration horarioDuracao) {
 		this.horarioDuracao = horarioDuracao;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	public List<Doacao> getDoacoes() {
