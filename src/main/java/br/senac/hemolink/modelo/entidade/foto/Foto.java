@@ -1,6 +1,7 @@
 package br.senac.hemolink.modelo.entidade.foto;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -72,4 +73,18 @@ public class Foto implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		Foto outro = (Foto) obj;
+		return Objects.equals(id, outro.id);
+	}
+
 }
