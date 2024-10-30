@@ -44,10 +44,10 @@ public class Doador extends Usuario implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoSanguineo tipoSanguineo;
  
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.DETACH) // mappedby usuario ou doador ?
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.DETACH) // mappedby usuario ou doador ?
 	private List<Doacao> doacoes;
  
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.REMOVE)
 	private List<AquisicaoConquista> aquisicaoConquista; // mappedby usuario ou doador ?
  
 	public Doador() {
