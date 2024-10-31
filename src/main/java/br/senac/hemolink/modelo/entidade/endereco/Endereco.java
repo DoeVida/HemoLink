@@ -44,10 +44,6 @@ public class Endereco implements Serializable {
 	@Column(name = "cep_endereco", nullable = false, length = 8)
 	private String cep;
 
-	@OneToOne
-	@JoinColumn(name = "apelido_hemocentro", nullable = false)
-	private Hemocentro hemocentro;
-
 	public Endereco() {
 	}
 
@@ -59,7 +55,7 @@ public class Endereco implements Serializable {
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.cep = cep;
-		this.hemocentro = hemocentro;
+		//this.hemocentro = hemocentro;
 	}
 
 	public void setEstado(String estado) {
@@ -110,11 +106,11 @@ public class Endereco implements Serializable {
 		return this.cep;
 	}
 
-	public void setHemocentro(Hemocentro hemocentro) {
-		this.hemocentro = hemocentro;
-	}
+	//public void setHemocentro(Hemocentro hemocentro) {
+	//	this.hemocentro = hemocentro;
+	//}
 
-	public Hemocentro getHemocentro() {
-		return hemocentro;
-	}
+	//public Hemocentro getHemocentro() {
+	//	return hemocentro;
+	//}
 }

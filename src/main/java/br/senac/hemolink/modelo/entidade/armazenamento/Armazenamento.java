@@ -50,7 +50,11 @@ public class Armazenamento implements Serializable {
 		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
 		this.hemocentro = hemocentro;
 	}
-
+	
+	public Armazenamento(LocalDate dataUltimaAtualizacao) {
+		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+	}
+	
 	public Long getId() {
 		return id;
 	}
