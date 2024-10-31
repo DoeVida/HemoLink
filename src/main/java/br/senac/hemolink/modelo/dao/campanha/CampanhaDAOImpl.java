@@ -1,11 +1,5 @@
 package br.senac.hemolink.modelo.dao.campanha;
 
-import java.util.List;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 import org.hibernate.Session;
 
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
@@ -13,12 +7,13 @@ import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
 public class CampanhaDAOImpl implements CampanhaDAO {
 
-	private ConexaoFactory fabrica;
+	private ConexaoFactory fabrica = null;
 
 	public CampanhaDAOImpl() {
 		fabrica = new ConexaoFactory();
 	}
 
+	@Override
 	public void inserirCampanha(Campanha campanha) {
 
 		Session sessao = null;
@@ -48,6 +43,7 @@ public class CampanhaDAOImpl implements CampanhaDAO {
 		}
 	}
 
+	@Override
 	public void deletarCampanha(Campanha campanha) {
 
 		Session sessao = null;
@@ -77,6 +73,7 @@ public class CampanhaDAOImpl implements CampanhaDAO {
 		}
 	}
 
+	@Override
 	public void atualizarCampanha(Campanha campanha) {
 
 		Session sessao = null;
@@ -106,42 +103,4 @@ public class CampanhaDAOImpl implements CampanhaDAO {
 		}
 	}
 
-	public List<Campanha> recuperarCampanhas() {
-
-		Session sessao = null;
-		List<Campanha> campanhas = null;
-
-		try {
-
-			sessao = fabrica.getConexao().openSession();
-			sessao.beginTransaction();
-
-			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-
-			CriteriaQuery<Campanha> criteria = construtor.createQuery(Campanha.class);
-			Root<Campanha> raizCampanha = criteria.from(Campanha.class);
-
-			criteria.select(raizCampanha);
-
-			campanhas = sessao.createQuery(criteria).getResultList();
-
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-
-		return campanhas;
-	}
 }

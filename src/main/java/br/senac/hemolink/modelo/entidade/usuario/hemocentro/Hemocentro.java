@@ -54,7 +54,6 @@ public class Hemocentro extends Usuario implements Serializable {
 	private Duration horarioDuracao;
  
 	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
  

@@ -1,7 +1,7 @@
 package br.senac.hemolink.modelo.entidade.usuario;
  
 import java.io.Serializable;
-
+ 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+ 
 import br.senac.hemolink.modelo.entidade.contato.Contato;
 import br.senac.hemolink.modelo.entidade.foto.Foto;
 import br.senac.hemolink.modelo.entidade.papel.Papel;
@@ -74,21 +74,14 @@ public abstract class Usuario implements Serializable {
 	}
 
  
-	public Long getUsuario() {
-		return id;
-	}
- 
-	public void setUsuario(Long usuario) {
-		this.id = usuario;
-	}
- 
 	public Long getId() {
 		return id;
 	}
  
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long usuario) {
+		this.id = usuario;
 	}
+ 
 	public String getEmail() {
 		return email;
 	}

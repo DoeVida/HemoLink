@@ -21,10 +21,10 @@ public class ConexaoFactory {
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.endereco.Endereco.class);
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.estoqueSangue.EstoqueSangue.class);
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.papel.Papel.class);
-		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.foto.Foto.class);
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.Usuario.class);
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.doador.Doador.class);
 		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro.class);
+		configuracao.addAnnotatedClass(br.senac.hemolink.modelo.entidade.foto.Foto.class);
 		
 		configuracao.configure("hibernate.cfg.xml");
 

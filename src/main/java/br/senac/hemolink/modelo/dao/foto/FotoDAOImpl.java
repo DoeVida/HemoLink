@@ -13,6 +13,7 @@ public class FotoDAOImpl implements FotoDAO {
 		fabrica = new ConexaoFactory();
 	}
 
+	
 	public void inserirFoto(Foto foto) {
 
 		Session sessao = null;
@@ -40,6 +41,7 @@ public class FotoDAOImpl implements FotoDAO {
 		}
 	}
 
+	
 	public void deletarFoto(Foto foto) {
 
 		Session sessao = null;
@@ -67,6 +69,7 @@ public class FotoDAOImpl implements FotoDAO {
 		}
 	}
 
+	
 	public void atualizarFoto(Foto foto) {
 
 		Session sessao = null;
