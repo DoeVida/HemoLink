@@ -38,7 +38,7 @@ public abstract class Usuario implements Serializable {
 	
 	@Column(name = "apelido_usuario", length = 35, nullable = false)
 	private String apelido;
- 
+
 	@Column(name = "nome_usuario", length = 45, nullable = false)
 	private String nome;
  
@@ -46,7 +46,6 @@ public abstract class Usuario implements Serializable {
 	private String senha;
  
 	@OneToOne(cascade = CascadeType.ALL)
-	@MapsId
 	@JoinColumn(name = "id_foto", referencedColumnName = "id_foto")
 	private Foto foto;
  

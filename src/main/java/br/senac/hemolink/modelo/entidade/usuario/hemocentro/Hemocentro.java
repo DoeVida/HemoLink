@@ -37,8 +37,6 @@ public class Hemocentro extends Usuario implements Serializable {
 	private List<Demanda> demanda;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@MapsId
-	@JoinColumn(name = "id_armazenamento")
 	private List<Armazenamento> armazenamento;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
