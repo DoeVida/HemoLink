@@ -1,50 +1,31 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuario</title>
+    <title>Pagina incial</title>
 </head>
 
-<div class="perfil-doador">
-    <div class="BotÃ£o Perfil">
-        <button type="button"><a href="../Perfil-Doador.html"></a><img
-                src="C:\Users\User\Desktop\Html teste\imagens"></button>
+<body>
+<div class="PerfilDoador">
+	<h1>Projeto Solidário Hemolink</h1>
+	<div>
+		<h2>O hemolink proporciona:</h2>
+		<ul>
+			<li>Agendamento de doação</li>
+			<li>Importância da doação</li>
+		</ul>
+	</div>
+	<div>
+        <button>
+            <a href="agendamento-doacao.html">Fazer doação</a>
+        </button>
     </div>
-
-    <div class="caixa-de-pesquisa">
-        <form action="pesquisar">
-            <div>           
-                <input type="text" placeholder="Buscar...">
-            </div>
-        </form>
-        <div>
-            <button type="submit">Pesquisar</button>
-        </div>
-    </div>
-
-    <div class="registrar">
-        <button type="button">Registrar</button>
-    </div>
-
-    <div class="entrar">
-        <button type="button">Entrar</button>
-    </div>
-
-    <div class="botao-perfil">
-        <button type="button"><a href="../Perfil-Doador.html"></a><img
-                src="C:\Users\User\Desktop\Html teste\imagens"></button>
-    </div>
-
-    <div class="tela-inicio">
-        <img src="C:\Users\barbara.vaz\Downloads\imagem" alt="imagem" width="600 px">
-    </div>
-
-    <div class="status-perfil">
-        <div class="BotÃ£o Perfil">
-            <button type="button"><a href="../Perfil-Doador.html"></a><img
-                    src="https://definicion.de/wp-content/uploads/2019/07/perfil-de-usuario.png" width="75 px"></button>
+    <div class="StatusPerfil">
+        <div class="BotãoPerfil">
+            <button type="button"><a href="../Perfil-Doador.html"></a>
+            <img src="https://definicion.de/wp-content/uploads/2019/07/perfil-de-usuario.png" width="75 px"></button>
         </div>
         <div class="nome-usuario">
             <p>Viviane Oliva</p>
@@ -64,15 +45,17 @@
             <p>Hemocentro: HEMOSC</p>
         </div>
         <div>
-            <p>EndereÃ§o: Rua. taltal</p>
+            <p>Endereço: Rua. taltal</p>
         </div>
         <div>
-            <p>DescriÃ§Ã£o: Estamos buscando sangue A+ caso vocÃª possua clique no botÃ£o aolado para agendar.</p>
+            <p>Descrição: Estamos buscando sangue A+ caso você possua clique no botão ao lado para agendar.</p>
         </div>
         <div>
             <button>
-                <a href="agendamento-doacao.html">Fazer doaÃ§Ã£o</a>
+                <a href="agendamento-doacao.html">Fazer doação</a>
             </button>
         </div>
     </div>
-    
+</div>    
+</body>    
+</html>
