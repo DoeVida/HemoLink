@@ -26,7 +26,6 @@ import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
  
 @Entity
 @Table(name = "doador")
-@PrimaryKeyJoinColumn(name = "id_usuario")
 public class Doador extends Usuario implements Serializable {
  
 	private static final long serialVersionUID = -2615132801850413921L;

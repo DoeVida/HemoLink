@@ -34,14 +34,18 @@ public class EstoqueSangue implements Serializable {
 	@Column(name = "quantidade_litros_estoque_sangue", nullable = false)
 	private double quantidadeLitros;
 
+	@ManyToOne
+	@JoinColumn(name = "id_armazenamento", referencedColumnName = "id_armazenamento")
+	private Armazenamento armazenamento;
+
 	public EstoqueSangue() {
 	}
 
-	public EstoqueSangue(Long id, TipoSanguineo tipoSanguineo, double quantidadeLitros) {
-		super();
+	public EstoqueSangue(Long id, TipoSanguineo tipoSanguineo, double quantidadeLitros, Armazenamento armazenamento) {
 		this.id = id;
 		this.tipoSanguineo = tipoSanguineo;
 		this.quantidadeLitros = quantidadeLitros;
+		this.armazenamento = armazenamento;
 	}
 
 	public Long getId() {
@@ -68,4 +72,11 @@ public class EstoqueSangue implements Serializable {
 		this.quantidadeLitros = quantidadeLitros;
 	}
 
+	public Armazenamento getArmazenamento() {
+		return armazenamento;
+	}
+
+	public void setArmazenamento(Armazenamento armazenamento) {
+		this.armazenamento = armazenamento;
+	}
 }
