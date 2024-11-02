@@ -11,7 +11,7 @@ import org.hibernate.Session;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
-public class HemocentroDAOImpl implements HemocentroDAO{
+public class HemocentroDAOImpl implements HemocentroDAO {
 
 	private ConexaoFactory fabrica;
 
@@ -19,64 +19,109 @@ public class HemocentroDAOImpl implements HemocentroDAO{
 		fabrica = new ConexaoFactory();
 	}
 
-	private void erroSessao(Session sessao, Exception exception) {
-		exception.printStackTrace();
-		if (sessao.getTransaction() != null) {
-			sessao.getTransaction().rollback();
-		}
-	}
+//	private void erroSessao(Session sessao, Exception exception) {
+//		exception.printStackTrace();
+//		if (sessao.getTransaction() != null) {
+//			sessao.getTransaction().rollback();
+//		}
+//	}
+//
+//	private void fecharSessao(Session sessao) {
+//		if (sessao != null) {
+//			sessao.close();
+//		}
+//	}
+//
+//	private Session abrirSessao(Session sessao) {
+//		sessao = fabrica.getConexao().openSession();
+//		sessao.beginTransaction();
+//		return sessao;
+//	}
 
-	private void fecharSessao(Session sessao) {
-		if (sessao != null) {
-			sessao.close();
-		}
-	}
+	public void inserirHemocentro(Hemocentro Hemocentro) {
 
-	private Session abrirSessao(Session sessao) {
-		sessao = fabrica.getConexao().openSession();
-		sessao.beginTransaction();
-		return sessao;
-	}
-
-	public void inserirHemocentro(Hemocentro hemocentro) {
 		Session sessao = null;
 
 		try {
-			sessao = abrirSessao(sessao);
-			sessao.save(hemocentro);
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
+			sessao.save(Hemocentro);
+
 			sessao.getTransaction().commit();
 
-		} catch (Exception exception) {
-			erroSessao(sessao, exception);
-		} finally {
-			fecharSessao(sessao);
-		}
+		} catch (Exception sqlException) {
 
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
+		} finally {
+
+			if (sessao != null) {
+				sessao.close();
+			}
+		}
 	}
 
 	public void deletarHemocentro(Hemocentro hemocentro) {
+
 		Session sessao = null;
+
 		try {
-			sessao = abrirSessao(sessao);
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
 			sessao.delete(hemocentro);
+
 			sessao.getTransaction().commit();
-		} catch (Exception exception) {
-			erroSessao(sessao, exception);
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
 		} finally {
-			fecharSessao(sessao);
+
+			if (sessao != null) {
+				sessao.close();
+			}
 		}
 	}
 
 	public void atualizarHemocentro(Hemocentro hemocentro) {
+
 		Session sessao = null;
+
 		try {
-			sessao = abrirSessao(sessao);
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
 			sessao.update(hemocentro);
+
 			sessao.getTransaction().commit();
-		} catch (Exception exception) {
-			erroSessao(sessao, exception);
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
 		} finally {
-			fecharSessao(sessao);
+
+			if (sessao != null) {
+				sessao.close();
+			}
 		}
 	}
 
@@ -86,18 +131,37 @@ public class HemocentroDAOImpl implements HemocentroDAO{
 		List<Hemocentro> hemocentro = null;
 
 		try {
-			sessao = abrirSessao(sessao);
+
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
 			CriteriaQuery<Hemocentro> criteria = construtor.createQuery(Hemocentro.class);
 			Root<Hemocentro> raizHemocentro = criteria.from(Hemocentro.class);
+
 			criteria.select(raizHemocentro);
+
 			hemocentro = sessao.createQuery(criteria).getResultList();
+
 			sessao.getTransaction().commit();
-		}  catch (Exception exception) {
-			erroSessao(sessao, exception);
+
+		} catch (Exception sqlException) {
+
+			sqlException.printStackTrace();
+
+			if (sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
+
 		} finally {
-			fecharSessao(sessao);
+
+			if (sessao != null) {
+				sessao.close();
+			}
 		}
+
 		return hemocentro;
 	}
+
 }
