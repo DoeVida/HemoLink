@@ -11,7 +11,7 @@ import org.hibernate.Session;
 import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
-public class DoadorDAOImpl {
+public class DoadorDAOImpl implements DoadorDAO {
 
 	private ConexaoFactory fabrica;
 
@@ -93,7 +93,7 @@ public class DoadorDAOImpl {
 			criteria.select(raizDoador);
 			doador = sessao.createQuery(criteria).getResultList();
 			sessao.getTransaction().commit();
-		}  catch (Exception exception) {
+		} catch (Exception exception) {
 			erroSessao(sessao, exception);
 		} finally {
 			fecharSessao(sessao);
