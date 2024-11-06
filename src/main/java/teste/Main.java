@@ -165,6 +165,8 @@ public class Main {
 		campanha.setDescricaoCampanha("Descricao");
 		campanha.setHemocentro(hemocentro);
 		campanha.setTitulo("Titulo");
+		campanha.setDataInicio(LocalDate.now());
+		campanha.setDataFim(LocalDate.now());
 
 		// --------------------------------------------//
 		Demanda demanda = new Demanda();
@@ -223,56 +225,56 @@ public class Main {
 
 			System.out.println("Tentando Inserir Demanda");
 			demandaDAO.inserirDemanda(demanda);
-			
-			//----------------------------------------------------------//
-			
+
+			// ----------------------------------------------------------//
+
 			armazenamento.getEstoqueSangue().add(estoqueSangue);
 			armazenamento.setEstoqueSangue(armazenamento.getEstoqueSangue());
-			
+
 			campanha.getDemandas().add(demanda);
 			campanha.setDemandas(campanha.getDemandas());
-			
+
 			campanha.getDoacoes().add(doacao);
 			campanha.setDoacoes(campanha.getDoacoes());
 
 			conquista.getAquisicaoConquista().add(aquisicaoConquista);
 			conquista.setAquisicaoConquista(conquista.getAquisicaoConquista());
-			
+
 			doador.getDoacoes().add(doacao);
 			doador.setDoacoes(doador.getDoacoes());
-			
+
 			doador.getAquisicaoConquista().add(aquisicaoConquista);
 			doador.setAquisicaoConquista(doador.getAquisicaoConquista());
-			
+
 			hemocentro.getDemanda().add(demanda);
 			hemocentro.setDemanda(hemocentro.getDemanda());
-			
+
 			hemocentro.getArmazenamento().add(armazenamento);
 			hemocentro.setArmazenamento(hemocentro.getArmazenamento());
-			
+
 			hemocentro.getCampanhas().add(campanha);
 			hemocentro.setCampanhas(hemocentro.getCampanhas());
-			
+
 			hemocentro.getDoacoes().add(doacao);
 			hemocentro.setDoacoes(hemocentro.getDoacoes());
-			
-			//----------------------------------------------------------//
-			
+
+			// ----------------------------------------------------------//
+
 			System.out.println("Tentando Atualizar Armazenamento");
 			armazenamentoDAO.atualizarArmazenamento(armazenamento);
-			
+
 			System.out.println("Tentando Atualizar Campanha");
 			campanhaDAO.atualizarCampanha(campanha);
-			
+
 			System.out.println("Tentando Atualizar Conquista");
 			conquistaDAO.atualizarConquista(conquista);
-			
+
 			System.out.println("Tentando Atualizar Doador");
 			doadorDAO.atualizarDoador(doador);
-			
+
 			System.out.println("Tentando Atualizar Hemocentro");
 			hemocentroDAO.atualizarHemocentro(hemocentro);
-			
+
 		} catch (Exception e) {
 			System.out.println("Erro no código!");
 		} finally {
