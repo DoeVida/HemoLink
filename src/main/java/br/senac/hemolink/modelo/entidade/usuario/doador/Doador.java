@@ -52,18 +52,13 @@ public class Doador extends Usuario implements Serializable {
 	public Doador() {
 	}
  
-	public Doador(Long id, String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cpf,
-			char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento, List<Doacao> doacoes,
-			List<AquisicaoConquista> aquisicoesConquista) {
-		super(id, apelido, nome, cpf, foto, senha, papel, contato);
+	public Doador(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cpf, char sexo, LocalDate dataNascimento, TipoSanguineo tipoSanguineo) {
+		super(apelido, nome, foto, senha, papel, contato);
 		this.cpf = cpf;
 		this.sexo = sexo;
-		this.tipoSanguineo = tipoSanguineo;
 		this.dataDeNascimento = dataDeNascimento;
-		this.doacoes = doacoes;
-		this.aquisicaoConquista = aquisicoesConquista;
+		this.tipoSanguineo = tipoSanguineo;
 	}
- 
 	public List<AquisicaoConquista> getAquisicaoConquista() {
 		return aquisicaoConquista;
 	}
