@@ -3,6 +3,7 @@ package br.senac.hemolink.controle.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,14 +12,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.senac.hemolink.modelo.dao.doador.DoadorDAO;
 import br.senac.hemolink.modelo.dao.doador.DoadorDAOImpl;
+import br.senac.hemolink.modelo.entidade.aquisicaoConquista.AquisicaoConquista;
+import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.foto.Foto;
+import br.senac.hemolink.modelo.entidade.papel.Papel;
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
 @WebServlet("/")
-public class UsuarioServlet extends HttpServlet {
+public class DoadorServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 878678693847L;
 	private DoadorDAO dao;
@@ -97,14 +104,28 @@ public class UsuarioServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void inserirDoador(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	private void inserirDoador(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {        
+
+		Papel papel = new Papel("doador");
 		
-		String cpf = request.getParameter("cpf");
-		char sexo = request.getParameter("sexo").charAt(0);;
-		LocalDate dataDeNascimento = LocalDate.parse(request.getParameter("dataDeNascimento"));
-		TipoSanguineo tipoSanguineo = TipoSanguineo.valueOf(request.getParameter("tipoSanguineo"));
-		dao.inserirDoador(new Doador(cpf, sexo, dataDeNascimento, tipoSanguineo));
+		Foto foto = new Foto();
+	    foto.setConteudo((byte[]) request.getAttribute("conteudo_foto"));
+	    foto.setExtensao(request.getParameter("extensao_foto"));
+	    
+	    String apelido = request.getParameter("apelido");
+	    String nome = request.getParameter("nome");
+	    String senha = request.getParameter("senha");
+	    Doador doador = new Doador();
+	    String cpf = request.getParameter("cpf");
+	    char sexo = request.getParameter("sexo").charAt(0);
+	    LocalDate dataDeNascimento = LocalDate.parse(request.getParameter("data-de-nascimento"));
+	    TipoSanguineo tipoSanguineo = TipoSanguineo.valueOf(request.getParameter("tipo-sanguineo"));
+		
+		
+		Doador doador = new Doador(apelido, nome, foto, senha, null, null, doador, cpf, sexo, tipoSanguineo, dataDeNascimento, null, null);
+		dao.inserirDoador(doador);
 		response.sendRedirect("listar");
+        }
 	}
 
 	private void atualizarDoador(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {

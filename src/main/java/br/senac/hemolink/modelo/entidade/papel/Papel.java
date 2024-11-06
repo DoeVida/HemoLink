@@ -30,6 +30,10 @@ public class Papel implements Serializable {
 		this.id = id;
 		this.nome = nome;
 	}
+	
+	public Papel (String nome) {
+		this.nome = nome;
+	}
 
 	public Long getIdPapel() {
 		return id;
