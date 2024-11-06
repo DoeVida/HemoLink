@@ -1,6 +1,8 @@
 package br.senac.hemolink.modelo.entidade.campanha;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -46,16 +48,25 @@ public class Campanha implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
 	private List<Doacao> doacoes;
 
-	public Campanha() {
-	}
+	@Column(name = "data_inicio", nullable = false)
+	private LocalDate dataInicio;
 
-	public Campanha(Long id, Hemocentro hemocentro, String titulo, String descricaoCampanha, List<Doacao> doacoes, List<Demanda> demandas) {
+	@Column(name = "data_fim", nullable = false)
+	private LocalDate dataFim;
+
+	public Campanha() {}
+
+	public Campanha(Long id, String titulo, String descricaoCampanha, Hemocentro hemocentro, List<Demanda> demandas,
+			List<Doacao> doacoes, LocalDate dataInicio, LocalDate dataFim) {
+		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.descricaoCampanha = descricaoCampanha;
-		this.doacoes = doacoes;
-		this.demandas = demandas;
 		this.hemocentro = hemocentro;
+		this.demandas = demandas;
+		this.doacoes = doacoes;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
 	}
 
 	public Long getId() {
@@ -102,7 +113,24 @@ public class Campanha implements Serializable {
 		return doacoes;
 	}
 
-	public void setDoacoes(List<Doacao> doacoes) {
-		this.doacoes = doacoes;
+	public void setHemocentro(Hemocentro hemocentro) {
+		this.hemocentro = hemocentro;
 	}
+
+	public LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public LocalDate getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
+
 }

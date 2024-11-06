@@ -9,20 +9,19 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import br.senac.hemolink.modelo.entidade.armazenamento.Armazenamento;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
-import br.senac.hemolink.modelo.entidade.contato.Contato;
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
 import br.senac.hemolink.modelo.entidade.endereco.Endereco;
-import br.senac.hemolink.modelo.entidade.foto.Foto;
-import br.senac.hemolink.modelo.entidade.papel.Papel;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
 @Entity
@@ -30,10 +29,6 @@ import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 public class Hemocentro extends Usuario implements Serializable {
 
 	private static final long serialVersionUID = 5082517849085199550L;
-	
-	@MapsId
-	@Column(name = "id_usuario")
-	private Usuario usuario;
 
 	@Column(name = "cnpj_hemocentro", length = 14, nullable = false, unique = true)
 	private String cnpj;
@@ -41,10 +36,8 @@ public class Hemocentro extends Usuario implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.REMOVE)
 	private List<Demanda> demanda;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@JoinColumn(name = "id_armazenamento")
-	private Armazenamento armazenamento;
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private List<Armazenamento> armazenamento;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Campanha> campanhas;
@@ -56,7 +49,6 @@ public class Hemocentro extends Usuario implements Serializable {
 	private Duration horarioDuracao;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
 
@@ -66,18 +58,16 @@ public class Hemocentro extends Usuario implements Serializable {
 	public Hemocentro() {
 	}
 
-
-	public Hemocentro(String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cnpj,
-			List<Demanda> demanda, Armazenamento armazenamento, List<Campanha> campanha, LocalTime horarioInicio,
-			Duration horarioDuracao, List<Doacao> doacoes) {
-
-		super(apelido, nome, foto, senha, papel, contato);
+	public Hemocentro(String cnpj, List<Demanda> demanda, List<Armazenamento> armazenamento, List<Campanha> campanhas,
+			LocalTime horarioInicio, Duration horarioDuracao, Endereco endereco, List<Doacao> doacoes) {
+		super();
 		this.cnpj = cnpj;
 		this.demanda = demanda;
 		this.armazenamento = armazenamento;
-		this.campanhas = campanha;
+		this.campanhas = campanhas;
 		this.horarioInicio = horarioInicio;
 		this.horarioDuracao = horarioDuracao;
+		this.endereco = endereco;
 		this.doacoes = doacoes;
 	}
 
@@ -97,11 +87,11 @@ public class Hemocentro extends Usuario implements Serializable {
 		this.demanda = demanda;
 	}
 
-	public Armazenamento getArmazenamento() {
+	public List<Armazenamento> getArmazenamento() {
 		return armazenamento;
 	}
 
-	public void setArmazenamento(Armazenamento armazenamento) {
+	public void setArmazenamento(List<Armazenamento> armazenamento) {
 		this.armazenamento = armazenamento;
 	}
 
@@ -144,4 +134,5 @@ public class Hemocentro extends Usuario implements Serializable {
 	public void setDoacoes(List<Doacao> doacoes) {
 		this.doacoes = doacoes;
 	}
+
 }

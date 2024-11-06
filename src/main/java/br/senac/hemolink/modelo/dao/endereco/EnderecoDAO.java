@@ -3,7 +3,6 @@ package br.senac.hemolink.modelo.dao.endereco;
 import java.util.List;
 
 import br.senac.hemolink.modelo.entidade.endereco.Endereco;
-import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 
 public interface EnderecoDAO {
 
@@ -14,8 +13,4 @@ public interface EnderecoDAO {
 	void atualizarEndereco(Endereco endereco);
 
 	List<Endereco> recuperarEnderecos();
-		
-	List<Endereco> recuperarEnderecosCliente(Usuario usuario);
-	
 }
-	

@@ -37,7 +37,7 @@ public class Armazenamento implements Serializable {
 	private LocalDate dataUltimaAtualizacao;
 
 	@ManyToOne
-	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_usuario")
+	@JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
 	private Hemocentro hemocentro;
 
 	public Armazenamento() {
@@ -45,7 +45,16 @@ public class Armazenamento implements Serializable {
 
 	public Armazenamento(Long id, List<EstoqueSangue> estoqueSangue, LocalDate dataUltimaAtualizacao,
 			Hemocentro hemocentro) {
+		super();
 		this.id = id;
+		this.estoqueSangue = estoqueSangue;
+		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+		this.hemocentro = hemocentro;
+	}
+	
+	public Armazenamento(List<EstoqueSangue> estoqueSangue, LocalDate dataUltimaAtualizacao,
+			Hemocentro hemocentro) {
+		super();
 		this.estoqueSangue = estoqueSangue;
 		this.dataUltimaAtualizacao = dataUltimaAtualizacao;
 		this.hemocentro = hemocentro;
