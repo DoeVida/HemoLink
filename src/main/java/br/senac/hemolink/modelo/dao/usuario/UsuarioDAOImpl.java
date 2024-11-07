@@ -1,14 +1,13 @@
 package br.senac.hemolink.modelo.dao.usuario;
- 
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
- 
-import org.hibernate.Session;
- 
+
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario_;
 import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
+import org.hibernate.Session;
  
 public class UsuarioDAOImpl implements UsuarioDAO{
  
@@ -105,7 +104,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 		}
 	}
 	
-	public Usuario recuperarUsuarioPeloEmail(String email) {
+	public Usuario recuperarUsuarioPeloEmail(String apelido) {
 		
 		Session sessao = null;
 		Usuario usuario = null;
@@ -122,7 +121,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
 			CriteriaQuery<Usuario> criteria = construtor.createQuery(Usuario.class);
 			Root<Usuario> raizUsuario = criteria.from(Usuario.class);
-			criteria.select(raizUsuario).where(construtor.equal(raizUsuario.get(Usuario_.EMAIL), email));
+			criteria.select(raizUsuario).where(construtor.equal(raizUsuario.get(Usuario_.APELIDO), apelido));
 			usuario = sessao.createQuery(criteria).getSingleResult();
 			sessao.getTransaction().commit();
 				

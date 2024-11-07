@@ -41,11 +41,11 @@ public class Demanda implements Serializable {
 	private double quantidadeLitros;
 
 	@ManyToOne
-	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_usuario")
+	@JoinColumn(name = "id_hemocentro")
 	private Hemocentro hemocentro;
 
 	@ManyToOne
-	@JoinColumn(name = "id_campanha", referencedColumnName = "id_campanha")
+	@JoinColumn(name = "id_campanha")
 	private Campanha campanha;
 
 	public Demanda() {

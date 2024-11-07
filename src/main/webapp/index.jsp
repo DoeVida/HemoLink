@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<a href="paginas/cadastrar-doador.jsp">Cadastro Doador</a> 
 </body>
 </html>

@@ -110,7 +110,6 @@ public class Main {
 		doador.setContato(contato);
 		doador.setCpf("232123");
 		doador.setDataDeNascimento(LocalDate.of(2009, 3, 30));
-		doador.setEmail("email@doador.com");
 		doador.setFoto(fotoDoador);
 		doador.setNome("Miguel");
 		doador.setPapel(papel);
@@ -136,7 +135,6 @@ public class Main {
 		hemocentro.setApelido("Apelido Hemocentro");
 		hemocentro.setCnpj("1231231");
 		hemocentro.setContato(contato);
-		hemocentro.setEmail("email@hemocentro.com");
 		hemocentro.setFoto(fotoHemocentro);
 		hemocentro.setEndereco(endereco);
 		hemocentro.setHorarioDuracao(Duration.ofHours(12));
