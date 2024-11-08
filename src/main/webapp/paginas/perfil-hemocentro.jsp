@@ -7,34 +7,6 @@
 </head>
 <body>
 
-    <div class="perfil-doador">
-        <div class="Bot√£o Perfil">
-            <button type="button"><a href="../Perfil-Doador.html"></a><img
-                    src="C:\Users\User\Desktop\Html teste\imagens"></button>
-        </div>
-
-        <div class="caixa-de-pesquisa">
-            <div>
-                <input type="text" placeholder="Buscar...">
-            </div>
-            <div>
-                <button type="submit">Pesquisar</button>
-            </div>
-        </div>
-
-        <div class="registrar">
-            <button type="button">Registrar</button>
-        </div>
-
-        <div class="entrar">
-            <button type="button">Entrar</button>
-        </div>
-
-        <div class="botao-perfil">
-            <button type="button"><a href="../Perfil-Doador.html"></a><img
-                    src="C:\Users\User\Desktop\Html teste\imagens"></button>
-        </div>
-
         <div class="foto-e-nome">
             <div>
                 <h2>@Apelido</h2>
@@ -43,11 +15,11 @@
 
         <div class="horarios">
             <div>
-                <h3>Hor√°rio de Atendimento</h3>
+                <h3>Hor·rio de Atendimento</h3>
             </div>
 
             <div>
-                <h5>Aberto das XX:XX √†s XX:XX de segunda a sexta</h5>
+                <h5>Aberto das XX:XX ‡s XX:XX de segunda a sexta</h5>
             </div>
         </div>
 
@@ -65,7 +37,7 @@
                 <label for="telefone">Telefone:</label>
             </div>
             <div>
-                <input type="text" id="telefone" name="telefone" placeholder="...">
+                <input type="tel" id="telefone" name="telefone" placeholder="...">
             </div>
         </div>
 
@@ -74,7 +46,7 @@
                 <label for="email">Email:</label>
             </div>
             <div>
-                <input type="text" id="email" name="email" placeholder="...">
+                <input type="email" id="email" name="email" placeholder="...">
             </div>
         </div>
 
