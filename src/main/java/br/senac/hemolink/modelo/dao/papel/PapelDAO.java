@@ -13,4 +13,6 @@ public interface PapelDAO {
 	void atualizarPapel(Papel papel);
 
 	List<Papel> recuperarPapeis();
+	
+	Papel recuperarPapelPeloNome(String nome);
 }

@@ -18,7 +18,7 @@ public class Papel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_papel")
-	private Long id;
+	private Long idPapel;
 
 	@Column(name = "nome_papel", length = 15, nullable = false, unique = true)
 	private String nome;
@@ -31,16 +31,16 @@ public class Papel implements Serializable {
 	}
 
 	public Papel(Long id, String nome) {
-		this.id = id;
+		this.idPapel = id;
 		this.nome = nome;
 	}
 
 	public Long getIdPapel() {
-		return id;
+		return idPapel;
 	}
 
 	public void setIdPapel(Long id) {
-		this.id = id;
+		this.idPapel = id;
 	}
 
 	public String getNomePapel() {
