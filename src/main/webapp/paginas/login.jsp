@@ -43,7 +43,7 @@
 				</div>
 				<div class="criarConta">
 					<div>
-						<label>NÃ£o tem uma conta?</label>
+						<label>Não tem uma conta?</label>
 						<a href="link_para_criar_conta">Crie uma</a>
 					</div>
 				</div>
