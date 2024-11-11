@@ -20,7 +20,7 @@ public class Papel implements Serializable {
 	@Column(name = "id_papel")
 	private Long idPapel;
 
-	@Column(name = "nome_papel", length = 15, nullable = false, unique = true)
+	@Column(name = "nome_papel", length = 15, nullable = false, unique = false)
 	private String nome;
 
 	public Papel() {
