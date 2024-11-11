@@ -79,40 +79,39 @@
 			</div>
 			<div class="botoes-calendario">
 				<div>
-					<a href="https://www.youtube.com/shorts/WjnqAG0SD0o">
-						<button type="button">
-							<img
-								src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
-								width="100">
-						</button>
-					</a>
+					<button type="button">
+						<img
+							src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
+							width="100">
+					</button>
 				</div>
 				<div>
-					<a href="https://www.youtube.com/shorts/WjnqAG0SD0o">
-						<button type="button">
-							<img
-								src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
-								width="100">
-						</button>
-					</a>
+					<button type="button">
+						<img
+							src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
+							width="100">
+					</button>
 				</div>
 				<div>
-					<a href="https://www.youtube.com/shorts/WjnqAG0SD0o">
-						<button type="button">
-							<img
-								src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
-								width="100">
-						</button>
-					</a>
+					<button type="button">
+						<img
+							src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
+							width="100">
+					</button>
 				</div>
 				<div>
-					<a href="https://www.youtube.com/shorts/WjnqAG0SD0o">
-						<button type="button">
-							<img
-								src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
-								width="100">
-						</button>
-					</a>
+					<button type="button">
+						<img
+							src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
+							width="100">
+					</button>
+				</div>
+				<div>
+					<button type="button">
+						<img
+							src="https://static.vecteezy.com/ti/vetor-gratis/p1/24150169-de-icone-de-calendario-vetor.jpg"
+							width="100">
+					</button>
 				</div>
 			</div>
 		</div>
