@@ -137,7 +137,7 @@ public class Main {
 		hemocentro.setContato(contato);
 		hemocentro.setFoto(fotoHemocentro);
 		hemocentro.setEndereco(endereco);
-		hemocentro.setHorarioDuracao(Duration.ofHours(12));
+		hemocentro.setHorarioFim(LocalTime.now());
 		hemocentro.setHorarioInicio(LocalTime.of(12, 2));
 		hemocentro.setNome("Nome");
 		hemocentro.setPapel(papel);

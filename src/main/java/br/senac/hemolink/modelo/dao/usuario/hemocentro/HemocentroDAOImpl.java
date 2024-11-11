@@ -99,42 +99,4 @@ public class HemocentroDAOImpl implements HemocentroDAO {
 		return hemocentros;
 	}
 
-	public Hemocentro recuperarHemocentroPeloId(long Id) {
-
-		Session sessao = null;
-		Hemocentro hemocentro = null;
-
-		try {
-
-			sessao = fabrica.getConexao().openSession();
-			sessao.beginTransaction();
-
-			sessao.update(hemocentro);
-
-			sessao.getTransaction().commit();
-
-			CriteriaBuilder construtor = sessao.getCriteriaBuilder();
-			CriteriaQuery<Hemocentro> criteria = construtor.createQuery(Hemocentro.class);
-			Root<Hemocentro> raizHemocentro = criteria.from(Hemocentro.class);
-			criteria.select(raizHemocentro).where(construtor.equal(raizHemocentro.get(Hemocentro_.ID), id));
-			hemocentro = sessao.createQuery(criteria).getSingleResult();
-			sessao.getTransaction().commit();
-
-		} catch (Exception sqlException) {
-
-			sqlException.printStackTrace();
-
-			if (sessao.getTransaction() != null) {
-				sessao.getTransaction().rollback();
-			}
-
-		} finally {
-
-			if (sessao != null) {
-				sessao.close();
-			}
-		}
-		return hemocentro;
-	}
-
 }
