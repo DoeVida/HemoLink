@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visão Adm Gerenciar conquistas</title>
-    <title>Gerenciar conquistas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciar conquistas</title>
 </head>
-
 <body>
-    <div class="cadastro">
-        <div class="titulo">
-            <h1>
-                Cadastro de Conquista
-            </h1>
-        </div>
-        <div class="botao-cadastrar-conquista">
-            <input type="submit" value="Cadastrar Conquista">
-        </div>
-        <div class="conquista1">
-            <div class="titulo-conquista">
-                <h2>
-                    Conquista 1
-                </h2>
-            </div>
-            <div class="conteudo-conquista">
-                <h4>
-                    "Conteudo da Conquista"
-                </h4>
-            </div>
-            <div class="botoes">
-                <div class="botao-excluir">
-                    <input type="submit" value="Excluir">
-                </div>
-                <div class="botao-editar">
-                    <input type="submit" value="Editar">
-                </div>
-            </div>
-        </div>
 
-        <div class="conquista2">
-            <div class="titulo-conquista">
-                <h2>
-                    Conquista 2
-                </h2>
-            </div>
-            <div class="conteudo-conquista">
-                <h4>
-                    "Conteudo da Conquista"
-                </h4>
-            </div>
-            <div class="botoes">
-                <div class="botao-excluir">
-                    <input type="submit" value="Excluir">
+
+	<!-- Seção de Cadastro de Conquista -->
+	<div class="cadastro">
+		<h1>Cadastro de Conquista</h1>
+		<form action="cadastrarConquista" method="post">
+		
+			<label for="nomeConquista">Nome da Conquista:
+				</label> <input type="text" id="nomeConquista" name="nomeConquista" required>
+
+			<label for="descricaoConquista">Descrição:
+			</label> <input type="text" id="descricaoConquista" name="descricaoConquista" required>
+				
+				<input type="submit" value="Cadastrar Conquista">
+		</form>
+
+
+		 <!-- Listagem de Conquistas -->
+    <div class="conquistas">
+        <h1>Lista de Conquistas</h1>
+        <c:forEach var="conquista" items="${conquistas}">
+            <div class="conquista">
+            
+            
+                <!-- Título da Conquista -->
+                <h2>${conquista.nomeConquista}</h2>
+                
+                
+                <!-- Descrição da Conquista -->
+                <h4>${conquista.descricaoConquista}</h4>
+                
+                
+               <!-- Botões de Ação -->
+                <div class="botoes">
+                
+                
+                    <!-- Botão de Excluir -->
+                    <form action="excluirConquista" method="post" style="display: inline;">
+                        <input type="hidden" name="idConquista" value="${conquista.idConquista}">
+                        <input type="submit" value="Excluir">
+                    </form>
+                    
+                    
+                    <!-- Botão de Editar -->
+                    <form action="editarConquista" method="get" style="display: inline;">
+                        <input type="hidden" name="idConquista" value="${conquista.idConquista}">
+                        <input type="submit" value="Editar">
+                    </form>
                 </div>
-                <div class="botao-editar">
-                    <input type="submit" value="Editar">
-                </div>
             </div>
-        </div>
+        </c:forEach>
     </div>
 </body>
-
 </html>
