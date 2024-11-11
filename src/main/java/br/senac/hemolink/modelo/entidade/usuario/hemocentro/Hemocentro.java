@@ -46,7 +46,7 @@ public class Hemocentro extends Usuario implements Serializable {
 	private LocalTime horarioInicio;
 
 	@Column(name = "horario_fechamento_hemocentro", nullable = false)
-	private Duration horarioDuracao;
+	private LocalTime horarioFim;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_endereco")
