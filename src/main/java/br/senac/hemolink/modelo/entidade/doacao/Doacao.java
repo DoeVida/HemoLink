@@ -1,3 +1,4 @@
+
 package br.senac.hemolink.modelo.entidade.doacao;
 
 import java.io.Serializable;

@@ -1,3 +1,4 @@
+
 package br.senac.hemolink.modelo.entidade.foto;
 
 import java.io.Serializable;

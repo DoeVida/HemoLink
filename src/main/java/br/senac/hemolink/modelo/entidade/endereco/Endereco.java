@@ -1,3 +1,4 @@
+
 package br.senac.hemolink.modelo.entidade.endereco;
 
 import java.io.Serializable;

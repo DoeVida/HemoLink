@@ -1,3 +1,4 @@
+
 package br.senac.hemolink.modelo.entidade.usuario;
 
 import java.io.Serializable;
