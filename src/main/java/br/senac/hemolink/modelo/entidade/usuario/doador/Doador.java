@@ -67,7 +67,7 @@ public class Doador extends Usuario implements Serializable {
         this.tipoSanguineo = tipoSanguineo;
     }
 
-    public String getCpf() {
+	public String getCpf() {
         return cpf;
     }
 

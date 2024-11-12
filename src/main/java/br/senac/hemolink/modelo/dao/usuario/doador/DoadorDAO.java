@@ -13,5 +13,7 @@ public interface DoadorDAO {
 	void atualizarDoador(Doador doador);
 
 	List<Doador> recuperarDoadores();
+	
+	Doador recuperarDoadorPeloId(long id);
 
 }

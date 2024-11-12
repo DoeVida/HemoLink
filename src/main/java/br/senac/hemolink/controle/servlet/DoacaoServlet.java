@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import br.senac.hemolink.modelo.dao.doacao.DoacaoDAO;
 import br.senac.hemolink.modelo.dao.doacao.DoacaoDAOImpl;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 import br.senac.hemolink.modelo.enumeracao.Status;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
@@ -65,8 +67,6 @@ public class DoacaoServlet extends HttpServlet {
     }
  
     private void listardoacoes(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        //List<Doacao> doacao = daoDoacao.recuperardoacaoPeloId();
-    	//request.setAttribute("doacao", doacao);
         RequestDispatcher dispatcher = request.getRequestDispatcher("listar-doacao.jsp");
         dispatcher.forward(request, response);
     }
@@ -85,12 +85,15 @@ public class DoacaoServlet extends HttpServlet {
  
     private void inserirdoacao(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
     	
+    	Doador doador = new Doador();
+    	Hemocentro hemocentro = new Hemocentro(); 
+    	           
         LocalDate dataDoacao = LocalDate.parse(request.getParameter("data-daocao"));
         LocalTime horaDoacao = LocalTime.parse(request.getParameter("hora-daocao"));
         Status status = Status.valueOf(request.getParameter("status").toUpperCase());
         TipoSanguineo tipoSanguineo = TipoSanguineo.valueOf(request.getParameter("tipo-sanguineo").toUpperCase().replace("-", "_"));
         
-        Doacao doacao = new Doacao();
+        Doacao doacao = new Doacao(doador, hemocentro,dataDoacao, horaDoacao, status, tipoSanguineo);
       
         daoDoacao.inserirDoacao(doacao);
         

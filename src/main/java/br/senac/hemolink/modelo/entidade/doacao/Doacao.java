@@ -67,6 +67,18 @@ public class  Doacao implements Serializable {
 		this.status = status;
 		this.tipoSanguineo = tipoSanguineo;
 	}
+	
+	public Doacao(Long id, Doador doador, Hemocentro hemocentro, LocalDate dataDoacao, LocalTime horaDoacao, Status status,
+			TipoSanguineo tipoSanguineo) {
+		this.id = id;
+		this.doador = doador;
+		this.hemocentro = hemocentro;
+		this.dataDoacao = dataDoacao;
+		this.horaDoacao = horaDoacao;
+		this.status = status;
+		this.tipoSanguineo = tipoSanguineo;
+	}
+
 
 	public TipoSanguineo getTipoSanguineo() {
 		return tipoSanguineo;
