@@ -2,7 +2,6 @@ package br.senac.hemolink.controle.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,17 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.taglibs.standard.tag.common.fmt.RequestEncodingSupport;
-
-import br.senac.hemolink.modelo.dao.contato.ContatoDAO;
-import br.senac.hemolink.modelo.dao.contato.ContatoDAOImpl;
 import br.senac.hemolink.modelo.dao.demanda.DemandaDAO;
 import br.senac.hemolink.modelo.dao.demanda.DemandaDAOImpl;
-import br.senac.hemolink.modelo.dao.papel.PapelDAO;
-import br.senac.hemolink.modelo.dao.papel.PapelDAOImpl;
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
-import br.senac.hemolink.modelo.entidade.contato.Contato;
 import br.senac.hemolink.modelo.entidade.demanda.Demanda;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 import br.senac.hemolink.modelo.enumeracao.Capacidade;
@@ -33,11 +24,9 @@ public class DemandaServlet {
 	public class demandaServlet extends HttpServlet {
 	    private static final long serialVersionUID = 878678693847L;
 	    private DemandaDAO daodemanda;
-	    private ContatoDAO daoContato;
 
 	    public void init() {
 	        daodemanda = new DemandaDAOImpl();
-	        daoContato = new ContatoDAOImpl();
 	    }
 	    
 
@@ -92,8 +81,6 @@ public class DemandaServlet {
 	    private void mostrarFormularioEditardemanda(HttpServletRequest request, HttpServletResponse response)
 	            throws SQLException, ServletException, IOException {
 	        long id = Long.parseLong(request.getParameter("id"));
-
-
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("form-demanda.jsp");
 	        dispatcher.forward(request, response);
 	    }
