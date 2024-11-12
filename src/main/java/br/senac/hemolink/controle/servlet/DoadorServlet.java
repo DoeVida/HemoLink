@@ -76,7 +76,6 @@ public class DoadorServlet extends HttpServlet {
     private void listarDoadors(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Doador> doador = daoDoador.recuperarDoadores();
         request.setAttribute("Doador", doador);
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("listar-Doador.jsp");
         dispatcher.forward(request, response);
     }
