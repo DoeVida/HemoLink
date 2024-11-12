@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
+import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro_;
 import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
 public class HemocentroDAOImpl implements HemocentroDAO {
