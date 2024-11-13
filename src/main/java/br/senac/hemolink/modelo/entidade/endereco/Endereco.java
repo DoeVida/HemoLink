@@ -40,7 +40,7 @@ public class Endereco implements Serializable {
 	private String logradouro;
 
 	@Column(name = "numero_endereco", nullable = false)
-	private int numero;
+	private long numero;
 
 	@Column(name = "cep_endereco", nullable = false, length = 8)
 	private String cep;
@@ -48,15 +48,23 @@ public class Endereco implements Serializable {
 	public Endereco() {
 	}
 
-	public Endereco(String estado, String cidade, String bairro, String logradouro, int numero, String cep,
-			Hemocentro hemocentro) {
+	public Endereco(long idEndereco,String estado, String cidade, String bairro, String logradouro, long numero, String cep) {
+		this.idEndereco = idEndereco;
 		this.estado = estado;
 		this.cidade = cidade;
 		this.bairro = bairro;
 		this.logradouro = logradouro;
 		this.numero = numero;
 		this.cep = cep;
-		//this.hemocentro = hemocentro;
+	}
+	
+	public Endereco(String estado, String cidade, String bairro, String logradouro, long numero, String cep) {
+		this.estado = estado;
+		this.cidade = cidade;
+		this.bairro = bairro;
+		this.logradouro = logradouro;
+		this.numero = numero;
+		this.cep = cep;
 	}
 
 	public void setEstado(String estado) {
@@ -95,7 +103,7 @@ public class Endereco implements Serializable {
 		this.numero = numero;
 	}
 
-	public int getNumero() {
+	public long getNumero() {
 		return this.numero;
 	}
 
