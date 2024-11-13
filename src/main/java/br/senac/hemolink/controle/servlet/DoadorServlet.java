@@ -116,7 +116,7 @@ public class DoadorServlet extends HttpServlet {
         daoContato.inserirContato(contato);
         daoDoador.inserirDoador(doador);
         
-        response.sendRedirect("listar");
+        response.sendRedirect("index.jsp");
 
     }
 

@@ -92,7 +92,6 @@ public class UsuarioServlet extends HttpServlet {
     private void loginUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	HttpSession session = request.getSession();
     	
-    	int a = 1;
     	
     	String apelido = request.getParameter("apelido");
     	String senha = request.getParameter("senha");

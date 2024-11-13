@@ -9,7 +9,7 @@
 
 	<div class="Cadastro">
 		<h1>Registre-se</h1>
-		<form action="<%=request.getContextPath()%>/inserir-doador" method="post">
+		<form action="inserir-doador" method="post">
 			<div class="apelido">
 				<div>
 					<label for="apelido">Apelido*</label>
