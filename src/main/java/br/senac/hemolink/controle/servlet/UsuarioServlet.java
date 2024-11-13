@@ -2,7 +2,6 @@ package br.senac.hemolink.controle.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,24 +13,25 @@ import javax.servlet.http.HttpSession;
 
 import br.senac.hemolink.modelo.dao.contato.ContatoDAO;
 import br.senac.hemolink.modelo.dao.contato.ContatoDAOImpl;
+import br.senac.hemolink.modelo.dao.foto.FotoDAO;
+import br.senac.hemolink.modelo.dao.foto.FotoDAOImpl;
 import br.senac.hemolink.modelo.dao.papel.PapelDAO;
 import br.senac.hemolink.modelo.dao.papel.PapelDAOImpl;
 import br.senac.hemolink.modelo.dao.usuario.UsuarioDAO;
 import br.senac.hemolink.modelo.dao.usuario.UsuarioDAOImpl;
-import br.senac.hemolink.modelo.entidade.contato.Contato;
-import br.senac.hemolink.modelo.entidade.papel.Papel;
 import br.senac.hemolink.modelo.entidade.usuario.Usuario;
-import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
-@WebServlet(urlPatterns = "/login-Usuario")
+@WebServlet(urlPatterns = "/login-usuario")
 public class UsuarioServlet extends HttpServlet {
     private static final long serialVersionUID = 878678693847L;
     private UsuarioDAO daoUsuario;
+    private FotoDAO daoFoto;
     private ContatoDAO daoContato;
     private PapelDAO daoPapel;
 
     public void init() {
         daoUsuario = new UsuarioDAOImpl();
+        daoFoto = new FotoDAOImpl();
         daoContato = new ContatoDAOImpl();
         daoPapel = new PapelDAOImpl();
     }
@@ -91,6 +91,8 @@ public class UsuarioServlet extends HttpServlet {
     
     private void loginUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
     	HttpSession session = request.getSession();
+    	
+    	int a = 1;
     	
     	String apelido = request.getParameter("apelido");
     	String senha = request.getParameter("senha");
