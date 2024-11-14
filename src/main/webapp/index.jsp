@@ -13,6 +13,6 @@
 </c:otherwise>
 </c:choose>
 <a href="<%= request.getContextPath()%>/paginas/cadastro-doador.jsp">Cadastro Doador</a> 
-<a href="paginas/login.jsp"></a>
+<a href="<%= request.getContextPath()%>/paginas/login.jsp">Login</a>
 </body>
 </html>

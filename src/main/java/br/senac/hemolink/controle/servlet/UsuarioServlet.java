@@ -54,6 +54,8 @@ public class UsuarioServlet extends HttpServlet {
                     break;
                 case "/deletar-Usuario":
                     break;
+                case "inserir-doador":
+                	
                 case "/login-Usuario":
                 	break;
                 case "/editar-Usuario":

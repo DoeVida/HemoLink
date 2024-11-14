@@ -118,11 +118,10 @@
 				</div>
 			</div>
 			<div class="botao-continuar">
-				<form action="dados-usuario">
 					<input type="submit" value="Continuar">
+					</div>
 				</form>
-			</div>
-		</form>
+			
 	</div>
 
 </body>

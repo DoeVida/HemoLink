@@ -163,6 +163,8 @@ public class Main {
 		campanha.setDescricaoCampanha("Descricao");
 		campanha.setHemocentro(hemocentro);
 		campanha.setTitulo("Titulo");
+		campanha.setDataInicio(LocalDate.now());
+		campanha.setDataFim(LocalDate.now());
 
 		// --------------------------------------------//
 		Demanda demanda = new Demanda();

@@ -51,7 +51,6 @@ public abstract class Usuario implements Serializable {
 	private Papel papel;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
 	@JoinColumn(name = "id_contato")
 	private Contato contato;
 

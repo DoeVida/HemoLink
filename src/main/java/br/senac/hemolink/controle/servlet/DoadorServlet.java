@@ -23,7 +23,7 @@ import br.senac.hemolink.modelo.entidade.papel.Papel;
 import br.senac.hemolink.modelo.entidade.usuario.doador.Doador;
 import br.senac.hemolink.modelo.enumeracao.TipoSanguineo;
 
-@WebServlet(urlPatterns = "/inserir-doador")
+@WebServlet("/inserir-doador")
 public class DoadorServlet extends HttpServlet {
     private static final long serialVersionUID = 878678693847L;
     private DoadorDAO daoDoador;
@@ -116,7 +116,7 @@ public class DoadorServlet extends HttpServlet {
         daoContato.inserirContato(contato);
         daoDoador.inserirDoador(doador);
         
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("listar");
 
     }
 
