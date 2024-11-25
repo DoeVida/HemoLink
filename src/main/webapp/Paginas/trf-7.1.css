@@ -1,0 +1,101 @@
+body{
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding: 20px;
+}
+
+.cadastro{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: auto;
+
+}
+
+.titulo h1{
+    font-size: 24px;
+    margin-bottom:20px;
+    text-align: center;
+    color: #333;
+}
+
+.botao-cadastrar-campanha{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.botao-cadastrar-campanha input {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.botao-cadastrar-campanha input:hover {
+    background-color: #45a049;
+}
+
+.campanha1, .campanha2 {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.titulo-campanha h2 {
+    font-size: 20px;
+    color: #555;
+    margin: 0 0 15px;
+}
+
+.conteudo-campanha h4 {
+    font-size:16px;
+    color: #666;
+    margin: 0 0 15px;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+     justify-content: flex-end;
+}
+
+.botoes .botao-excluir input,
+.botoes .botao-editar input,
+.botoes .botao-validar input {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.botoes .botao-excluir input:hover{
+    background-color: #d32f2f;
+}
+
+.botoes .botao-editar input {
+    background-color: #2196f3;
+}
+
+.botoes .botao-editar input:hover {
+    background-color: #1976d2;
+}
+
+.botoes .botao-validar input {
+    background-color: #4caf50;
+}
+
+.botoes .botao-validar input:hover {
+    background-color: #388e3c;
+}
