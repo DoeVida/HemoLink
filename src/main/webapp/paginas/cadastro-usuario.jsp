@@ -14,7 +14,7 @@
         <form action="cadastro-usuario.html" method="post">
             <div class="NomeUsuario">
                 <div>
-                    <label for="nome-usuario">Nome de Usu√°rio*</label>
+                    <label for="nome-usuario">Nome de Usu·rio*</label>
                 </div>
                 <div>
                     <input type="text" id="nome-usuario" name="nome-usuario" required>
@@ -41,7 +41,7 @@
 
             <div class="TipoSanguineo">
                 <div>
-                    <label for="tipo-sanguineo">Tipo Sangu√≠neo*</label>
+                    <label for="tipo-sanguineo">Tipo SanguÌneo*</label>
                 </div>
                 <div>
                     <select id="tipo-sanguineo" name="tipo-sanguineo" required>
@@ -101,7 +101,7 @@
 
             <div class="Confirmar-senha">
                 <div>
-                    <label for="confirmar-senha">Confirma√ß√£o de senha*</label>
+                    <label for="confirmar-senha">ConfirmaÁ„o de senha*</label>
                 </div>
                 <div>
                     <input type="password" id="confirmar-senha" name="confirmar-senha" required>
