@@ -13,23 +13,13 @@
     </div>
     <div class="paginas-hemo">
         <div>
-            <button>
-                <a href="\pagina-sobre.html">Sobre nós </a>
-            </button>
-        </div>
-        <div>
-            <button>
-                <a href="\pagina-incial.html">Página inicial</a>
-            </button>
+                <a href="pagina-incial.jsp">P�gina inicial</a>
         </div>
         <div class="pagina-git">
             <div>
                 <h3>Nosso GitHub</h3>
             </div>
-            <button>
-                <a href="https://github.com/DoeVida/HemoLink">GitHub
-                </a>
-            </button>
+                <a href="https://github.com/DoeVida/HemoLink">GitHub</a>
         </div>
     </div>
 </footer>
