@@ -52,6 +52,7 @@ public class Armazenamento implements Serializable {
 		this.hemocentro = hemocentro;
 	}
 	
+
 	public Armazenamento(List<EstoqueSangue> estoqueSangue, LocalDate dataUltimaAtualizacao,
 			Hemocentro hemocentro) {
 		super();
@@ -62,6 +63,7 @@ public class Armazenamento implements Serializable {
 
 	public Long getId() {
 		return id;
+
 	}
 
 	public void setId(Long id) {
