@@ -1,41 +1,76 @@
 package br.senac.hemolink.modelo.entidade.usuario.hemocentro;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
 
-import br.senac.hemolink.modelo.entidade.demanda.Demanda;
-import br.senac.hemolink.modelo.entidade.estoque.Estoque;
-import br.senac.hemolink.modelo.entidade.campanha.Campanha;
-import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
-class Hemocentro extends Usuario {
+import br.senac.hemolink.modelo.entidade.armazenamento.Armazenamento;
+import br.senac.hemolink.modelo.entidade.campanha.Campanha;
+import br.senac.hemolink.modelo.entidade.demanda.Demanda;
+import br.senac.hemolink.modelo.entidade.doacao.Doacao;
+import br.senac.hemolink.modelo.entidade.endereco.Endereco;
+import br.senac.hemolink.modelo.entidade.usuario.Usuario;
+
+@Entity
+@Table(name = "hemocentro")
+public class Hemocentro extends Usuario implements Serializable {
+
+	private static final long serialVersionUID = 5082517849085199550L;
+
+	@Column(name = "cnpj_hemocentro", length = 14, nullable = false, unique = true)
 	private String cnpj;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.REMOVE)
 	private List<Demanda> demanda;
-	private List<Estoque> estoque;
-	private List<Campanha> campanha;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private List<Armazenamento> armazenamento;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private List<Campanha> campanhas;
+
+	@Column(name = "horario_abertura_hemocentro", nullable = false)
 	private LocalTime horarioInicio;
+
+	@Column(name = "horario_fechamento_hemocentro", nullable = false)
 	private Duration horarioDuracao;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_endereco")
+	private Endereco endereco;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "hemocentro", cascade = CascadeType.DETACH)
 	private List<Doacao> doacoes;
 
 	public Hemocentro() {
-
 	}
 
-	public Hemocentro(String cnpj, List<Demanda> demanda, List<Estoque> estoque, List<Campanha> campanha,
-			LocalTime horarioInicio, Duration horarioDuracao, List<Doacao> doacoes) {
+	public Hemocentro(String cnpj, List<Demanda> demanda, List<Armazenamento> armazenamento, List<Campanha> campanhas,
+			LocalTime horarioInicio, Duration horarioDuracao, Endereco endereco, List<Doacao> doacoes) {
 		super();
 		this.cnpj = cnpj;
 		this.demanda = demanda;
-		this.estoque = estoque;
-		this.campanha = campanha;
+		this.armazenamento = armazenamento;
+		this.campanhas = campanhas;
 		this.horarioInicio = horarioInicio;
 		this.horarioDuracao = horarioDuracao;
+		this.endereco = endereco;
 		this.doacoes = doacoes;
 	}
-	//
 
-	// Get Set
 	public String getCnpj() {
 		return cnpj;
 	}
@@ -52,20 +87,20 @@ class Hemocentro extends Usuario {
 		this.demanda = demanda;
 	}
 
-	public List<Estoque> getEstoque() {
-		return estoque;
+	public List<Armazenamento> getArmazenamento() {
+		return armazenamento;
 	}
 
-	public void setEstoque(List<Estoque> estoque) {
-		this.estoque = estoque;
+	public void setArmazenamento(List<Armazenamento> armazenamento) {
+		this.armazenamento = armazenamento;
 	}
 
-	public List<Campanha> getCampanha() {
-		return campanha;
+	public List<Campanha> getCampanhas() {
+		return campanhas;
 	}
 
-	public void setCampanha(List<Campanha> campanha) {
-		this.campanha = campanha;
+	public void setCampanhas(List<Campanha> campanhas) {
+		this.campanhas = campanhas;
 	}
 
 	public LocalTime getHorarioInicio() {
@@ -84,6 +119,14 @@ class Hemocentro extends Usuario {
 		this.horarioDuracao = horarioDuracao;
 	}
 
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	public List<Doacao> getDoacoes() {
 		return doacoes;
 	}
@@ -91,4 +134,5 @@ class Hemocentro extends Usuario {
 	public void setDoacoes(List<Doacao> doacoes) {
 		this.doacoes = doacoes;
 	}
+
 }
