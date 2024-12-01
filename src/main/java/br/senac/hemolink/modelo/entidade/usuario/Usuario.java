@@ -50,15 +50,22 @@ public abstract class Usuario implements Serializable {
 	private Papel papel;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
 	@JoinColumn(name = "id_contato")
 	private Contato contato;
 
 	public Usuario() {
 	}
 
+	public Usuario(String apelido, String nome, String senha, Foto foto, Papel papel, Contato contato) {
+		this.apelido = apelido;
+		this.nome = nome;
+		this.senha = senha;
+		this.foto = foto;
+		this.papel = papel;
+		this.contato = contato;
+	}
+
 	public Usuario(Long id, String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
-		super();
 		this.id = id;
 		this.apelido = apelido;
 		this.nome = nome;
@@ -72,16 +79,8 @@ public abstract class Usuario implements Serializable {
 		return id;
 	}
 
-	public void setId(Long usuario) {
-		this.id = usuario;
-	}
-
-	public Foto getFoto() {
-		return foto;
-	}
-
-	public void setFoto(Foto foto) {
-		this.foto = foto;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getApelido() {
@@ -106,6 +105,14 @@ public abstract class Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
 	}
 
 	public Papel getPapel() {

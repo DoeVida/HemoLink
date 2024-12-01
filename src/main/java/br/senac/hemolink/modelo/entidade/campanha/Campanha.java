@@ -56,15 +56,19 @@ public class Campanha implements Serializable {
 
 	public Campanha() {}
 
-	public Campanha(Long id, String titulo, String descricaoCampanha, Hemocentro hemocentro, List<Demanda> demandas,
-			List<Doacao> doacoes, LocalDate dataInicio, LocalDate dataFim) {
-		super();
+	public Campanha(String titulo, String descricaoCampanha, Hemocentro hemocentro, LocalDate dataInicio, LocalDate dataFim) {
+		this.titulo = titulo;
+		this.descricaoCampanha = descricaoCampanha;
+		this.hemocentro = hemocentro;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+	}
+
+	public Campanha(Long id, String titulo, String descricaoCampanha, Hemocentro hemocentro, LocalDate dataInicio, LocalDate dataFim) {
 		this.id = id;
 		this.titulo = titulo;
 		this.descricaoCampanha = descricaoCampanha;
 		this.hemocentro = hemocentro;
-		this.demandas = demandas;
-		this.doacoes = doacoes;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
 	}
@@ -113,8 +117,8 @@ public class Campanha implements Serializable {
 		return doacoes;
 	}
 
-	public void setHemocentro(Hemocentro hemocentro) {
-		this.hemocentro = hemocentro;
+	public void setDoacoes(List<Doacao> doacoes) {
+		this.doacoes = doacoes;
 	}
 
 	public LocalDate getDataInicio() {
