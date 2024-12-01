@@ -1,21 +1,18 @@
 package br.senac.hemolink.modelo.entidade.usuario.doador;
- 
+
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
- 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
- 
+
 import br.senac.hemolink.modelo.entidade.aquisicaoConquista.AquisicaoConquista;
 import br.senac.hemolink.modelo.entidade.contato.Contato;
 import br.senac.hemolink.modelo.entidade.doacao.Doacao;
@@ -43,72 +40,28 @@ public class Doador extends Usuario implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoSanguineo tipoSanguineo;
  
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.DETACH) // mappedby usuario ou doador ?
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.DETACH)
 	private List<Doacao> doacoes;
  
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.REMOVE)
-	private List<AquisicaoConquista> aquisicaoConquista; // mappedby usuario ou doador ?
+	private List<AquisicaoConquista> aquisicaoConquista;
  
 	public Doador() {
 	}
- 
-	public Doador(Long id, String apelido, String nome, Foto foto, String senha, Papel papel, Contato contato, String cpf,
-			char sexo, TipoSanguineo tipoSanguineo, LocalDate dataDeNascimento, List<Doacao> doacoes,
-			List<AquisicaoConquista> aquisicoesConquista) {
-		super(id, apelido, nome, cpf, foto, senha, papel, contato);
+
+	public Doador(String apelido, String nome, String senha, Foto foto, Papel papel, Contato contato, String cpf, char sexo, LocalDate dataDeNascimento, TipoSanguineo tipoSanguineo) {
+		super(apelido, nome, senha, foto, papel, contato);
 		this.cpf = cpf;
 		this.sexo = sexo;
-		this.tipoSanguineo = tipoSanguineo;
 		this.dataDeNascimento = dataDeNascimento;
-		this.doacoes = doacoes;
-		this.aquisicaoConquista = aquisicoesConquista;
+		this.tipoSanguineo = tipoSanguineo;
 	}
- 
-	public List<AquisicaoConquista> getAquisicaoConquista() {
-		return aquisicaoConquista;
-	}
- 
-	public void setAquisicaoConquista(List<AquisicaoConquista> aquisicaoConquista) {
-		this.aquisicaoConquista = aquisicaoConquista;
-	}
- 
-	public String getCpf() {
-		return cpf;
-	}
- 
-	public void setCpf(String cpf) {
+
+	public Doador(Long id, String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato, String cpf, char sexo, LocalDate dataDeNascimento, TipoSanguineo tipoSanguineo) {
+		super(id, apelido, nome, fotoPerfil, senha, papel, contato);
 		this.cpf = cpf;
-	}
- 
-	public char getSexo() {
-		return sexo;
-	}
- 
-	public void setSexo(char sexo) {
 		this.sexo = sexo;
-	}
- 
-	public LocalDate getDataDeNascimento() {
-		return dataDeNascimento;
-	}
- 
-	public void setDataDeNascimento(LocalDate dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
-	}
- 
-	public TipoSanguineo getTipoSanguineo() {
-		return tipoSanguineo;
-	}
- 
-	public void setTipoSanguineo(TipoSanguineo tipoSanguineo) {
 		this.tipoSanguineo = tipoSanguineo;
-	}
- 
-	public List<Doacao> getDoacoes() {
-		return doacoes;
-	}
- 
-	public void setDoacoes(List<Doacao> doacoes) {
-		this.doacoes = doacoes;
 	}
 }
