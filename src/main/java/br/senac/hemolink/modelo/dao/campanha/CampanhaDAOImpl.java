@@ -1,8 +1,15 @@
 package br.senac.hemolink.modelo.dao.campanha;
 
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
+import br.senac.hemolink.modelo.entidade.endereco.Endereco;
 import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
 
 public class CampanhaDAOImpl implements CampanhaDAO {
@@ -103,4 +110,42 @@ public class CampanhaDAOImpl implements CampanhaDAO {
 		}
 	}
 
+	 public List<Campanha> recuperarCampanhas() {
+
+       Session sessao = null;
+       List<Campanha> campanhas = null;
+
+        try {
+
+            sessao = fabrica.getConexao().openSession();
+            sessao.beginTransaction();
+
+            CriteriaBuilder construtor = sessao.getCriteriaBuilder();
+
+            CriteriaQuery<Campanha> criteria = construtor.createQuery(Campanha.class);
+            Root<Campanha> raizCampanha = criteria.from(Campanha.class);
+
+            criteria.select(raizCampanha);
+
+            campanhas = sessao.createQuery(criteria).getResultList();
+
+            sessao.getTransaction().commit();
+
+        } catch (Exception sqlException) {
+
+            sqlException.printStackTrace();
+
+            if (sessao.getTransaction() != null) {
+                sessao.getTransaction().rollback();
+            }
+
+        } finally {
+
+            if (sessao != null) {
+                sessao.close();
+            }
+        }
+
+        return campanhas;
+    }
 }
