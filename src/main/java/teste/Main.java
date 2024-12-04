@@ -110,7 +110,6 @@ public class Main {
 		doador.setContato(contato);
 		doador.setCpf("232123");
 		doador.setDataDeNascimento(LocalDate.of(2009, 3, 30));
-		doador.setEmail("email@doador.com");
 		doador.setFoto(fotoDoador);
 		doador.setNome("Miguel");
 		doador.setPapel(papel);
@@ -136,10 +135,9 @@ public class Main {
 		hemocentro.setApelido("Apelido Hemocentro");
 		hemocentro.setCnpj("1231231");
 		hemocentro.setContato(contato);
-		hemocentro.setEmail("email@hemocentro.com");
 		hemocentro.setFoto(fotoHemocentro);
 		hemocentro.setEndereco(endereco);
-		hemocentro.setHorarioDuracao(Duration.ofHours(12));
+		hemocentro.setHorarioFim(LocalTime.now());
 		hemocentro.setHorarioInicio(LocalTime.of(12, 2));
 		hemocentro.setNome("Nome");
 		hemocentro.setPapel(papel);
@@ -225,56 +223,56 @@ public class Main {
 
 			System.out.println("Tentando Inserir Demanda");
 			demandaDAO.inserirDemanda(demanda);
-
-			// ----------------------------------------------------------//
-
+			
+			//----------------------------------------------------------//
+			
 			armazenamento.getEstoqueSangue().add(estoqueSangue);
 			armazenamento.setEstoqueSangue(armazenamento.getEstoqueSangue());
-
+			
 			campanha.getDemandas().add(demanda);
 			campanha.setDemandas(campanha.getDemandas());
-
+			
 			campanha.getDoacoes().add(doacao);
 			campanha.setDoacoes(campanha.getDoacoes());
 
 			conquista.getAquisicaoConquista().add(aquisicaoConquista);
 			conquista.setAquisicaoConquista(conquista.getAquisicaoConquista());
-
+			
 			doador.getDoacoes().add(doacao);
 			doador.setDoacoes(doador.getDoacoes());
-
+			
 			doador.getAquisicaoConquista().add(aquisicaoConquista);
 			doador.setAquisicaoConquista(doador.getAquisicaoConquista());
-
+			
 			hemocentro.getDemanda().add(demanda);
 			hemocentro.setDemanda(hemocentro.getDemanda());
-
+			
 			hemocentro.getArmazenamento().add(armazenamento);
 			hemocentro.setArmazenamento(hemocentro.getArmazenamento());
-
+			
 			hemocentro.getCampanhas().add(campanha);
 			hemocentro.setCampanhas(hemocentro.getCampanhas());
-
+			
 			hemocentro.getDoacoes().add(doacao);
 			hemocentro.setDoacoes(hemocentro.getDoacoes());
-
-			// ----------------------------------------------------------//
-
+			
+			//----------------------------------------------------------//
+			
 			System.out.println("Tentando Atualizar Armazenamento");
 			armazenamentoDAO.atualizarArmazenamento(armazenamento);
-
+			
 			System.out.println("Tentando Atualizar Campanha");
 			campanhaDAO.atualizarCampanha(campanha);
-
+			
 			System.out.println("Tentando Atualizar Conquista");
 			conquistaDAO.atualizarConquista(conquista);
-
+			
 			System.out.println("Tentando Atualizar Doador");
 			doadorDAO.atualizarDoador(doador);
-
+			
 			System.out.println("Tentando Atualizar Hemocentro");
 			hemocentroDAO.atualizarHemocentro(hemocentro);
-
+			
 		} catch (Exception e) {
 			System.out.println("Erro no código!");
 		} finally {

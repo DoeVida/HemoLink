@@ -41,14 +41,23 @@ public class PapelDAOImpl implements PapelDAO {
 	public void inserirPapel(Papel papel) {
 		Session sessao = null;
 		try {
-			sessao = abrirSessao(sessao);
+			
+			sessao = fabrica.getConexao().openSession();
+			sessao.beginTransaction();
+			
 			sessao.save(papel);
-			sessao.getTransaction().commit();
-
-		} catch (Exception exception) {
-			erroSessao(sessao, exception);
+			
+		} catch (Exception sqlException) {
+			
+			sqlException.printStackTrace();
+			
+			if(sessao.getTransaction() != null) {
+				sessao.getTransaction().rollback();
+			}
 		} finally {
-			fecharSessao(sessao);
+			if (sessao != null) {
+				sessao.close();
+			}
 		}
 	}
 
@@ -78,6 +87,7 @@ public class PapelDAOImpl implements PapelDAO {
 		}
 	}
 
+	
 	public List<Papel> recuperarPapeis() {
 		Session sessao = null;
 		List<Papel> papeis = null;
@@ -95,5 +105,10 @@ public class PapelDAOImpl implements PapelDAO {
 			fecharSessao(sessao);
 		}
 		return papeis;
+	}
+
+	public Papel recuperarPapelPeloNome(String nome) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

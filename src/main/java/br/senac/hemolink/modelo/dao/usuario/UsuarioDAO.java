@@ -10,5 +10,5 @@ public interface UsuarioDAO {
  
 	void atualizarUsuario (Usuario usuario);
  
-	Usuario recuperarUsuarioPeloEmail(String email);
+	Usuario recuperarUsuarioPeloEmail(String apelido);
 }

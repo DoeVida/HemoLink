@@ -13,5 +13,5 @@ public interface HemocentroDAO {
 	void atualizarHemocentro(Hemocentro hemocentro);
 
 	List<Hemocentro> recuperarHemocentros();
-
+	
 }

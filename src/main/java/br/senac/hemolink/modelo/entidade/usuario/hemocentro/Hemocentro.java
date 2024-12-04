@@ -46,7 +46,7 @@ public class Hemocentro extends Usuario implements Serializable {
 	private LocalTime horarioInicio;
 
 	@Column(name = "horario_fechamento_hemocentro", nullable = false)
-	private Duration horarioDuracao;
+	private LocalTime horarioFim;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_endereco")
@@ -59,14 +59,14 @@ public class Hemocentro extends Usuario implements Serializable {
 	}
 
 	public Hemocentro(String cnpj, List<Demanda> demanda, List<Armazenamento> armazenamento, List<Campanha> campanhas,
-			LocalTime horarioInicio, Duration horarioDuracao, Endereco endereco, List<Doacao> doacoes) {
+			LocalTime horarioInicio, LocalTime horarioFim, Endereco endereco, List<Doacao> doacoes) {
 		super();
 		this.cnpj = cnpj;
 		this.demanda = demanda;
 		this.armazenamento = armazenamento;
 		this.campanhas = campanhas;
 		this.horarioInicio = horarioInicio;
-		this.horarioDuracao = horarioDuracao;
+		this.horarioFim = horarioFim;
 		this.endereco = endereco;
 		this.doacoes = doacoes;
 	}
@@ -111,12 +111,12 @@ public class Hemocentro extends Usuario implements Serializable {
 		this.horarioInicio = horarioInicio;
 	}
 
-	public Duration getHorarioDuracao() {
-		return horarioDuracao;
+	public LocalTime getHorarioFim() {
+		return horarioFim;
 	}
 
-	public void setHorarioDuracao(Duration horarioDuracao) {
-		this.horarioDuracao = horarioDuracao;
+	public void setHorarioFim(LocalTime horarioFim) {
+		this.horarioFim = horarioFim;
 	}
 
 	public Endereco getEndereco() {

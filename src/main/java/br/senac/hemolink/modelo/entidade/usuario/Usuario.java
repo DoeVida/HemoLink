@@ -13,6 +13,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -50,7 +51,6 @@ public abstract class Usuario implements Serializable {
 	private Papel papel;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
 	@JoinColumn(name = "id_contato")
 	private Contato contato;
 
@@ -58,8 +58,16 @@ public abstract class Usuario implements Serializable {
 	}
 
 	public Usuario(Long id, String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
-		super();
 		this.id = id;
+		this.apelido = apelido;
+		this.nome = nome;
+		this.foto = fotoPerfil;
+		this.senha = senha;
+		this.papel = papel;
+		this.contato = contato;
+	}
+
+	public Usuario(String apelido, String nome, Foto fotoPerfil, String senha, Papel papel, Contato contato) {
 		this.apelido = apelido;
 		this.nome = nome;
 		this.foto = fotoPerfil;
