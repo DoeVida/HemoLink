@@ -41,7 +41,6 @@ public class Doador extends Usuario implements Serializable {
     private TipoSanguineo tipoSanguineo;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.DETACH)
-    // mappedby usuario ou doador ?
     private List<Doacao> doacoes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "doador", cascade = CascadeType.REMOVE)
@@ -66,7 +65,18 @@ public class Doador extends Usuario implements Serializable {
         this.tipoSanguineo = tipoSanguineo;
     }
 
-    public String getCpf() {
+    public Doador(String cpf, char sexo, LocalDate dataDeNascimento, TipoSanguineo tipoSanguineo, List<Doacao> doacoes,
+			List<AquisicaoConquista> aquisicaoConquista) {
+		super();
+		this.cpf = cpf;
+		this.sexo = sexo;
+		this.dataDeNascimento = dataDeNascimento;
+		this.tipoSanguineo = tipoSanguineo;
+		this.doacoes = doacoes;
+		this.aquisicaoConquista = aquisicaoConquista;
+	}
+
+	public String getCpf() {
         return cpf;
     }
 

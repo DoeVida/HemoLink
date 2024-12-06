@@ -9,24 +9,11 @@
 
 	<div class="Cadastro">
 		<h1>Registre-se</h1>
-		<form action="inserir-doador" method="post">
-			<div class="apelido">
-				<div>
-					<label for="apelido">Apelido*</label>
-				</div>
-				<div>
-					<input type="text" id="apelido" name="apelido" required>
-				</div>
+		<form action="<%=request.getContextPath()%>/inserir-doador" method="post">
+			
 			</div>
 
-			<div class="nome">
-				<div>
-					<label for="nome">Nome*</label>
-				</div>
-				<div>
-					<input type="text" id="nome" name="nome" required>
-				</div>
-			</div>
+			
 
 			<div class="cpf">
 				<div>
@@ -68,15 +55,7 @@
 				</div>
 			</div>
 
-			<div class="telefone">
-				<div>
-					<label for="telefone">Telefone*</label>
-				</div>
-				<div>
-					<input type="text" id="telefone" name="telefone" required>
-				</div>
-			</div>
-
+			
 			<div class="sexo">
 				<div>
 					<label for="sexo">Sexo*</label>
@@ -90,38 +69,15 @@
 				</div>
 			</div>
 
-			<div class="email">
-				<div>
-					<label for="email">Email*</label>
-				</div>
-				<div>
-					<input type="text" id="email" name="email" required>
-				</div>
-			</div>
-
-			<div class="senha">
-				<div>
-					<label for="senha">Senha*</label>
-				</div>
-				<div>
-					<input type="password" id="senha" name="senha" required>
-				</div>
-			</div>
-
-			<div class="confirmar-senha">
-				<div>
-					<label for="confirmar-senha">Confirmação de senha*</label>
-				</div>
-				<div>
-					<input type="password" id="confirmar-senha" name="confirmar-senha"
-						required>
-				</div>
-			</div>
-			<div class="botao-continuar">
-					<input type="submit" value="Continuar">
-					</div>
-				</form>
 			
+			
+
+			
+			<div class="botao-continuar">
+				<input type="submit" value="Continuar" href="index.jsp">
+			</div>
+		</form>
+		
 	</div>
 
 </body>
