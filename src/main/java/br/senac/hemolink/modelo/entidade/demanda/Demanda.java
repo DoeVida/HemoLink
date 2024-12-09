@@ -60,6 +60,15 @@ public class Demanda implements Serializable {
 		this.quantidadeLitros = quantidadeLitros;
 		this.hemocentro = hemocentro;
 		this.campanha = campanha;
+	}	
+	
+	public Demanda(TipoSanguineo tipoSanguineo, Capacidade capacidade, double quantidadeLitros,
+			Hemocentro hemocentro, Campanha campanha) {
+		this.tipoSanguineo = tipoSanguineo;
+		this.capacidade = capacidade;
+		this.quantidadeLitros = quantidadeLitros;
+		this.hemocentro = hemocentro;
+		this.campanha = campanha;
 	}
 
 	public Long getId() {
