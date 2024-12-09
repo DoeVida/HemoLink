@@ -1,3 +1,4 @@
+
 package br.senac.hemolink.modelo.entidade.doacao;
 
 import java.io.Serializable;
@@ -23,7 +24,7 @@ import br.senac.hemolink.modelo.enumeracao.Status;
 
 @Entity
 @Table(name = "Doacao")
-public class Doacao implements Serializable {
+public class  Doacao implements Serializable {
 
 	private static final long serialVersionUID = -3011186404724313934L;
 
@@ -33,11 +34,11 @@ public class Doacao implements Serializable {
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_doador", referencedColumnName = "id_usuario")
+	@JoinColumn(name = "id_doador")
 	private Doador doador;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_hemocentro", referencedColumnName = "id_usuario")
+	@JoinColumn(name = "id_hemocentro")
 	private Hemocentro hemocentro;
 
 	@Column(name = "data_doacao", nullable = false)

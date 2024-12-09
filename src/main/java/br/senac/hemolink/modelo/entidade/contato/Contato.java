@@ -1,3 +1,4 @@
+
 package br.senac.hemolink.modelo.entidade.contato;
 
 import java.io.Serializable;
@@ -27,6 +28,11 @@ public class Contato implements Serializable {
 	private String telefone;
 
 	public Contato() {
+	}
+
+	public Contato(String email, String telefone) {
+		this.email = email;
+		this.telefone = telefone;
 	}
 
 	public Contato(Long idContato, String email, String telefone) {

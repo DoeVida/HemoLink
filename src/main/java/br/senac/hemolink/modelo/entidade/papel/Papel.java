@@ -1,3 +1,4 @@
+
 package br.senac.hemolink.modelo.entidade.papel;
 
 import java.io.Serializable;
@@ -18,25 +19,29 @@ public class Papel implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_papel")
-	private Long id;
+	private Long idPapel;
 
-	@Column(name = "nome_papel", length = 15, nullable = false, unique = true)
+	@Column(name = "nome_papel", length = 15, nullable = false, unique = false)
 	private String nome;
 
 	public Papel() {
 	}
 
+	public Papel(String nome) {
+		this.nome = nome;
+	}
+
 	public Papel(Long id, String nome) {
-		this.id = id;
+		this.idPapel = id;
 		this.nome = nome;
 	}
 
 	public Long getIdPapel() {
-		return id;
+		return idPapel;
 	}
 
 	public void setIdPapel(Long id) {
-		this.id = id;
+		this.idPapel = id;
 	}
 
 	public String getNomePapel() {

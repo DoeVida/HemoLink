@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -94,7 +95,7 @@ h1{
         <form>
             <div class="NomeUsuario">
             	<div>
-                	<label for="nome-usuario">Nome de Usuário:</label>
+                	<label for="nome-usuario">Nome de UsuÃ¡rio:</label>
                 </div>
                 <div>
                 	<input type="text" id="nome-usuario" name="nome-usuario">
@@ -126,7 +127,7 @@ h1{
             </div>
             <div class="InicioHorarioDeAtendimento">
             	<div>
-                	<label for="horario-de-inicio">Inicio Horário de Atendimento:</label>
+                	<label for="horario-de-inicio">Inicio HorÃ¡rio de Atendimento:</label>
                 </div>
                 <div>
                 	<input type="time" id="horario-de-inicio" name="horario-de-inicio">
@@ -134,7 +135,7 @@ h1{
             </div>
             <div class="FinalHorarioDeAtendimento">
             	<div>
-                	<label for="horario-de-fim">Final Horário de Atendimento:</label>
+                	<label for="horario-de-fim">Final HorÃ¡rio de Atendimento:</label>
                 </div>
                 <div>
                 	<input type="time" id="horario-de-fim" name="horario-de-fim">
@@ -150,7 +151,7 @@ h1{
             </div>
             <div class="Endereco">
             	<div>
-                	<label for="endereco">Endereço:</label>
+                	<label for="endereco">EndereÃ§o:</label>
                 </div>
                 <div>	
                 	<input type="text" id="endereco" name="endereco">
@@ -190,7 +191,7 @@ h1{
             </div>
             <div class="Numero">
             	<div>
-                	<label for="numero">Número:</label>
+                	<label for="numero">NÃºmero:</label>
                 </div>
                 <div>
                 	<input type="number" id="numero" name="numero">
@@ -214,7 +215,7 @@ h1{
             </div>
             <div class="ConfirmarSenha">
             	<div>
-                	<label for="confirmar-senha">Confirmação da Senha:</label>
+                	<label for="confirmar-senha">ConfirmaÃ§Ã£o da Senha:</label>
                 </div>
                 <div>
                 <input type="password" id="confirmar-senha" name="confirmar-senha">
