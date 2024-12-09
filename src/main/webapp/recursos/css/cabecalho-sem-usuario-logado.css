@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #d9e8d4;
+  }
+  
+
+  .cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px;
+  }
+
+
+  .logo-do-site img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+
+  .barra-de-pesquisa input {
+    width: 150%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+  }
+  
+
+  .botao-de-registro a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #e35b46;
+    font-weight: bold;
+    background-color: #ffc4b3;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .botao-de-registro a:hover {
+    background-color: #e7a190;
+  }
+  
+
+  .cabecalho div:last-child a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #e35b46;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cabecalho div:last-child a:hover {
+    background-color: #c6493a;
+  }
+  
+
+  @media (max-width: 768px) {
+    .cabecalho {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .barra-de-pesquisa input {
+      flex: 1 1 100%;
+      margin-top: 10px;
+    }
+  }
