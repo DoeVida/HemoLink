@@ -7,12 +7,12 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Session;
+
 import br.senac.hemolink.modelo.entidade.endereco.Endereco;
-import br.senac.hemolink.modelo.entidade.usuario.Usuario;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro;
 import br.senac.hemolink.modelo.entidade.usuario.hemocentro.Hemocentro_;
 import br.senac.hemolink.modelo.factory.conexao.ConexaoFactory;
-import org.hibernate.Session;
 
 public class EnderecoDAOImpl implements EnderecoDAO {
 
@@ -164,6 +164,7 @@ public class EnderecoDAOImpl implements EnderecoDAO {
             Root<Endereco> raizEndereco = criteria.from(Endereco.class);
             Join<Hemocentro, Endereco> joinEnderecoUsuario = raizEndereco.join(Hemocentro_.ENDERECO);
 
+            
             criteria.select(joinEnderecoUsuario).where(construtor.equal(raizEndereco.get(Hemocentro_.ID), idHemocentro));
 
             enderecoRecuperado = sessao.createQuery(criteria).getSingleResult();

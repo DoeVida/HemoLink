@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 
+import br.senac.hemolink.modelo.entidade.campanha.Campanha_;
 import org.hibernate.Session;
 
 import br.senac.hemolink.modelo.entidade.campanha.Campanha;
@@ -124,6 +126,7 @@ public class CampanhaDAOImpl implements CampanhaDAO {
 
             CriteriaQuery<Campanha> criteria = construtor.createQuery(Campanha.class);
             Root<Campanha> raizCampanha = criteria.from(Campanha.class);
+			raizCampanha.fetch(Campanha_.HEMOCENTRO, JoinType.INNER);
 
             criteria.select(raizCampanha);
 
